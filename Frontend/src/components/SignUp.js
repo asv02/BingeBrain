@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import auth from "../utils/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { SignUpValidation } from "../utils/validate";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setUser } from "../utils/appSlice";
 
-const SignUp = ({ auth, setView }) => {
+const SignUp = ({ view, setView }) => {
+  const navigate = useNavigate();
+  const dispatch  = useDispatch();
   const [SignUpInfo, setSignUpInfo] = useState({
     name: "",
     email: "",
@@ -10,38 +18,55 @@ const SignUp = ({ auth, setView }) => {
 
   const [error, setError] = useState({});
 
-  const validation = () => {
-    let validate = {};
-    if (!SignUpInfo.name) {
-      validate.name = "Enter valid name";
-    }
-    if (!SignUpInfo.email) {
-      validate.email = "Enter valid email";
-    }
-    if (!SignUpInfo.password) {
-      validate.password = "Enter valid password";
-    }
-    return validate;
-  };
-
   const handleSignUp = (e) => {
     e.preventDefault();
-    const validate = validation();
+    const validate = SignUpValidation(SignUpInfo);
     setError(validate);
-    if (Object.keys(validate).length === 0) {
-      console.log("handle signup");
-    } else {
+    if (Object.keys(validate).length !== 0) {
       console.log("Invalid data...");
+      return;
+    } else {
+      createUserWithEmailAndPassword(
+        auth,
+        SignUpInfo.email,
+        SignUpInfo.password
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("SignedUp user->", user);
+          updateProfile(user, {
+            displayName: SignUpInfo.name,
+          })
+            .then(() => {
+              console.log("Updted name successfully");
+              dispatch(
+                setUser({
+                  uid: user?.uid,
+                  email: user?.email,
+                  displayName: user?.displayName,
+                })
+              );
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log("User not updated");
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     }
   };
 
-  useEffect(()=>
-    {
-        console.log('Error->',error)
-    },[error])
+  useEffect(() => {
+    console.log("SignUp render->", auth.currentUser);
+  });
 
   return (
-    !auth && (
+    !view && (
       <div className="min-h-screen relative">
         <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" />
 
@@ -85,6 +110,9 @@ const SignUp = ({ auth, setView }) => {
                       }}
                       className="w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <span className="font-bold text-red-600">
+                      {error?.email}
+                    </span>
                   </label>
 
                   <label className="block">
@@ -101,6 +129,9 @@ const SignUp = ({ auth, setView }) => {
                       }}
                       className="w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <span className="font-bold text-red-600">
+                      {error?.password}
+                    </span>
                   </label>
 
                   <button
@@ -124,7 +155,7 @@ const SignUp = ({ auth, setView }) => {
                     Already Registered?{" "}
                     <span
                       onClick={() => {
-                        setView(!auth);
+                        setView(!view);
                       }}
                       className="underline text-white"
                     >

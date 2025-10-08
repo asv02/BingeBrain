@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import { LoginValidation } from "../utils/validate";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from '../utils/firebase'
 
-const Login = ({ auth, setView }) => {
+const Login = ({ view, setView }) => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
-
   const [error, setError] = useState({});
-
+  
   const handleLogin = (e) => {
     e.preventDefault();
-    const validate = validation();
-    setError(validate)
-    if (Object.keys(validate).length === 0) {
-      console.log("handrleLogin clicked");
-    } else {
+    const validate = LoginValidation(loginInfo);
+    setError(validate);
+    if (Object.keys(validate).length !== 0) {
       console.log("Invalid data");
-    //   setError({});
+    } else {
+      signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log('user->',user);
+          console.log('currentUser->',auth.currentUser)
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
     }
-  };
-
-  const validation = () => {
-    let validate = {};
-    console.log("validation run.....");
-    if (!loginInfo.email) {
-      validate.email = "Email required";
-    }
-    if (!loginInfo.password) {
-      validate.password = "Password required";
-    }
-    return validate;
   };
 
   useEffect(() => {
@@ -38,7 +36,7 @@ const Login = ({ auth, setView }) => {
   }, [error]);
 
   return (
-    auth && (
+    view && (
       <div className="min-h-screen relative">
         <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" />
 
@@ -67,6 +65,9 @@ const Login = ({ auth, setView }) => {
                       }}
                       className="w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <span className="font-bold text-red-600">
+                      {error?.email}
+                    </span>
                   </label>
 
                   <label className="block">
@@ -83,6 +84,9 @@ const Login = ({ auth, setView }) => {
                       }}
                       className="w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <span className="font-bold text-red-600">
+                      {error?.password}
+                    </span>
                   </label>
 
                   <button
@@ -122,7 +126,7 @@ const Login = ({ auth, setView }) => {
                     <span
                       className="underline text-white"
                       onClick={() => {
-                        setView(!auth);
+                        setView(!view);
                       }}
                     >
                       Sign up now.
