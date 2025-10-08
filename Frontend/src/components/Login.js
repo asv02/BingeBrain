@@ -3,8 +3,10 @@ import Header from "./Header";
 import { LoginValidation } from "../utils/validate";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../utils/firebase'
+import {useNavigate} from 'react-router';
 
 const Login = ({ view, setView }) => {
+  const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -33,6 +35,10 @@ const Login = ({ view, setView }) => {
 
   useEffect(() => {
     console.log("Error->", error);
+    // if(auth.currentUser)
+    //   {
+    //     navigate('/Browse')
+    //   }
   }, [error]);
 
   return (
