@@ -10,7 +10,8 @@ import GptSearch from "./GptSearch";
 import { useSelector } from "react-redux";
 
 function Browse() {
-  const gptSearch = useSelector((store) => store.GptReducer);
+  const gptSearch = useSelector((store) => store.GptReducer.toggle);
+  console.log('gptSearch->',gptSearch)
   useNowPlayingMovies();
   usePopularPlayingMovies();
   useTopRatedPlayingMovies();

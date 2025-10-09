@@ -18,8 +18,8 @@ const movieSlice = createSlice({
   initialState: {
     nowPlaying: [],
     PopularPlaying: [],
-    TopRatedPlaying:[],
-    UpComingPlaying:[],
+    TopRatedPlaying: [],
+    UpComingPlaying: [],
     Maintrailer: null,
   },
   reducers: {
@@ -73,22 +73,27 @@ const movieSlice = createSlice({
   },
 });
 
-
 const GptSearchSlice = createSlice({
-  name:"GptSearch",
-  initialState:false,
-  reducers:
-  {
-    toggleSearch:(state)=> {
-      // For non-draftable primitives, return the next value explicitly
-      return !state;
-    }
-  }
-})
+  name: "GptSearch",
+  initialState: {
+    toggle: false,
+    recommendedMovie: [],
+  },
+  reducers: {
+    toggleSearch: (state) => {
+      state = { ...state, toggle: !state.toggle };
+      console.log("gpt state->", state.toggle);
+      return state;
+    },
+    addRecommendedMovie: (state, action) => {
+      state = {...state,recommendedMovie:action.payload};
+      return state;
+    },
+  },
+});
 
-export const GptReducer = GptSearchSlice.reducer
-export const {toggleSearch} = GptSearchSlice.actions
-
+export const GptReducer = GptSearchSlice.reducer;
+export const { toggleSearch,addRecommendedMovie } = GptSearchSlice.actions;
 
 export const MovieReducer = movieSlice.reducer;
 export const {
