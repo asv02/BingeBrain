@@ -2232,22 +2232,70 @@ const Header = ()=>{
         return ()=>unsubscribe();
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "flex justify-between items-center px-8 py-4 bg-black bg-opacity-90",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "/logo.svg",
-                alt: "bingeBrain"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "flex items-center",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: "/logo.svg",
+                        alt: "bingeBrain",
+                        className: "h-12 w-auto"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "ml-4 text-white text-xl font-bold",
+                        children: "BingeBrain"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Header.js",
                 lineNumber: 49,
                 columnNumber: 7
             }, undefined),
-            "Header",
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: handleClick,
-                children: "SignOut"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "flex items-center space-x-4",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>dispatch((0, _appSlice.toggleSearch)()),
+                        className: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200",
+                        children: "GPT Search"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 54,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "text-white text-sm",
+                        children: [
+                            "Welcome, ",
+                            userName
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 60,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: handleClick,
+                        className: "bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200",
+                        children: "Sign Out"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 61,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Header.js",
-                lineNumber: 51,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined)
         ]
@@ -18097,9 +18145,17 @@ function registerInstallations() {
 },{"@firebase/app":"clWgn","@firebase/component":"d6O5O","@firebase/util":"jy04l","idb":"258QC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cVNx9":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GptReducer", ()=>GptReducer);
+parcelHelpers.export(exports, "toggleSearch", ()=>toggleSearch);
 parcelHelpers.export(exports, "MovieReducer", ()=>MovieReducer);
 parcelHelpers.export(exports, "addNowPlayingMovie", ()=>addNowPlayingMovie);
+parcelHelpers.export(exports, "addTopRatedPlayingMovie", ()=>addTopRatedPlayingMovie);
+parcelHelpers.export(exports, "addUpComingPlayingMovie", ()=>addUpComingPlayingMovie);
+parcelHelpers.export(exports, "addPopularPlayingMovie", ()=>addPopularPlayingMovie);
 parcelHelpers.export(exports, "removeNowPlayingMovie", ()=>removeNowPlayingMovie);
+parcelHelpers.export(exports, "removeTopRatedPlayingMovie", ()=>removeTopRatedPlayingMovie);
+parcelHelpers.export(exports, "removeUpComingPlayingMovie", ()=>removeUpComingPlayingMovie);
+parcelHelpers.export(exports, "removePopularPlayingMovie", ()=>removePopularPlayingMovie);
 parcelHelpers.export(exports, "addTrailer", ()=>addTrailer);
 parcelHelpers.export(exports, "setUser", ()=>setUser);
 parcelHelpers.export(exports, "removeUser", ()=>removeUser);
@@ -18121,6 +18177,9 @@ const movieSlice = (0, _toolkit.createSlice)({
     name: "Movies",
     initialState: {
         nowPlaying: [],
+        PopularPlaying: [],
+        TopRatedPlaying: [],
+        UpComingPlaying: [],
         Maintrailer: null
     },
     reducers: {
@@ -18133,15 +18192,60 @@ const movieSlice = (0, _toolkit.createSlice)({
             const filteredMovie = state.nowPlaying.filter((res)=>{
                 return res.id != action.payload;
             });
-            return filteredMovie;
+            state.nowPlaying = filteredMovie;
+        },
+        addTopRatedPlayingMovie: (state, action)=>{
+            // console.log('payload->',action.payload)
+            // return action.payload;
+            state.TopRatedPlaying = action.payload;
+        },
+        removeTopRatedPlayingMovie: (state, action)=>{
+            const filteredMovie = state.TopRatedPlaying.filter((res)=>{
+                return res.id != action.payload;
+            });
+            state.TopRatedPlaying = filteredMovie;
+        },
+        addUpComingPlayingMovie: (state, action)=>{
+            // console.log('payload->',action.payload)
+            // return action.payload;
+            state.UpComingPlaying = action.payload;
+        },
+        removeUpComingPlayingMovie: (state, action)=>{
+            const filteredMovie = state.UpComingPlaying.filter((res)=>{
+                return res.id != action.payload;
+            });
+            state.UpComingPlaying = filteredMovie;
+        },
+        addPopularPlayingMovie: (state, action)=>{
+            // console.log('payload->',action.payload)
+            // return action.payload;
+            state.PopularPlaying = action.payload;
+        },
+        removePopularPlayingMovie: (state, action)=>{
+            const filteredMovie = state.PopularPlaying.filter((res)=>{
+                return res.id != action.payload;
+            });
+            state.PopularPlaying = filteredMovie;
         },
         addTrailer: (state, action)=>{
             state.Maintrailer = action.payload;
         }
     }
 });
+const GptSearchSlice = (0, _toolkit.createSlice)({
+    name: "GptSearch",
+    initialState: false,
+    reducers: {
+        toggleSearch: (state)=>{
+            // For non-draftable primitives, return the next value explicitly
+            return !state;
+        }
+    }
+});
+const GptReducer = GptSearchSlice.reducer;
+const { toggleSearch } = GptSearchSlice.actions;
 const MovieReducer = movieSlice.reducer;
-const { addNowPlayingMovie, removeNowPlayingMovie, addTrailer } = movieSlice.actions;
+const { addNowPlayingMovie, addTopRatedPlayingMovie, addUpComingPlayingMovie, addPopularPlayingMovie, removeNowPlayingMovie, removeTopRatedPlayingMovie, removeUpComingPlayingMovie, removePopularPlayingMovie, addTrailer } = movieSlice.actions;
 const { setUser, removeUser } = UserSlice.actions;
 const UserReducer = UserSlice.reducer;
 
@@ -34313,34 +34417,67 @@ var _header = require("./Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
 var _useNowPlayingMovies = require("../hooks/useNowPlayingMovies");
 var _useNowPlayingMoviesDefault = parcelHelpers.interopDefault(_useNowPlayingMovies);
+var _useTopRatedPlayingMovies = require("../hooks/useTopRatedPlayingMovies");
+var _useTopRatedPlayingMoviesDefault = parcelHelpers.interopDefault(_useTopRatedPlayingMovies);
+var _useUpComingPlayingMovies = require("../hooks/useUpComingPlayingMovies");
+var _useUpComingPlayingMoviesDefault = parcelHelpers.interopDefault(_useUpComingPlayingMovies);
+var _usePopularPlayingMovies = require("../hooks/usePopularPlayingMovies");
+var _usePopularPlayingMoviesDefault = parcelHelpers.interopDefault(_usePopularPlayingMovies);
 var _mainContainer = require("./MainContainer");
 var _mainContainerDefault = parcelHelpers.interopDefault(_mainContainer);
+var _secondaryContainer = require("./SecondaryContainer");
+var _secondaryContainerDefault = parcelHelpers.interopDefault(_secondaryContainer);
+var _gptSearch = require("./GptSearch");
+var _gptSearchDefault = parcelHelpers.interopDefault(_gptSearch);
+var _reactRedux = require("react-redux");
 var _s = $RefreshSig$();
 function Browse() {
     _s();
+    const gptSearch = (0, _reactRedux.useSelector)((store)=>store.GptReducer);
     (0, _useNowPlayingMoviesDefault.default)();
+    (0, _usePopularPlayingMoviesDefault.default)();
+    (0, _useTopRatedPlayingMoviesDefault.default)();
+    (0, _useUpComingPlayingMoviesDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "min-h-screen bg-black",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/components/Browse.js",
-                lineNumber: 10,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainContainerDefault.default), {}, void 0, false, {
+            gptSearch ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchDefault.default), {}, void 0, false, {
                 fileName: "src/components/Browse.js",
-                lineNumber: 11,
-                columnNumber: 7
-            }, this)
+                lineNumber: 23,
+                columnNumber: 9
+            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainContainerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Browse.js",
+                        lineNumber: 26,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryContainerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Browse.js",
+                        lineNumber: 27,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true)
         ]
     }, void 0, true, {
         fileName: "src/components/Browse.js",
-        lineNumber: 9,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
-_s(Browse, "sh2c/xoxKA7ku+hHsSmLb3KYAKM=", false, function() {
+_s(Browse, "Z9zwBrP2Zn41W+3heBVcJV4sJdI=", false, function() {
     return [
-        (0, _useNowPlayingMoviesDefault.default)
+        (0, _reactRedux.useSelector),
+        (0, _useNowPlayingMoviesDefault.default),
+        (0, _usePopularPlayingMoviesDefault.default),
+        (0, _useTopRatedPlayingMoviesDefault.default),
+        (0, _useUpComingPlayingMoviesDefault.default)
     ];
 });
 _c = Browse;
@@ -34353,7 +34490,7 @@ $RefreshReg$(_c, "Browse");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../hooks/useNowPlayingMovies":"jyVj4","./MainContainer":"6iHZJ"}],"jyVj4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../hooks/useNowPlayingMovies":"jyVj4","./MainContainer":"6iHZJ","./SecondaryContainer":"1hvux","../hooks/usePopularPlayingMovies":"4BGzI","../hooks/useTopRatedPlayingMovies":"c14f4","../hooks/useUpComingPlayingMovies":"i8OXe","./GptSearch":"4gRzF","react-redux":"hbNxT"}],"jyVj4":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$ce17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$ce17.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -34405,6 +34542,7 @@ exports.default = useNowPlayingMovies;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GET_TMDB_API_OPTIONS", ()=>GET_TMDB_API_OPTIONS);
+parcelHelpers.export(exports, "CDN_URL", ()=>CDN_URL);
 const GET_TMDB_API_OPTIONS = {
     method: "GET",
     headers: {
@@ -34412,6 +34550,7 @@ const GET_TMDB_API_OPTIONS = {
         Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MmMxN2FkNzU3YmM5MzcxN2Y3ZDljZWYzZWYzZmZhYiIsIm5iZiI6MTc1OTg5ODY4NC42MDQsInN1YiI6IjY4ZTVlYzNjMjA4OGFjOGJkOGEwNGYyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tqPnyotEXFJhF8u57nGvvZHUMP5lnVIjCBjzQD_duxg"
     }
 };
+const CDN_URL = 'https://image.tmdb.org/t/p/w200/';
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"6iHZJ":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$2b92 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
@@ -34756,7 +34895,507 @@ $RefreshReg$(_c, "VideoTitle");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hrvwu":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"1hvux":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$db95 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$db95.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$db95.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _moviesList = require("./MoviesList");
+var _moviesListDefault = parcelHelpers.interopDefault(_moviesList);
+var _reactRedux = require("react-redux");
+var _s = $RefreshSig$();
+function SecondaryContainer() {
+    _s();
+    const nowPlayingMovieList = (0, _reactRedux.useSelector)((store)=>store.MovieReducer.nowPlaying);
+    const PopularPlayingMovieList = (0, _reactRedux.useSelector)((store)=>store.MovieReducer.PopularPlaying);
+    const TopRatedPlayingMovieList = (0, _reactRedux.useSelector)((store)=>store.MovieReducer.TopRatedPlaying);
+    const UpComingPlayingMovieList = (0, _reactRedux.useSelector)((store)=>store.MovieReducer.UpComingPlaying);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "space-y-8 md:space-y-10 px-4 md:px-8 py-6",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-white text-lg md:text-2xl font-bold mb-3 md:mb-4",
+                        children: "Now Playing"
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 23,
+                        columnNumber: 9
+                    }, this),
+                    nowPlayingMovieList && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesListDefault.default), {
+                        moviesList: nowPlayingMovieList
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 25,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SecondaryContainer.js",
+                lineNumber: 22,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-white text-lg md:text-2xl font-bold mb-3 md:mb-4",
+                        children: "Top Picks For You"
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, this),
+                    PopularPlayingMovieList && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesListDefault.default), {
+                        moviesList: PopularPlayingMovieList
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 32,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SecondaryContainer.js",
+                lineNumber: 29,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-white text-lg md:text-2xl font-bold mb-3 md:mb-4",
+                        children: "Top Rated"
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    TopRatedPlayingMovieList && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesListDefault.default), {
+                        moviesList: TopRatedPlayingMovieList
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 39,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SecondaryContainer.js",
+                lineNumber: 36,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-white text-lg md:text-2xl font-bold mb-3 md:mb-4",
+                        children: "Up Coming"
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 44,
+                        columnNumber: 9
+                    }, this),
+                    UpComingPlayingMovieList && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesListDefault.default), {
+                        moviesList: UpComingPlayingMovieList
+                    }, void 0, false, {
+                        fileName: "src/components/SecondaryContainer.js",
+                        lineNumber: 46,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/SecondaryContainer.js",
+                lineNumber: 43,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/SecondaryContainer.js",
+        lineNumber: 21,
+        columnNumber: 5
+    }, this);
+}
+_s(SecondaryContainer, "oSBVYAohJJAhhBJf2PoErIUgNBk=", false, function() {
+    return [
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector)
+    ];
+});
+_c = SecondaryContainer;
+exports.default = SecondaryContainer;
+var _c;
+$RefreshReg$(_c, "SecondaryContainer");
+
+  $parcel$ReactRefreshHelpers$db95.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./MoviesList":"6px8k","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"6px8k":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$0827 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$0827.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0827.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieCard = require("./MovieCard");
+var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+function MoviesList({ moviesList }) {
+    console.log("now->", moviesList);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "relative",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "flex gap-3 md:gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700/70 scrollbar-track-transparent px-4 md:px-6 snap-x snap-mandatory",
+            children: moviesList?.map((res)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
+                    posterPath: res.poster_path
+                }, res.id, false, {
+                    fileName: "src/components/MoviesList.js",
+                    lineNumber: 10,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
+            fileName: "src/components/MoviesList.js",
+            lineNumber: 8,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/MoviesList.js",
+        lineNumber: 7,
+        columnNumber: 5
+    }, this);
+}
+_c = MoviesList;
+exports.default = MoviesList;
+var _c;
+$RefreshReg$(_c, "MoviesList");
+
+  $parcel$ReactRefreshHelpers$0827.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./MovieCard":"bKtWx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"bKtWx":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$e831 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$e831.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e831.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _constants = require("../utils/constants");
+function MovieCard({ posterPath }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "flex-shrink-0 snap-start w-28 md:w-36 lg:w-44",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            className: "w-full h-auto rounded-md shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform duration-200 ease-out",
+            src: (0, _constants.CDN_URL) + posterPath,
+            alt: "poster",
+            loading: "lazy"
+        }, void 0, false, {
+            fileName: "src/components/MovieCard.js",
+            lineNumber: 7,
+            columnNumber: 9
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/MovieCard.js",
+        lineNumber: 6,
+        columnNumber: 5
+    }, this);
+}
+_c = MovieCard;
+exports.default = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$e831.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4BGzI":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$d4e9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$d4e9.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d4e9.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchPopularPlaying = async ()=>{
+    const PopularPlaying = await fetch("https://api.themoviedb.org/3/movie/popular?page=1", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!PopularPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await PopularPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const usePopularPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchPopularPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addPopularPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(usePopularPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = usePopularPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$d4e9.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"c14f4":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$4995 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$4995.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4995.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchTopRatedPlaying = async ()=>{
+    const TopRatedPlaying = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!TopRatedPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await TopRatedPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const useTopRatedPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchTopRatedPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addTopRatedPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(useTopRatedPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = useTopRatedPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$4995.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"i8OXe":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$fd90 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$fd90.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fd90.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchUpComingPlaying = async ()=>{
+    const UpComingPlaying = await fetch("https://api.themoviedb.org/3/movie/upcoming?page=2", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!UpComingPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await UpComingPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const useUpComingPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchUpComingPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addUpComingPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(useUpComingPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = useUpComingPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$fd90.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4gRzF":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$1d40 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$1d40.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1d40.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _gptSearchBar = require("./GptSearchBar");
+var _gptSearchBarDefault = parcelHelpers.interopDefault(_gptSearchBar);
+function GptSearch() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center pt-[5vh]",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "w-full max-w-4xl px-4",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchBarDefault.default), {}, void 0, false, {
+                fileName: "src/components/GptSearch.js",
+                lineNumber: 8,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "src/components/GptSearch.js",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/GptSearch.js",
+        lineNumber: 6,
+        columnNumber: 5
+    }, this);
+}
+_c = GptSearch;
+exports.default = GptSearch;
+var _c;
+$RefreshReg$(_c, "GptSearch");
+
+  $parcel$ReactRefreshHelpers$1d40.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./GptSearchBar":"lQEta","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lQEta":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$c590 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$c590.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c590.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function GptSearchBar() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "flex flex-col items-center space-y-6",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "text-4xl font-bold text-white text-center mb-8",
+                children: "What would you like to watch today?"
+            }, void 0, false, {
+                fileName: "src/components/GptSearchBar.js",
+                lineNumber: 6,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                className: "w-full max-w-2xl",
+                onSubmit: (e)=>e.preventDefault(),
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex flex-col sm:flex-row gap-4",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            id: "GptBar",
+                            type: "text",
+                            placeholder: "Search for movies, shows, or ask for recommendations...",
+                            className: "flex-1 px-6 py-4 text-lg bg-white bg-opacity-10 border border-gray-300 border-opacity-30 rounded-lg text-black placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
+                        }, void 0, false, {
+                            fileName: "src/components/GptSearchBar.js",
+                            lineNumber: 11,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900",
+                            children: "Search"
+                        }, void 0, false, {
+                            fileName: "src/components/GptSearchBar.js",
+                            lineNumber: 17,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/GptSearchBar.js",
+                    lineNumber: 10,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/GptSearchBar.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/GptSearchBar.js",
+        lineNumber: 5,
+        columnNumber: 5
+    }, this);
+}
+_c = GptSearchBar;
+exports.default = GptSearchBar;
+var _c;
+$RefreshReg$(_c, "GptSearchBar");
+
+  $parcel$ReactRefreshHelpers$c590.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hrvwu":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -50405,7 +51044,8 @@ var _appSlice = require("./appSlice");
 const AppStore = (0, _toolkit.configureStore)({
     reducer: {
         UserReducer: (0, _appSlice.UserReducer),
-        MovieReducer: (0, _appSlice.MovieReducer)
+        MovieReducer: (0, _appSlice.MovieReducer),
+        GptReducer: (0, _appSlice.GptReducer)
     }
 });
 exports.default = AppStore;

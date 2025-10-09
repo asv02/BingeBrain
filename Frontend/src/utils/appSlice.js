@@ -15,30 +15,92 @@ const UserSlice = createSlice({
 
 const movieSlice = createSlice({
   name: "Movies",
-  initialState:{
-    nowPlaying:[],
-    Maintrailer:null
+  initialState: {
+    nowPlaying: [],
+    PopularPlaying: [],
+    TopRatedPlaying:[],
+    UpComingPlaying:[],
+    Maintrailer: null,
   },
   reducers: {
     addNowPlayingMovie: (state, action) => {
-        // console.log('payload->',action.payload)
-        // return action.payload;
-        state.nowPlaying = action.payload
+      // console.log('payload->',action.payload)
+      // return action.payload;
+      state.nowPlaying = action.payload;
     },
     removeNowPlayingMovie: (state, action) => {
       const filteredMovie = state.nowPlaying.filter((res) => {
         return res.id != action.payload;
       });
-      return filteredMovie;
+      state.nowPlaying = filteredMovie;
     },
-    addTrailer:(state,action)=>
-      {
-          state.Maintrailer = action.payload;
-      }
+    addTopRatedPlayingMovie: (state, action) => {
+      // console.log('payload->',action.payload)
+      // return action.payload;
+      state.TopRatedPlaying = action.payload;
+    },
+    removeTopRatedPlayingMovie: (state, action) => {
+      const filteredMovie = state.TopRatedPlaying.filter((res) => {
+        return res.id != action.payload;
+      });
+      state.TopRatedPlaying = filteredMovie;
+    },
+    addUpComingPlayingMovie: (state, action) => {
+      // console.log('payload->',action.payload)
+      // return action.payload;
+      state.UpComingPlaying = action.payload;
+    },
+    removeUpComingPlayingMovie: (state, action) => {
+      const filteredMovie = state.UpComingPlaying.filter((res) => {
+        return res.id != action.payload;
+      });
+      state.UpComingPlaying = filteredMovie;
+    },
+    addPopularPlayingMovie: (state, action) => {
+      // console.log('payload->',action.payload)
+      // return action.payload;
+      state.PopularPlaying = action.payload;
+    },
+    removePopularPlayingMovie: (state, action) => {
+      const filteredMovie = state.PopularPlaying.filter((res) => {
+        return res.id != action.payload;
+      });
+      state.PopularPlaying = filteredMovie;
+    },
+    addTrailer: (state, action) => {
+      state.Maintrailer = action.payload;
+    },
   },
 });
 
+
+const GptSearchSlice = createSlice({
+  name:"GptSearch",
+  initialState:false,
+  reducers:
+  {
+    toggleSearch:(state)=> {
+      // For non-draftable primitives, return the next value explicitly
+      return !state;
+    }
+  }
+})
+
+export const GptReducer = GptSearchSlice.reducer
+export const {toggleSearch} = GptSearchSlice.actions
+
+
 export const MovieReducer = movieSlice.reducer;
-export const { addNowPlayingMovie, removeNowPlayingMovie,addTrailer } = movieSlice.actions;
+export const {
+  addNowPlayingMovie,
+  addTopRatedPlayingMovie,
+  addUpComingPlayingMovie,
+  addPopularPlayingMovie,
+  removeNowPlayingMovie,
+  removeTopRatedPlayingMovie,
+  removeUpComingPlayingMovie,
+  removePopularPlayingMovie,
+  addTrailer,
+} = movieSlice.actions;
 export const { setUser, removeUser } = UserSlice.actions;
 export const UserReducer = UserSlice.reducer;
