@@ -18185,7 +18185,7 @@ const movieSlice = (0, _toolkit.createSlice)({
     },
     reducers: {
         addNowPlayingMovie: (state, action)=>{
-            // console.log('payload->',action.payload)
+            // //////console.log('payload->',action.payload)
             // return action.payload;
             state.nowPlaying = action.payload;
         },
@@ -18196,7 +18196,7 @@ const movieSlice = (0, _toolkit.createSlice)({
             state.nowPlaying = filteredMovie;
         },
         addTopRatedPlayingMovie: (state, action)=>{
-            // console.log('payload->',action.payload)
+            // //////console.log('payload->',action.payload)
             // return action.payload;
             state.TopRatedPlaying = action.payload;
         },
@@ -18207,7 +18207,7 @@ const movieSlice = (0, _toolkit.createSlice)({
             state.TopRatedPlaying = filteredMovie;
         },
         addUpComingPlayingMovie: (state, action)=>{
-            // console.log('payload->',action.payload)
+            // //////console.log('payload->',action.payload)
             // return action.payload;
             state.UpComingPlaying = action.payload;
         },
@@ -18218,7 +18218,7 @@ const movieSlice = (0, _toolkit.createSlice)({
             state.UpComingPlaying = filteredMovie;
         },
         addPopularPlayingMovie: (state, action)=>{
-            // console.log('payload->',action.payload)
+            // //////console.log('payload->',action.payload)
             // return action.payload;
             state.PopularPlaying = action.payload;
         },
@@ -18245,7 +18245,7 @@ const GptSearchSlice = (0, _toolkit.createSlice)({
                 ...state,
                 toggle: !state.toggle
             };
-            console.log("gpt state->", state.toggle);
+            //////console.log("gpt state->", state.toggle);
             return state;
         },
         addRecommendedMovie: (state, action)=>{
@@ -34449,7 +34449,6 @@ var _s = $RefreshSig$();
 function Browse() {
     _s();
     const gptSearch = (0, _reactRedux.useSelector)((store)=>store.GptReducer.toggle);
-    console.log('gptSearch->', gptSearch);
     (0, _useNowPlayingMoviesDefault.default)();
     (0, _usePopularPlayingMoviesDefault.default)();
     (0, _useTopRatedPlayingMoviesDefault.default)();
@@ -34459,23 +34458,23 @@ function Browse() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/components/Browse.js",
-                lineNumber: 22,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
             gptSearch ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchDefault.default), {}, void 0, false, {
                 fileName: "src/components/Browse.js",
-                lineNumber: 24,
+                lineNumber: 23,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainContainerDefault.default), {}, void 0, false, {
                         fileName: "src/components/Browse.js",
-                        lineNumber: 27,
+                        lineNumber: 26,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryContainerDefault.default), {}, void 0, false, {
                         fileName: "src/components/Browse.js",
-                        lineNumber: 28,
+                        lineNumber: 27,
                         columnNumber: 11
                     }, this)
                 ]
@@ -34483,7 +34482,7 @@ function Browse() {
         ]
     }, void 0, true, {
         fileName: "src/components/Browse.js",
-        lineNumber: 21,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -34506,7 +34505,7 @@ $RefreshReg$(_c, "Browse");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../hooks/useNowPlayingMovies":"jyVj4","./MainContainer":"6iHZJ","./SecondaryContainer":"1hvux","../hooks/usePopularPlayingMovies":"4BGzI","../hooks/useTopRatedPlayingMovies":"c14f4","../hooks/useUpComingPlayingMovies":"i8OXe","./GptSearch":"4gRzF","react-redux":"hbNxT"}],"jyVj4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","../hooks/useNowPlayingMovies":"jyVj4","../hooks/useTopRatedPlayingMovies":"c14f4","../hooks/useUpComingPlayingMovies":"i8OXe","../hooks/usePopularPlayingMovies":"4BGzI","./MainContainer":"6iHZJ","./SecondaryContainer":"1hvux","./GptSearch":"4gRzF","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jyVj4":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$ce17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$ce17.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -34523,28 +34522,28 @@ var _appSlice = require("../utils/appSlice");
 var _s = $RefreshSig$();
 const fetchNowPlaying = async ()=>{
     const nowPlaying = await fetch("https://api.themoviedb.org/3/movie/now_playing?&page=1", (0, _constants.GET_TMDB_API_OPTIONS));
-    if (!nowPlaying.ok) {
-        console.log("Error in fetching movies");
-        return;
-    }
+    if (!nowPlaying.ok) //console.log("Error in fetching movies");
+    return;
     const data = await nowPlaying.json();
-    console.log(data);
+    //console.log(data);
     return data;
 };
 const useNowPlayingMovies = ()=>{
     _s();
     const dispatch = (0, _reactRedux.useDispatch)();
+    const NowPlay = (0, _reactRedux.useSelector)((store)=>store.MovieReducer.nowPlaying);
     (0, _react.useEffect)(()=>{
         (async ()=>{
+            if (NowPlay.length > 0) return;
             const data = await fetchNowPlaying();
-            console.log("data->", data.results);
             dispatch((0, _appSlice.addNowPlayingMovie)(data?.results));
         })();
     }, []);
 };
-_s(useNowPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+_s(useNowPlayingMovies, "/Hh/TIpz+hAr55NVcPlncxiIBHU=", false, function() {
     return [
-        (0, _reactRedux.useDispatch)
+        (0, _reactRedux.useDispatch),
+        (0, _reactRedux.useSelector)
     ];
 });
 exports.default = useNowPlayingMovies;
@@ -34568,7 +34567,151 @@ const GET_TMDB_API_OPTIONS = {
 };
 const CDN_URL = 'https://image.tmdb.org/t/p/w200/';
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"6iHZJ":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"c14f4":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$4995 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$4995.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4995.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchTopRatedPlaying = async ()=>{
+    const TopRatedPlaying = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!TopRatedPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await TopRatedPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const useTopRatedPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchTopRatedPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addTopRatedPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(useTopRatedPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = useTopRatedPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$4995.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"i8OXe":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$fd90 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$fd90.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fd90.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchUpComingPlaying = async ()=>{
+    const UpComingPlaying = await fetch("https://api.themoviedb.org/3/movie/upcoming?page=2", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!UpComingPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await UpComingPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const useUpComingPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchUpComingPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addUpComingPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(useUpComingPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = useUpComingPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$fd90.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4BGzI":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$d4e9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$d4e9.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d4e9.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../utils/constants");
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _s = $RefreshSig$();
+const fetchPopularPlaying = async ()=>{
+    const PopularPlaying = await fetch("https://api.themoviedb.org/3/movie/popular?page=1", (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!PopularPlaying.ok) {
+        console.log("Error in fetching movies");
+        return;
+    }
+    const data = await PopularPlaying.json();
+    console.log('populaarPlaying->', data);
+    return data;
+};
+const usePopularPlayingMovies = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await fetchPopularPlaying();
+            console.log("data->", data.results);
+            dispatch((0, _appSlice.addPopularPlayingMovie)(data?.results));
+        })();
+    }, []);
+};
+_s(usePopularPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch)
+    ];
+});
+exports.default = usePopularPlayingMovies;
+
+  $parcel$ReactRefreshHelpers$d4e9.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"6iHZJ":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$2b92 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$2b92.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -35070,7 +35213,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("./MovieCard");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 function MoviesList({ moviesList }) {
-    console.log("now->", moviesList);
+    ////console.log("now->", moviesList);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "relative",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35146,151 +35289,7 @@ $RefreshReg$(_c, "MovieCard");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4BGzI":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$d4e9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$d4e9.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d4e9.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _constants = require("../utils/constants");
-var _reactRedux = require("react-redux");
-var _appSlice = require("../utils/appSlice");
-var _s = $RefreshSig$();
-const fetchPopularPlaying = async ()=>{
-    const PopularPlaying = await fetch("https://api.themoviedb.org/3/movie/popular?page=1", (0, _constants.GET_TMDB_API_OPTIONS));
-    if (!PopularPlaying.ok) {
-        console.log("Error in fetching movies");
-        return;
-    }
-    const data = await PopularPlaying.json();
-    console.log('populaarPlaying->', data);
-    return data;
-};
-const usePopularPlayingMovies = ()=>{
-    _s();
-    const dispatch = (0, _reactRedux.useDispatch)();
-    (0, _react.useEffect)(()=>{
-        (async ()=>{
-            const data = await fetchPopularPlaying();
-            console.log("data->", data.results);
-            dispatch((0, _appSlice.addPopularPlayingMovie)(data?.results));
-        })();
-    }, []);
-};
-_s(usePopularPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
-    return [
-        (0, _reactRedux.useDispatch)
-    ];
-});
-exports.default = usePopularPlayingMovies;
-
-  $parcel$ReactRefreshHelpers$d4e9.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"c14f4":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$4995 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$4995.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$4995.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _constants = require("../utils/constants");
-var _reactRedux = require("react-redux");
-var _appSlice = require("../utils/appSlice");
-var _s = $RefreshSig$();
-const fetchTopRatedPlaying = async ()=>{
-    const TopRatedPlaying = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", (0, _constants.GET_TMDB_API_OPTIONS));
-    if (!TopRatedPlaying.ok) {
-        console.log("Error in fetching movies");
-        return;
-    }
-    const data = await TopRatedPlaying.json();
-    console.log('populaarPlaying->', data);
-    return data;
-};
-const useTopRatedPlayingMovies = ()=>{
-    _s();
-    const dispatch = (0, _reactRedux.useDispatch)();
-    (0, _react.useEffect)(()=>{
-        (async ()=>{
-            const data = await fetchTopRatedPlaying();
-            console.log("data->", data.results);
-            dispatch((0, _appSlice.addTopRatedPlayingMovie)(data?.results));
-        })();
-    }, []);
-};
-_s(useTopRatedPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
-    return [
-        (0, _reactRedux.useDispatch)
-    ];
-});
-exports.default = useTopRatedPlayingMovies;
-
-  $parcel$ReactRefreshHelpers$4995.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"i8OXe":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$fd90 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$fd90.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fd90.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _constants = require("../utils/constants");
-var _reactRedux = require("react-redux");
-var _appSlice = require("../utils/appSlice");
-var _s = $RefreshSig$();
-const fetchUpComingPlaying = async ()=>{
-    const UpComingPlaying = await fetch("https://api.themoviedb.org/3/movie/upcoming?page=2", (0, _constants.GET_TMDB_API_OPTIONS));
-    if (!UpComingPlaying.ok) {
-        console.log("Error in fetching movies");
-        return;
-    }
-    const data = await UpComingPlaying.json();
-    console.log('populaarPlaying->', data);
-    return data;
-};
-const useUpComingPlayingMovies = ()=>{
-    _s();
-    const dispatch = (0, _reactRedux.useDispatch)();
-    (0, _react.useEffect)(()=>{
-        (async ()=>{
-            const data = await fetchUpComingPlaying();
-            console.log("data->", data.results);
-            dispatch((0, _appSlice.addUpComingPlayingMovie)(data?.results));
-        })();
-    }, []);
-};
-_s(useUpComingPlayingMovies, "rAh3tY+Iv6hWC9AI4Dm+rCbkwNE=", false, function() {
-    return [
-        (0, _reactRedux.useDispatch)
-    ];
-});
-exports.default = useUpComingPlayingMovies;
-
-  $parcel$ReactRefreshHelpers$fd90.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4gRzF":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4gRzF":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$1d40 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$1d40.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -35306,59 +35305,62 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _gptSearchBar = require("./GptSearchBar");
 var _gptSearchBarDefault = parcelHelpers.interopDefault(_gptSearchBar);
 var _reactRedux = require("react-redux");
+var _movieCard = require("./MovieCard");
+var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 var _useGetMovieInfo = require("../hooks/useGetMovieInfo");
 var _useGetMovieInfoDefault = parcelHelpers.interopDefault(_useGetMovieInfo);
 var _s = $RefreshSig$();
 function GptSearch() {
     _s();
     const movies = (0, _reactRedux.useSelector)((store)=>store.GptReducer.recommendedMovie);
-    console.log("movies->", movies);
     const recommendedMovies = (0, _useGetMovieInfoDefault.default)(movies);
-    console.log("recommendedMovies->", recommendedMovies);
-    (0, _react.useEffect)(()=>{
-        console.log('recommendedMovies->', recommendedMovies);
-    }, [
-        recommendedMovies
-    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center pt-[5vh]",
+        className: "min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-[10vh] px-4 sm:px-6 lg:px-8",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "w-full max-w-4xl px-4",
+                className: "mx-auto w-full max-w-3xl",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchBarDefault.default), {}, void 0, false, {
                     fileName: "src/components/GptSearch.js",
-                    lineNumber: 21,
+                    lineNumber: 14,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/GptSearch.js",
-                lineNumber: 20,
+                lineNumber: 13,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: recommendedMovies.map((res)=>{
-                    const posterPath = res.poster_path;
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieCard, {
-                        posterPath: posterPath
-                    }, void 0, false, {
-                        fileName: "src/components/GptSearch.js",
-                        lineNumber: 26,
-                        columnNumber: 18
-                    }, this);
-                })
+            recommendedMovies && recommendedMovies.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mx-auto w-full max-w-6xl mt-10",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 place-items-center",
+                    children: recommendedMovies.map((res)=>{
+                        const posterPath = res?.poster_path;
+                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
+                            posterPath: posterPath
+                        }, res?.id, false, {
+                            fileName: "src/components/GptSearch.js",
+                            lineNumber: 21,
+                            columnNumber: 22
+                        }, this);
+                    })
+                }, void 0, false, {
+                    fileName: "src/components/GptSearch.js",
+                    lineNumber: 18,
+                    columnNumber: 11
+                }, this)
             }, void 0, false, {
                 fileName: "src/components/GptSearch.js",
-                lineNumber: 23,
-                columnNumber: 7
+                lineNumber: 17,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/GptSearch.js",
-        lineNumber: 19,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
-_s(GptSearch, "XX6b3UjH9dlMN3lJhT9FMPRyJ7c=", false, function() {
+_s(GptSearch, "32qWVmCMEjf7qHZHIlG4kNlrDyg=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _useGetMovieInfoDefault.default)
@@ -35374,7 +35376,7 @@ $RefreshReg$(_c, "GptSearch");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./GptSearchBar":"lQEta","react-redux":"hbNxT","../hooks/useGetMovieInfo":"ahIIC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lQEta":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./GptSearchBar":"lQEta","react-redux":"hbNxT","./MovieCard":"bKtWx","../hooks/useGetMovieInfo":"ahIIC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lQEta":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c590 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c590.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -35396,14 +35398,14 @@ function GptSearchBar() {
     const searchText = (0, _react.useRef)(null);
     const dispatch = (0, _reactRedux.useDispatch)();
     const handleClick = async ()=>{
-        console.log("SearchText->", searchText.current?.value);
-        const query = "Act as Movie recommendation system, write down only 10 movie name which are " + searchText.current.value + " in a given format like example: Movie1,Movie2,Movie3 and no other text in answer";
-        console.log(query);
+        //////console.log("SearchText->", searchText.current?.value);
+        const query = "Act as Movie recommendation system, write down only 20 movie name which are " + searchText.current.value + " in a given format like example: Movie1,Movie2,Movie3 and no other text in answer";
+        //////console.log(query);
         const response = await (0, _openaiDefault.default).models.generateContent({
             model: "gemini-2.0-flash-001",
             contents: query
         });
-        console.log(response);
+        //////console.log(response);
         dispatch((0, _appSlice.addRecommendedMovie)(response.text.split(',')));
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -51090,30 +51092,35 @@ parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _constants = require("../utils/constants");
 var _s = $RefreshSig$();
-const fetchRecommendedMovie = async ({ moviename })=>{
-    const nowPlaying = await fetch("https://api.themoviedb.org/3/search/movie?query=" + moviename, (0, _constants.GET_TMDB_API_OPTIONS));
-    if (!nowPlaying.ok) {
-        console.log("Error in fetching movies");
-        return;
-    }
+const fetchRecommendedMovie = async (query)=>{
+    const moviename = typeof query === "string" ? query : query?.moviename;
+    if (!moviename) return null;
+    const nowPlaying = await fetch("https://api.themoviedb.org/3/search/movie?query=" + encodeURIComponent(moviename), (0, _constants.GET_TMDB_API_OPTIONS));
+    if (!nowPlaying.ok) return null;
     const data = await nowPlaying.json();
     return data;
 };
 const useGetMovieInfo = (movieList)=>{
     _s();
-    let data = [];
+    const [recommendedMovies, setRecommendedMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        (()=>{
-            movieList.forEach(async (element)=>{
-                console.log('element->', element);
-                const ele = await fetchRecommendedMovie(element);
-                data.push(ele?.results[0]);
-            });
-        })();
-    }, []);
-    return data;
+        if (!Array.isArray(movieList) || movieList.length === 0) {
+            setRecommendedMovies([]);
+            return;
+        }
+        const promises = movieList.map((item)=>fetchRecommendedMovie(item));
+        Promise.all(promises).then((responses)=>{
+            const result = responses.filter(Boolean).map((res)=>res?.results?.[0]).filter(Boolean);
+            setRecommendedMovies(result);
+        }).catch(()=>{
+            setRecommendedMovies([]);
+        });
+    }, [
+        movieList
+    ]);
+    return recommendedMovies;
 };
-_s(useGetMovieInfo, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_s(useGetMovieInfo, "uFbFyrGi8/VlkJa4p1F6oHE/aWQ=");
 exports.default = useGetMovieInfo;
 
   $parcel$ReactRefreshHelpers$63ff.postlude(module);

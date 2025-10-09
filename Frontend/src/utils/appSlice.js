@@ -24,7 +24,7 @@ const movieSlice = createSlice({
   },
   reducers: {
     addNowPlayingMovie: (state, action) => {
-      // console.log('payload->',action.payload)
+      // //////console.log('payload->',action.payload)
       // return action.payload;
       state.nowPlaying = action.payload;
     },
@@ -35,7 +35,7 @@ const movieSlice = createSlice({
       state.nowPlaying = filteredMovie;
     },
     addTopRatedPlayingMovie: (state, action) => {
-      // console.log('payload->',action.payload)
+      // //////console.log('payload->',action.payload)
       // return action.payload;
       state.TopRatedPlaying = action.payload;
     },
@@ -46,7 +46,7 @@ const movieSlice = createSlice({
       state.TopRatedPlaying = filteredMovie;
     },
     addUpComingPlayingMovie: (state, action) => {
-      // console.log('payload->',action.payload)
+      // //////console.log('payload->',action.payload)
       // return action.payload;
       state.UpComingPlaying = action.payload;
     },
@@ -57,7 +57,7 @@ const movieSlice = createSlice({
       state.UpComingPlaying = filteredMovie;
     },
     addPopularPlayingMovie: (state, action) => {
-      // console.log('payload->',action.payload)
+      // //////console.log('payload->',action.payload)
       // return action.payload;
       state.PopularPlaying = action.payload;
     },
@@ -82,7 +82,7 @@ const GptSearchSlice = createSlice({
   reducers: {
     toggleSearch: (state) => {
       state = { ...state, toggle: !state.toggle };
-      console.log("gpt state->", state.toggle);
+      //////console.log("gpt state->", state.toggle);
       return state;
     },
     addRecommendedMovie: (state, action) => {

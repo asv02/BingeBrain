@@ -9,21 +9,23 @@ const fetchNowPlaying = async () => {
     GET_TMDB_API_OPTIONS
   );
   if (!nowPlaying.ok) {
-    console.log("Error in fetching movies");
+    //console.log("Error in fetching movies");
     return;
   }
   const data = await nowPlaying.json();
-  console.log(data);
+  //console.log(data);
   return data;
 };
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+  const NowPlay = useSelector((store)=>store.MovieReducer.nowPlaying)
 
+  
   useEffect(() => {
     (async () => {
+      if(NowPlay.length>0){return;}
       const data = await fetchNowPlaying();
-      console.log("data->", data.results);
       dispatch(addNowPlayingMovie(data?.results));
     })();
   }, []);

@@ -3,7 +3,7 @@ export const GET_TMDB_API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MmMxN2FkNzU3YmM5MzcxN2Y3ZDljZWYzZWYzZmZhYiIsIm5iZiI6MTc1OTg5ODY4NC42MDQsInN1YiI6IjY4ZTVlYzNjMjA4OGFjOGJkOGEwNGYyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tqPnyotEXFJhF8u57nGvvZHUMP5lnVIjCBjzQD_duxg",
+      "Bearer "+process.env.REACT_APP_TMDB_KEY,
   },
 };
 

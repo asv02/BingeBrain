@@ -7,17 +7,17 @@ function GptSearchBar() {
   const searchText = useRef(null);
   const dispatch = useDispatch();
   const handleClick = async () => {
-    console.log("SearchText->", searchText.current?.value);
+    //////console.log("SearchText->", searchText.current?.value);
     const query =
-      "Act as Movie recommendation system, write down only 10 movie name which are " +
+      "Act as Movie recommendation system, write down only 20 movie name which are " +
       searchText.current.value +
       " in a given format like example: Movie1,Movie2,Movie3 and no other text in answer";
-    console.log(query);
+    //////console.log(query);
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash-001",
       contents: query,
     });
-    console.log(response);
+    //////console.log(response);
     dispatch(addRecommendedMovie(response.text.split(',')))
   };
 

@@ -93,7 +93,8 @@
     --container-md: 28rem;
     --container-xl: 36rem;
     --container-2xl: 42rem;
-    --container-4xl: 56rem;
+    --container-3xl: 48rem;
+    --container-6xl: 72rem;
     --text-xs: .75rem;
     --text-xs--line-height: calc(1 / .75);
     --text-sm: .875rem;
@@ -3037,6 +3038,10 @@
     }
   }
 
+  .mx-auto {
+    margin-inline: auto;
+  }
+
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
   }
@@ -3094,6 +3099,10 @@
 
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
+  }
+
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
   }
 
   .mb-3 {
@@ -3381,8 +3390,12 @@
     max-width: var(--container-2xl);
   }
 
-  .max-w-4xl {
-    max-width: var(--container-4xl);
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+
+  .max-w-6xl {
+    max-width: var(--container-6xl);
   }
 
   .max-w-md {
@@ -3472,12 +3485,20 @@
     scroll-snap-align: start;
   }
 
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .flex-col {
     flex-direction: column;
   }
 
   .flex-wrap {
     flex-wrap: wrap;
+  }
+
+  .place-items-center {
+    place-items: center;
   }
 
   .items-center {
@@ -3770,8 +3791,8 @@
     padding-block: calc(var(--spacing) * 12);
   }
 
-  .pt-\[5vh\] {
-    padding-top: 5vh;
+  .pt-\[10vh\] {
+    padding-top: 10vh;
   }
 
   .pr-6 {
@@ -4098,9 +4119,27 @@
     }
   }
 
+  .sm\:grid-cols-3 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   .sm\:flex-row {
     @media (width >= 40rem) {
       flex-direction: row;
+    }
+  }
+
+  .sm\:gap-6 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 6);
+    }
+  }
+
+  .sm\:px-6 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 6);
     }
   }
 
@@ -4131,6 +4170,12 @@
   .md\:max-w-2xl {
     @media (width >= 48rem) {
       max-width: var(--container-2xl);
+    }
+  }
+
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
@@ -4186,6 +4231,18 @@
   .lg\:w-44 {
     @media (width >= 64rem) {
       width: calc(var(--spacing) * 44);
+    }
+  }
+
+  .lg\:grid-cols-5 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  .lg\:px-8 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 8);
     }
   }
 }
