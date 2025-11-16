@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { LoginValidation } from "../utils/validate";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from '../utils/firebase'
-import {useNavigate} from 'react-router';
+import auth from "../utils/firebase";
+import { useNavigate } from "react-router";
 
 const Login = ({ view, setView }) => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Login = ({ view, setView }) => {
     password: "",
   });
   const [error, setError] = useState({});
-  
+
   const handleLogin = (e) => {
     e.preventDefault();
     const validate = LoginValidation(loginInfo);
@@ -23,8 +23,8 @@ const Login = ({ view, setView }) => {
       signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log('user->',user);
-          console.log('currentUser->',auth.currentUser)
+          console.log("user->", user);
+          console.log("currentUser->", auth.currentUser);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -35,20 +35,14 @@ const Login = ({ view, setView }) => {
 
   useEffect(() => {
     console.log("Error->", error);
-    // if(auth.currentUser)
-    //   {
-    //     navigate('/Browse')
-    //   }
   }, [error]);
 
   return (
     view && (
       <div className="min-h-screen relative">
-        <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" />
+        <div className="absolute inset-0" />
 
         <div className="relative z-10 flex flex-col min-h-screen">
-          <Header />
-
           <main className="flex-1 flex items-center justify-center px-6 py-12">
             <section className="w-full max-w-md">
               <div className="bg-black/60 rounded-lg p-8 shadow-xl">

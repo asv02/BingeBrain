@@ -4,15 +4,17 @@ import VideoTitle from "./VideoTitle";
 
 function VideoContainer({ id, original_title, overview }) {
   const key = useSelector((store) => store.MovieReducer?.Maintrailer);
+  localStorage.setItem('key',key);
+  const video_key = localStorage.getItem('key');
   useGetTrailerInfo(id);
 
   return (
     <div className="relative w-full aspect-video overflow-hidden">
-      {key && (
+      {video_key && (
         <iframe
-          key={key}
+          key={video_key}
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${key}`}
+          src={`https://www.youtube.com/embed/${video_key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${key}`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"

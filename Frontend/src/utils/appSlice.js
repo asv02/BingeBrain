@@ -5,7 +5,7 @@ const UserSlice = createSlice({
   initialState: null,
   reducers: {
     setUser: (state, action) => {
-      return action.payload;
+      return (state = action.payload);
     },
     removeUser: (state, action) => {
       return null;
@@ -21,6 +21,7 @@ const movieSlice = createSlice({
     TopRatedPlaying: [],
     UpComingPlaying: [],
     Maintrailer: null,
+    MovieInfo: {},
   },
   reducers: {
     addNowPlayingMovie: (state, action) => {
@@ -70,6 +71,14 @@ const movieSlice = createSlice({
     addTrailer: (state, action) => {
       state.Maintrailer = action.payload;
     },
+    addMovieInfo: (state, action) => {
+      state.MovieInfo = { ...action.payload };
+      return state;
+    },
+    removeMovieInfo: () => {
+      state.MovieInfo = {};
+      return state;
+    },
   },
 });
 
@@ -82,18 +91,17 @@ const GptSearchSlice = createSlice({
   reducers: {
     toggleSearch: (state) => {
       state = { ...state, toggle: !state.toggle };
-      //////console.log("gpt state->", state.toggle);
       return state;
     },
     addRecommendedMovie: (state, action) => {
-      state = {...state,recommendedMovie:action.payload};
+      state = { ...state, recommendedMovie: action.payload };
       return state;
     },
   },
 });
 
 export const GptReducer = GptSearchSlice.reducer;
-export const { toggleSearch,addRecommendedMovie } = GptSearchSlice.actions;
+export const { toggleSearch, addRecommendedMovie } = GptSearchSlice.actions;
 
 export const MovieReducer = movieSlice.reducer;
 export const {
@@ -106,6 +114,8 @@ export const {
   removeUpComingPlayingMovie,
   removePopularPlayingMovie,
   addTrailer,
+  addMovieInfo,
+  removeMovieInfo,
 } = movieSlice.actions;
 export const { setUser, removeUser } = UserSlice.actions;
 export const UserReducer = UserSlice.reducer;

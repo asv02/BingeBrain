@@ -8,6 +8,7 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import GptSearch from "./GptSearch";
 import { useSelector } from "react-redux";
+import Background from "url:../assests/bg.jpg";
 
 function Browse() {
   const gptSearch = useSelector((store) => store.GptReducer.toggle);
@@ -17,16 +18,24 @@ function Browse() {
   useUpComingPlayingMovies();
 
   return (
-    <div className="min-h-screen bg-black">
-      <Header />
-      {gptSearch ? (
-        <GptSearch />
-      ) : (
-        <>
-          <MainContainer />
-          <SecondaryContainer />
-        </>
-      )}
+    <div className="relative min-h-screen bg-black border-amber-50">
+      <img
+        src={Background}
+        alt="Background image"
+        className="absolute inset-0 h-full w-full object-cover -z-10"
+      />
+
+      <div className="relative z-10">
+        <Header />
+        {gptSearch ? (
+          <GptSearch />
+        ) : (
+          <>
+            <MainContainer />
+            <SecondaryContainer />
+          </>
+        )}
+      </div>
     </div>
   );
 }

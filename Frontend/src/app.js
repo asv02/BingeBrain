@@ -8,6 +8,7 @@ import { RouterProvider } from "react-router";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import AppStore from "./utils/appStore";
+import MovieInfo from "./components/MovieInfo";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -19,6 +20,10 @@ const App = () => {
       path: "/Browse",
       element: <Browse />,
     },
+    {
+      path:"/movieInfo",
+      element:<MovieInfo/>
+    }
   ]);
   return (
     <Provider store={AppStore}>

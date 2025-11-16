@@ -8,8 +8,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../utils/appSlice";
 
 const SignUp = ({ view, setView }) => {
-  const navigate = useNavigate();
-  const dispatch  = useDispatch();
+  const dispatch = useDispatch();
   const [SignUpInfo, setSignUpInfo] = useState({
     name: "",
     email: "",
@@ -68,11 +67,9 @@ const SignUp = ({ view, setView }) => {
   return (
     !view && (
       <div className="min-h-screen relative">
-        <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" />
+        <div className="absolute inset-0" />
 
         <div className="relative z-10 flex flex-col min-h-screen">
-          <Header />
-
           <main className="flex-1 flex items-center justify-center px-6 py-12">
             <section className="w-full max-w-md">
               <div className="bg-black/60 rounded-lg p-8 shadow-xl">

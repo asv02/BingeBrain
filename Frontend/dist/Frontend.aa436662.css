@@ -76,7 +76,7 @@
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-600: oklch(57.7% .245 27.325);
-    --color-red-700: oklch(50.5% .213 27.518);
+    --color-amber-50: oklch(98.7% .022 95.277);
     --color-blue-500: oklch(62.3% .214 259.815);
     --color-blue-600: oklch(54.6% .245 262.881);
     --color-blue-700: oklch(48.8% .243 264.376);
@@ -103,8 +103,6 @@
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --text-4xl: 2.25rem;
@@ -2739,6 +2737,10 @@
     inset-inline: calc(var(--spacing) * 0);
   }
 
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
@@ -2912,6 +2914,10 @@
         }
       }
     }
+  }
+
+  .-z-10 {
+    z-index: calc(10 * -1);
   }
 
   .z-10 {
@@ -3115,10 +3121,6 @@
 
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
-  }
-
-  .ml-4 {
-    margin-left: calc(var(--spacing) * 4);
   }
 
   .status {
@@ -3338,7 +3340,7 @@
     aspect-ratio: var(--aspect-video);
   }
 
-  .h-1\/2 {
+  .h-1\/2, .h-2\/4 {
     height: 50%;
   }
 
@@ -3348,10 +3350,6 @@
 
   .h-5 {
     height: calc(var(--spacing) * 5);
-  }
-
-  .h-12 {
-    height: calc(var(--spacing) * 12);
   }
 
   .h-auto {
@@ -3366,6 +3364,10 @@
     min-height: 100vh;
   }
 
+  .w-2\/4 {
+    width: 50%;
+  }
+
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
@@ -3376,10 +3378,6 @@
 
   .w-28 {
     width: calc(var(--spacing) * 28);
-  }
-
-  .w-auto {
-    width: auto;
   }
 
   .w-full {
@@ -3588,6 +3586,10 @@
     border-width: 1px;
   }
 
+  .border-amber-50 {
+    border-color: var(--color-amber-50);
+  }
+
   .border-gray-300 {
     border-color: var(--color-gray-300);
   }
@@ -3654,10 +3656,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-gray-700) 70%, transparent);
     }
-  }
-
-  .bg-red-600 {
-    background-color: var(--color-red-600);
   }
 
   .bg-white {
@@ -3821,11 +3819,6 @@
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
   }
 
   .text-xs {
@@ -4047,14 +4040,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-700);
-      }
-    }
-  }
-
-  .hover\:bg-red-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-red-700);
       }
     }
   }

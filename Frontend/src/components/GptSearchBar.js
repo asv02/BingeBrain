@@ -33,7 +33,7 @@ function GptSearchBar() {
             type="text"
             ref={searchText}
             placeholder="Search for movies, shows, or ask for recommendations..."
-            className="flex-1 px-6 py-4 text-lg bg-white bg-opacity-10 border border-gray-300 border-opacity-30 rounded-lg text-black placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
+            className="flex-1 px-6 py-4 text-lg bg-white border border-gray-300 border-opacity-30 rounded-lg text-black placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
           />
           <button
             onClick={handleClick}

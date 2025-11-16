@@ -177,7 +177,7 @@
 
   // Only insert newRequire.load when it is actually used.
   // The code in this file is linted against ES5, so dynamic import is not allowed.
-  // INSERT_LOAD_HERE
+  function $parcel$resolve(url) {  url = importMap[url] || url;  return import.meta.resolve(distDir + url);}newRequire.resolve = $parcel$resolve;
 
   Object.defineProperty(newRequire, 'root', {
     get: function () {
@@ -736,13 +736,15 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
 var _reactRedux = require("react-redux");
 var _appStore = require("./utils/appStore");
 var _appStoreDefault = parcelHelpers.interopDefault(_appStore);
+var _movieInfo = require("./components/MovieInfo");
+var _movieInfoDefault = parcelHelpers.interopDefault(_movieInfo);
 const App = ()=>{
     const appRouter = (0, _reactRouter.createBrowserRouter)([
         {
             path: "/",
             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homeDefault.default), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 16
             }, undefined)
         },
@@ -750,8 +752,16 @@ const App = ()=>{
             path: "/Browse",
             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _browseDefault.default), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 20,
+                lineNumber: 21,
                 columnNumber: 16
+            }, undefined)
+        },
+        {
+            path: "/movieInfo",
+            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieInfoDefault.default), {}, void 0, false, {
+                fileName: "src/app.js",
+                lineNumber: 25,
+                columnNumber: 15
             }, undefined)
         }
     ]);
@@ -761,12 +771,12 @@ const App = ()=>{
             router: appRouter
         }, void 0, false, {
             fileName: "src/app.js",
-            lineNumber: 25,
+            lineNumber: 30,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/app.js",
-        lineNumber: 24,
+        lineNumber: 29,
         columnNumber: 5
     }, undefined);
 };
@@ -774,7 +784,7 @@ _c = App;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 31,
+    lineNumber: 36,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -785,7 +795,7 @@ $RefreshReg$(_c, "App");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../src/index.css":"irmnC","./components/Home":"fDelZ","./components/Browse":"jL14U","react-router":"2jawN","react-dom/client":"hrvwu","react-redux":"hbNxT","./utils/appStore":"dpIkN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../src/index.css":"irmnC","./components/Home":"fDelZ","./components/Browse":"jL14U","react-router":"2jawN","react-dom/client":"hrvwu","react-redux":"hbNxT","./utils/appStore":"dpIkN","./components/MovieInfo":"iAZrS","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -1819,36 +1829,57 @@ var _browse = require("./Browse");
 var _browseDefault = parcelHelpers.interopDefault(_browse);
 var _header = require("./Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
+var _bgJpg = require("url:../assests/bg.jpg");
+var _bgJpgDefault = parcelHelpers.interopDefault(_bgJpg);
 var _s = $RefreshSig$();
 const Home = ()=>{
     _s();
     const [view, setView] = (0, _react.useState)(true);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "relative min-h-screen",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: (0, _bgJpgDefault.default),
+                alt: "Background image",
+                className: "absolute inset-0 h-full w-full object-cover -z-10"
+            }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 14,
+                lineNumber: 13,
                 columnNumber: 7
             }, undefined),
-            view ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {
-                view: view,
-                setView: setView
-            }, void 0, false, {
-                fileName: "src/components/Home.js",
-                lineNumber: 16,
-                columnNumber: 9
-            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpDefault.default), {
-                view: view,
-                setView: setView
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "relative z-10",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Home.js",
+                        lineNumber: 19,
+                        columnNumber: 9
+                    }, undefined),
+                    view ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {
+                        view: view,
+                        setView: setView
+                    }, void 0, false, {
+                        fileName: "src/components/Home.js",
+                        lineNumber: 21,
+                        columnNumber: 11
+                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpDefault.default), {
+                        view: view,
+                        setView: setView
+                    }, void 0, false, {
+                        fileName: "src/components/Home.js",
+                        lineNumber: 23,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Home.js",
                 lineNumber: 18,
-                columnNumber: 9
+                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
-        lineNumber: 13,
+        lineNumber: 12,
         columnNumber: 5
     }, undefined);
 };
@@ -1863,7 +1894,7 @@ $RefreshReg$(_c, "Home");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Login":"l15IZ","./SignUp":"5HiLx","./Browse":"jL14U","./Header":"3PJ6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"l15IZ":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Login":"l15IZ","./SignUp":"5HiLx","./Browse":"jL14U","./Header":"3PJ6N","url:../assests/bg.jpg":"aReLX","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"l15IZ":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$0aeb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$0aeb.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -1899,8 +1930,8 @@ const Login = ({ view, setView })=>{
         if (Object.keys(validate).length !== 0) console.log("Invalid data");
         else (0, _auth.signInWithEmailAndPassword)((0, _firebaseDefault.default), loginInfo.email, loginInfo.password).then((userCredential)=>{
             const user = userCredential.user;
-            console.log('user->', user);
-            console.log('currentUser->', (0, _firebaseDefault.default).currentUser);
+            console.log("user->", user);
+            console.log("currentUser->", (0, _firebaseDefault.default).currentUser);
         }).catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -1908,10 +1939,6 @@ const Login = ({ view, setView })=>{
     };
     (0, _react.useEffect)(()=>{
         console.log("Error->", error);
-    // if(auth.currentUser)
-    //   {
-    //     navigate('/Browse')
-    //   }
     }, [
         error
     ]);
@@ -1919,249 +1946,242 @@ const Login = ({ view, setView })=>{
         className: "min-h-screen relative",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "absolute inset-0 bg-black/65 backdrop-blur-sm"
+                className: "absolute inset-0"
             }, void 0, false, {
                 fileName: "src/components/Login.js",
-                lineNumber: 47,
+                lineNumber: 43,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "relative z-10 flex flex-col min-h-screen",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
-                        fileName: "src/components/Login.js",
-                        lineNumber: 50,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                        className: "flex-1 flex items-center justify-center px-6 py-12",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            className: "w-full max-w-md",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "bg-black/60 rounded-lg p-8 shadow-xl",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                        className: "text-4xl font-extrabold text-white mb-6",
-                                        children: "Sign In"
-                                    }, void 0, false, {
-                                        fileName: "src/components/Login.js",
-                                        lineNumber: 55,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                                        className: "space-y-4",
-                                        onSubmit: handleLogin,
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                className: "block",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        type: "text",
-                                                        id: "email",
-                                                        placeholder: "Email or mobile number",
-                                                        value: loginInfo.email,
-                                                        onChange: (e)=>{
-                                                            //   loginInfo.email = e.target.value
-                                                            setLoginInfo({
-                                                                ...loginInfo,
-                                                                email: e.target.value
-                                                            });
-                                                        // setLoginInfo(loginInfo);
-                                                        // console.log(loginInfo);
-                                                        },
-                                                        className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 61,
-                                                        columnNumber: 21
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "font-bold text-red-600",
-                                                        children: error?.email
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 74,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 60,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                className: "block",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        type: "password",
-                                                        id: "password",
-                                                        placeholder: "Password",
-                                                        value: loginInfo.password,
-                                                        onChange: (e)=>{
-                                                            setLoginInfo({
-                                                                ...loginInfo,
-                                                                password: e.target.value
-                                                            });
-                                                        },
-                                                        className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 80,
-                                                        columnNumber: 21
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "font-bold text-red-600",
-                                                        children: error?.password
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 93,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 79,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                type: "submit",
-                                                className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md mt-2",
-                                                children: "Sign In"
-                                            }, void 0, false, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 98,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "flex items-center justify-center my-4",
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                    className: "text-sm text-gray-300",
-                                                    children: "OR"
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    className: "flex-1 flex items-center justify-center px-6 py-12",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                        className: "w-full max-w-md",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "bg-black/60 rounded-lg p-8 shadow-xl",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                    className: "text-4xl font-extrabold text-white mb-6",
+                                    children: "Sign In"
+                                }, void 0, false, {
+                                    fileName: "src/components/Login.js",
+                                    lineNumber: 49,
+                                    columnNumber: 17
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                                    className: "space-y-4",
+                                    onSubmit: handleLogin,
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            className: "block",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "text",
+                                                    id: "email",
+                                                    placeholder: "Email or mobile number",
+                                                    value: loginInfo.email,
+                                                    onChange: (e)=>{
+                                                        //   loginInfo.email = e.target.value
+                                                        setLoginInfo({
+                                                            ...loginInfo,
+                                                            email: e.target.value
+                                                        });
+                                                    // setLoginInfo(loginInfo);
+                                                    // console.log(loginInfo);
+                                                    },
+                                                    className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                 }, void 0, false, {
                                                     fileName: "src/components/Login.js",
-                                                    lineNumber: 106,
+                                                    lineNumber: 55,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-bold text-red-600",
+                                                    children: error?.email
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 68,
                                                     columnNumber: 21
                                                 }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 54,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            className: "block",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "password",
+                                                    id: "password",
+                                                    placeholder: "Password",
+                                                    value: loginInfo.password,
+                                                    onChange: (e)=>{
+                                                        setLoginInfo({
+                                                            ...loginInfo,
+                                                            password: e.target.value
+                                                        });
+                                                    },
+                                                    className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 74,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-bold text-red-600",
+                                                    children: error?.password
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 87,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 73,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            type: "submit",
+                                            className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md mt-2",
+                                            children: "Sign In"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 92,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "flex items-center justify-center my-4",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                className: "text-sm text-gray-300",
+                                                children: "OR"
                                             }, void 0, false, {
                                                 fileName: "src/components/Login.js",
-                                                lineNumber: 105,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                type: "button",
-                                                className: "w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-md border border-white/10",
-                                                children: "Use a sign-in code"
-                                            }, void 0, false, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 109,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "mt-4 flex items-center justify-between text-sm text-gray-300",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                                        href: "#",
-                                                        className: "underline",
-                                                        children: "Forgot password?"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 117,
-                                                        columnNumber: 21
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "flex items-center gap-2",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                                id: "remember",
-                                                                type: "checkbox",
-                                                                className: "w-4 h-4 accent-blue-600"
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/Login.js",
-                                                                lineNumber: 121,
-                                                                columnNumber: 23
-                                                            }, undefined),
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                htmlFor: "remember",
-                                                                children: "Remember me"
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/Login.js",
-                                                                lineNumber: 126,
-                                                                columnNumber: 23
-                                                            }, undefined)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 120,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 116,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "mt-6 text-sm text-gray-300",
-                                                children: [
-                                                    "New to BingeBrain?",
-                                                    " ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "underline text-white",
-                                                        onClick: ()=>{
-                                                            setView(!view);
-                                                        },
-                                                        children: "Sign up now."
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/Login.js",
-                                                        lineNumber: 132,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 130,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "mt-4 text-xs text-gray-400",
-                                                children: "This page is protected by Google reCAPTCHA to ensure you're not a bot."
-                                            }, void 0, false, {
-                                                fileName: "src/components/Login.js",
-                                                lineNumber: 142,
-                                                columnNumber: 19
+                                                lineNumber: 100,
+                                                columnNumber: 21
                                             }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/Login.js",
-                                        lineNumber: 59,
-                                        columnNumber: 17
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/Login.js",
-                                lineNumber: 54,
-                                columnNumber: 15
-                            }, undefined)
-                        }, void 0, false, {
+                                        }, void 0, false, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 99,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            type: "button",
+                                            className: "w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-md border border-white/10",
+                                            children: "Use a sign-in code"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 103,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "mt-4 flex items-center justify-between text-sm text-gray-300",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                                    href: "#",
+                                                    className: "underline",
+                                                    children: "Forgot password?"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 111,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "flex items-center gap-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "remember",
+                                                            type: "checkbox",
+                                                            className: "w-4 h-4 accent-blue-600"
+                                                        }, void 0, false, {
+                                                            fileName: "src/components/Login.js",
+                                                            lineNumber: 115,
+                                                            columnNumber: 23
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "remember",
+                                                            children: "Remember me"
+                                                        }, void 0, false, {
+                                                            fileName: "src/components/Login.js",
+                                                            lineNumber: 120,
+                                                            columnNumber: 23
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 114,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 110,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mt-6 text-sm text-gray-300",
+                                            children: [
+                                                "New to BingeBrain?",
+                                                " ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "underline text-white",
+                                                    onClick: ()=>{
+                                                        setView(!view);
+                                                    },
+                                                    children: "Sign up now."
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Login.js",
+                                                    lineNumber: 126,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 124,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mt-4 text-xs text-gray-400",
+                                            children: "This page is protected by Google reCAPTCHA to ensure you're not a bot."
+                                        }, void 0, false, {
+                                            fileName: "src/components/Login.js",
+                                            lineNumber: 136,
+                                            columnNumber: 19
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Login.js",
+                                    lineNumber: 53,
+                                    columnNumber: 17
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/Login.js",
-                            lineNumber: 53,
-                            columnNumber: 13
+                            lineNumber: 48,
+                            columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Login.js",
-                        lineNumber: 52,
-                        columnNumber: 11
+                        lineNumber: 47,
+                        columnNumber: 13
                     }, undefined)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "src/components/Login.js",
+                    lineNumber: 46,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/Login.js",
-                lineNumber: 49,
+                lineNumber: 45,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Login.js",
-        lineNumber: 46,
+        lineNumber: 42,
         columnNumber: 7
     }, undefined);
 };
@@ -2200,17 +2220,21 @@ var _appSlice = require("../utils/appSlice");
 var _reactRouter = require("react-router");
 var _reactRedux = require("react-redux");
 var _s = $RefreshSig$();
+const logoUrl = new URL(require("8c220feb862d80d6"));
 const Header = ()=>{
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     const dispatch = (0, _reactRedux.useDispatch)();
-    const userName = (0, _reactRedux.useSelector)((store)=>store?.userReducer?.displayName);
+    const userReducer = (0, _reactRedux.useSelector)((store)=>store?.UserReducer);
+    const userName = userReducer?.displayName;
+    const uid = userReducer?.uid;
     console.log("userName->", userName);
+    console.log("logoUrl:", logoUrl);
     const handleClick = ()=>{
         (0, _auth.signOut)((0, _firebaseDefault.default)).then(()=>{
             navigate("/");
         }).catch((error)=>{
-            console.log("Error in Logout");
+            console.log("Error in Logout:", error);
             return;
         });
     };
@@ -2232,80 +2256,72 @@ const Header = ()=>{
         return ()=>unsubscribe();
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex justify-between items-center px-8 py-4 bg-black bg-opacity-90",
+        className: "h-2/4 flex items-center px-8 py-4",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "flex items-center",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: "/logo.svg",
-                        alt: "bingeBrain",
-                        className: "h-12 w-auto"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 50,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "ml-4 text-white text-xl font-bold",
-                        children: "BingeBrain"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "h-2/4 w-2/4",
+                    src: logoUrl,
+                    alt: "logo"
+                }, void 0, false, {
+                    fileName: "src/components/Header.js",
+                    lineNumber: 54,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 49,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex items-center space-x-4",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>dispatch((0, _appSlice.toggleSearch)()),
-                        className: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200",
-                        children: "GPT Search"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 54,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "text-white text-sm",
-                        children: [
-                            "Welcome, ",
-                            userName
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 60,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: handleClick,
-                        className: "bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200",
-                        children: "Sign Out"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 61,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                className: "flex items-center space-x-4 right-0",
+                children: uid ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: ()=>dispatch((0, _appSlice.toggleSearch)()),
+                            className: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200",
+                            children: "GPT Search"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 59,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "text-white text-sm",
+                            children: [
+                                "Welcome, ",
+                                userName
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 65,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: handleClick,
+                            className: "bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200 border-amber-50",
+                            children: "Sign Out"
+                        }, void 0, false, {
+                            fileName: "src/components/Header.js",
+                            lineNumber: 66,
+                            columnNumber: 13
+                        }, undefined)
+                    ]
+                }, void 0, true) : ""
+            }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 53,
+                lineNumber: 56,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 48,
+        lineNumber: 52,
         columnNumber: 5
     }, undefined);
 };
-_s(Header, "I/TgmEYP2dMurtiBKvMPUFW7mZE=", false, function() {
+_s(Header, "O+siGwtwl/2IHng7XtFDasd0lG4=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
         (0, _reactRedux.useDispatch),
@@ -2322,7 +2338,7 @@ $RefreshReg$(_c, "Header");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","firebase/auth":"4ZBbi","../utils/firebase":"5V7se","../utils/appSlice":"cVNx9","react-router":"2jawN","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4ZBbi":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","firebase/auth":"4ZBbi","../utils/firebase":"5V7se","../utils/appSlice":"cVNx9","react-router":"2jawN","react-redux":"hbNxT","8c220feb862d80d6":"jc6wC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4ZBbi":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _auth = require("@firebase/auth");
@@ -18158,6 +18174,8 @@ parcelHelpers.export(exports, "removeTopRatedPlayingMovie", ()=>removeTopRatedPl
 parcelHelpers.export(exports, "removeUpComingPlayingMovie", ()=>removeUpComingPlayingMovie);
 parcelHelpers.export(exports, "removePopularPlayingMovie", ()=>removePopularPlayingMovie);
 parcelHelpers.export(exports, "addTrailer", ()=>addTrailer);
+parcelHelpers.export(exports, "addMovieInfo", ()=>addMovieInfo);
+parcelHelpers.export(exports, "removeMovieInfo", ()=>removeMovieInfo);
 parcelHelpers.export(exports, "setUser", ()=>setUser);
 parcelHelpers.export(exports, "removeUser", ()=>removeUser);
 parcelHelpers.export(exports, "UserReducer", ()=>UserReducer);
@@ -18166,10 +18184,10 @@ const UserSlice = (0, _toolkit.createSlice)({
     name: "user",
     initialState: null,
     reducers: {
-        setUser: (state, action)=>{
-            return action.payload;
+        setUser: (state1, action)=>{
+            return state1 = action.payload;
         },
-        removeUser: (state, action)=>{
+        removeUser: (state1, action)=>{
             return null;
         }
     }
@@ -18181,55 +18199,66 @@ const movieSlice = (0, _toolkit.createSlice)({
         PopularPlaying: [],
         TopRatedPlaying: [],
         UpComingPlaying: [],
-        Maintrailer: null
+        Maintrailer: null,
+        MovieInfo: {}
     },
     reducers: {
-        addNowPlayingMovie: (state, action)=>{
+        addNowPlayingMovie: (state1, action)=>{
             // //////console.log('payload->',action.payload)
             // return action.payload;
-            state.nowPlaying = action.payload;
+            state1.nowPlaying = action.payload;
         },
-        removeNowPlayingMovie: (state, action)=>{
-            const filteredMovie = state.nowPlaying.filter((res)=>{
+        removeNowPlayingMovie: (state1, action)=>{
+            const filteredMovie = state1.nowPlaying.filter((res)=>{
                 return res.id != action.payload;
             });
-            state.nowPlaying = filteredMovie;
+            state1.nowPlaying = filteredMovie;
         },
-        addTopRatedPlayingMovie: (state, action)=>{
+        addTopRatedPlayingMovie: (state1, action)=>{
             // //////console.log('payload->',action.payload)
             // return action.payload;
-            state.TopRatedPlaying = action.payload;
+            state1.TopRatedPlaying = action.payload;
         },
-        removeTopRatedPlayingMovie: (state, action)=>{
-            const filteredMovie = state.TopRatedPlaying.filter((res)=>{
+        removeTopRatedPlayingMovie: (state1, action)=>{
+            const filteredMovie = state1.TopRatedPlaying.filter((res)=>{
                 return res.id != action.payload;
             });
-            state.TopRatedPlaying = filteredMovie;
+            state1.TopRatedPlaying = filteredMovie;
         },
-        addUpComingPlayingMovie: (state, action)=>{
+        addUpComingPlayingMovie: (state1, action)=>{
             // //////console.log('payload->',action.payload)
             // return action.payload;
-            state.UpComingPlaying = action.payload;
+            state1.UpComingPlaying = action.payload;
         },
-        removeUpComingPlayingMovie: (state, action)=>{
-            const filteredMovie = state.UpComingPlaying.filter((res)=>{
+        removeUpComingPlayingMovie: (state1, action)=>{
+            const filteredMovie = state1.UpComingPlaying.filter((res)=>{
                 return res.id != action.payload;
             });
-            state.UpComingPlaying = filteredMovie;
+            state1.UpComingPlaying = filteredMovie;
         },
-        addPopularPlayingMovie: (state, action)=>{
+        addPopularPlayingMovie: (state1, action)=>{
             // //////console.log('payload->',action.payload)
             // return action.payload;
-            state.PopularPlaying = action.payload;
+            state1.PopularPlaying = action.payload;
         },
-        removePopularPlayingMovie: (state, action)=>{
-            const filteredMovie = state.PopularPlaying.filter((res)=>{
+        removePopularPlayingMovie: (state1, action)=>{
+            const filteredMovie = state1.PopularPlaying.filter((res)=>{
                 return res.id != action.payload;
             });
-            state.PopularPlaying = filteredMovie;
+            state1.PopularPlaying = filteredMovie;
         },
-        addTrailer: (state, action)=>{
-            state.Maintrailer = action.payload;
+        addTrailer: (state1, action)=>{
+            state1.Maintrailer = action.payload;
+        },
+        addMovieInfo: (state1, action)=>{
+            state1.MovieInfo = {
+                ...action.payload
+            };
+            return state1;
+        },
+        removeMovieInfo: ()=>{
+            state.MovieInfo = {};
+            return state;
         }
     }
 });
@@ -18240,27 +18269,26 @@ const GptSearchSlice = (0, _toolkit.createSlice)({
         recommendedMovie: []
     },
     reducers: {
-        toggleSearch: (state)=>{
-            state = {
-                ...state,
-                toggle: !state.toggle
+        toggleSearch: (state1)=>{
+            state1 = {
+                ...state1,
+                toggle: !state1.toggle
             };
-            //////console.log("gpt state->", state.toggle);
-            return state;
+            return state1;
         },
-        addRecommendedMovie: (state, action)=>{
-            state = {
-                ...state,
+        addRecommendedMovie: (state1, action)=>{
+            state1 = {
+                ...state1,
                 recommendedMovie: action.payload
             };
-            return state;
+            return state1;
         }
     }
 });
 const GptReducer = GptSearchSlice.reducer;
 const { toggleSearch, addRecommendedMovie } = GptSearchSlice.actions;
 const MovieReducer = movieSlice.reducer;
-const { addNowPlayingMovie, addTopRatedPlayingMovie, addUpComingPlayingMovie, addPopularPlayingMovie, removeNowPlayingMovie, removeTopRatedPlayingMovie, removeUpComingPlayingMovie, removePopularPlayingMovie, addTrailer } = movieSlice.actions;
+const { addNowPlayingMovie, addTopRatedPlayingMovie, addUpComingPlayingMovie, addPopularPlayingMovie, removeNowPlayingMovie, removeTopRatedPlayingMovie, removeUpComingPlayingMovie, removePopularPlayingMovie, addTrailer, addMovieInfo, removeMovieInfo } = movieSlice.actions;
 const { setUser, removeUser } = UserSlice.actions;
 const UserReducer = UserSlice.reducer;
 
@@ -22395,7 +22423,2329 @@ var _chunk65XJMMLOMjs = require("./chunk-65XJMMLO.mjs");
 var _chunkNISHYRIKMjs = require("./chunk-NISHYRIK.mjs");
 "use client";
 
-},{"./chunk-65XJMMLO.mjs":false,"./chunk-NISHYRIK.mjs":"iGZik","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"iGZik":[function(require,module,exports,__globalThis) {
+},{"./chunk-65XJMMLO.mjs":"86lCL","./chunk-NISHYRIK.mjs":"iGZik","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"86lCL":[function(require,module,exports,__globalThis) {
+/**
+ * react-router v7.9.3
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ServerRouter", ()=>ServerRouter);
+parcelHelpers.export(exports, "createRoutesStub", ()=>createRoutesStub);
+parcelHelpers.export(exports, "createCookie", ()=>createCookie);
+parcelHelpers.export(exports, "isCookie", ()=>isCookie);
+parcelHelpers.export(exports, "ServerMode", ()=>ServerMode);
+parcelHelpers.export(exports, "setDevServerHooks", ()=>setDevServerHooks);
+parcelHelpers.export(exports, "createRequestHandler", ()=>createRequestHandler);
+parcelHelpers.export(exports, "createSession", ()=>createSession);
+parcelHelpers.export(exports, "isSession", ()=>isSession);
+parcelHelpers.export(exports, "createSessionStorage", ()=>createSessionStorage);
+parcelHelpers.export(exports, "createCookieSessionStorage", ()=>createCookieSessionStorage);
+parcelHelpers.export(exports, "createMemorySessionStorage", ()=>createMemorySessionStorage);
+parcelHelpers.export(exports, "href", ()=>href);
+parcelHelpers.export(exports, "getHydrationData", ()=>getHydrationData);
+parcelHelpers.export(exports, "RSCDefaultRootErrorBoundary", ()=>RSCDefaultRootErrorBoundary);
+parcelHelpers.export(exports, "createCallServer", ()=>createCallServer);
+parcelHelpers.export(exports, "RSCHydratedRouter", ()=>RSCHydratedRouter);
+parcelHelpers.export(exports, "routeRSCServerRequest", ()=>routeRSCServerRequest);
+parcelHelpers.export(exports, "RSCStaticRouter", ()=>RSCStaticRouter);
+parcelHelpers.export(exports, "getRSCStream", ()=>getRSCStream);
+parcelHelpers.export(exports, "deserializeErrors", ()=>deserializeErrors);
+var _chunkNISHYRIKMjs = require("./chunk-NISHYRIK.mjs");
+// lib/dom/ssr/server.tsx
+var _react = require("react");
+// lib/server-runtime/cookies.ts
+var _cookie = require("cookie");
+// lib/server-runtime/headers.ts
+var _setCookieParser = require("set-cookie-parser");
+var _reactDom = require("react-dom");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var global = arguments[3];
+function ServerRouter({ context, url, nonce }) {
+    if (typeof url === "string") url = new URL(url);
+    let { manifest, routeModules, criticalCss, serverHandoffString } = context;
+    let routes = (0, _chunkNISHYRIKMjs.createServerRoutes)(manifest.routes, routeModules, context.future, context.isSpaMode);
+    context.staticHandlerContext.loaderData = {
+        ...context.staticHandlerContext.loaderData
+    };
+    for (let match of context.staticHandlerContext.matches){
+        let routeId = match.route.id;
+        let route = routeModules[routeId];
+        let manifestRoute = context.manifest.routes[routeId];
+        if (route && manifestRoute && (0, _chunkNISHYRIKMjs.shouldHydrateRouteLoader)(routeId, route.clientLoader, manifestRoute.hasLoader, context.isSpaMode) && (route.HydrateFallback || !manifestRoute.hasLoader)) delete context.staticHandlerContext.loaderData[routeId];
+    }
+    let router = (0, _chunkNISHYRIKMjs.createStaticRouter)(routes, context.staticHandlerContext);
+    return /* @__PURE__ */ _react.createElement(_react.Fragment, null, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.FrameworkContext).Provider, {
+        value: {
+            manifest,
+            routeModules,
+            criticalCss,
+            serverHandoffString,
+            future: context.future,
+            ssr: context.ssr,
+            isSpaMode: context.isSpaMode,
+            routeDiscovery: context.routeDiscovery,
+            serializeError: context.serializeError,
+            renderMeta: context.renderMeta
+        }
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.RemixErrorBoundary), {
+        location: router.state.location
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.StaticRouterProvider), {
+        router,
+        context: context.staticHandlerContext,
+        hydrate: false
+    }))), context.serverHandoffStream ? /* @__PURE__ */ _react.createElement(_react.Suspense, null, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.StreamTransfer), {
+        context,
+        identifier: 0,
+        reader: context.serverHandoffStream.getReader(),
+        textDecoder: new TextDecoder(),
+        nonce
+    })) : null);
+}
+function createRoutesStub(routes, _context) {
+    return function RoutesTestStub({ initialEntries, initialIndex, hydrationData, future }) {
+        let routerRef = _react.useRef();
+        let frameworkContextRef = _react.useRef();
+        if (routerRef.current == null) {
+            frameworkContextRef.current = {
+                future: {
+                    unstable_subResourceIntegrity: future?.unstable_subResourceIntegrity === true,
+                    v8_middleware: future?.v8_middleware === true
+                },
+                manifest: {
+                    routes: {},
+                    entry: {
+                        imports: [],
+                        module: ""
+                    },
+                    url: "",
+                    version: ""
+                },
+                routeModules: {},
+                ssr: false,
+                isSpaMode: false,
+                routeDiscovery: {
+                    mode: "lazy",
+                    manifestPath: "/__manifest"
+                }
+            };
+            let patched = processRoutes(// @ts-expect-error `StubRouteObject` is stricter about `loader`/`action`
+            // types compared to `AgnosticRouteObject`
+            (0, _chunkNISHYRIKMjs.convertRoutesToDataRoutes)(routes, (r)=>r), _context !== void 0 ? _context : future?.v8_middleware ? new (0, _chunkNISHYRIKMjs.RouterContextProvider)() : {}, frameworkContextRef.current.manifest, frameworkContextRef.current.routeModules);
+            routerRef.current = (0, _chunkNISHYRIKMjs.createMemoryRouter)(patched, {
+                initialEntries,
+                initialIndex,
+                hydrationData
+            });
+        }
+        return /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.FrameworkContext).Provider, {
+            value: frameworkContextRef.current
+        }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.RouterProvider), {
+            router: routerRef.current
+        }));
+    };
+}
+function processRoutes(routes, context, manifest, routeModules, parentId) {
+    return routes.map((route)=>{
+        if (!route.id) throw new Error("Expected a route.id in react-router processRoutes() function");
+        let newRoute = {
+            id: route.id,
+            path: route.path,
+            index: route.index,
+            Component: route.Component ? (0, _chunkNISHYRIKMjs.withComponentProps)(route.Component) : void 0,
+            HydrateFallback: route.HydrateFallback ? (0, _chunkNISHYRIKMjs.withHydrateFallbackProps)(route.HydrateFallback) : void 0,
+            ErrorBoundary: route.ErrorBoundary ? (0, _chunkNISHYRIKMjs.withErrorBoundaryProps)(route.ErrorBoundary) : void 0,
+            action: route.action ? (args)=>route.action({
+                    ...args,
+                    context
+                }) : void 0,
+            loader: route.loader ? (args)=>route.loader({
+                    ...args,
+                    context
+                }) : void 0,
+            middleware: route.middleware ? route.middleware.map((mw)=>(...args)=>mw({
+                        ...args[0],
+                        context
+                    }, args[1])) : void 0,
+            handle: route.handle,
+            shouldRevalidate: route.shouldRevalidate
+        };
+        let entryRoute = {
+            id: route.id,
+            path: route.path,
+            index: route.index,
+            parentId,
+            hasAction: route.action != null,
+            hasLoader: route.loader != null,
+            // When testing routes, you should be stubbing loader/action/middleware,
+            // not trying to re-implement the full loader/clientLoader/SSR/hydration
+            // flow. That is better tested via E2E tests.
+            hasClientAction: false,
+            hasClientLoader: false,
+            hasClientMiddleware: false,
+            hasErrorBoundary: route.ErrorBoundary != null,
+            // any need for these?
+            module: "build/stub-path-to-module.js",
+            clientActionModule: void 0,
+            clientLoaderModule: void 0,
+            clientMiddlewareModule: void 0,
+            hydrateFallbackModule: void 0
+        };
+        manifest.routes[newRoute.id] = entryRoute;
+        routeModules[route.id] = {
+            default: newRoute.Component || (0, _chunkNISHYRIKMjs.Outlet),
+            ErrorBoundary: newRoute.ErrorBoundary || void 0,
+            handle: route.handle,
+            links: route.links,
+            meta: route.meta,
+            shouldRevalidate: route.shouldRevalidate
+        };
+        if (route.children) newRoute.children = processRoutes(route.children, context, manifest, routeModules, newRoute.id);
+        return newRoute;
+    });
+}
+// lib/server-runtime/crypto.ts
+var encoder = /* @__PURE__ */ new TextEncoder();
+var sign = async (value, secret)=>{
+    let data2 = encoder.encode(value);
+    let key = await createKey(secret, [
+        "sign"
+    ]);
+    let signature = await crypto.subtle.sign("HMAC", key, data2);
+    let hash = btoa(String.fromCharCode(...new Uint8Array(signature))).replace(/=+$/, "");
+    return value + "." + hash;
+};
+var unsign = async (cookie, secret)=>{
+    let index = cookie.lastIndexOf(".");
+    let value = cookie.slice(0, index);
+    let hash = cookie.slice(index + 1);
+    let data2 = encoder.encode(value);
+    let key = await createKey(secret, [
+        "verify"
+    ]);
+    try {
+        let signature = byteStringToUint8Array(atob(hash));
+        let valid = await crypto.subtle.verify("HMAC", key, signature, data2);
+        return valid ? value : false;
+    } catch (error) {
+        return false;
+    }
+};
+var createKey = async (secret, usages)=>crypto.subtle.importKey("raw", encoder.encode(secret), {
+        name: "HMAC",
+        hash: "SHA-256"
+    }, false, usages);
+function byteStringToUint8Array(byteString) {
+    let array = new Uint8Array(byteString.length);
+    for(let i = 0; i < byteString.length; i++)array[i] = byteString.charCodeAt(i);
+    return array;
+}
+// lib/server-runtime/cookies.ts
+var createCookie = (name, cookieOptions = {})=>{
+    let { secrets = [], ...options } = {
+        path: "/",
+        sameSite: "lax",
+        ...cookieOptions
+    };
+    warnOnceAboutExpiresCookie(name, options.expires);
+    return {
+        get name () {
+            return name;
+        },
+        get isSigned () {
+            return secrets.length > 0;
+        },
+        get expires () {
+            return typeof options.maxAge !== "undefined" ? new Date(Date.now() + options.maxAge * 1e3) : options.expires;
+        },
+        async parse (cookieHeader, parseOptions) {
+            if (!cookieHeader) return null;
+            let cookies = (0, _cookie.parse)(cookieHeader, {
+                ...options,
+                ...parseOptions
+            });
+            if (name in cookies) {
+                let value = cookies[name];
+                if (typeof value === "string" && value !== "") {
+                    let decoded = await decodeCookieValue(value, secrets);
+                    return decoded;
+                } else return "";
+            } else return null;
+        },
+        async serialize (value, serializeOptions) {
+            return (0, _cookie.serialize)(name, value === "" ? "" : await encodeCookieValue(value, secrets), {
+                ...options,
+                ...serializeOptions
+            });
+        }
+    };
+};
+var isCookie = (object)=>{
+    return object != null && typeof object.name === "string" && typeof object.isSigned === "boolean" && typeof object.parse === "function" && typeof object.serialize === "function";
+};
+async function encodeCookieValue(value, secrets) {
+    let encoded = encodeData(value);
+    if (secrets.length > 0) encoded = await sign(encoded, secrets[0]);
+    return encoded;
+}
+async function decodeCookieValue(value, secrets) {
+    if (secrets.length > 0) {
+        for (let secret of secrets){
+            let unsignedValue = await unsign(value, secret);
+            if (unsignedValue !== false) return decodeData(unsignedValue);
+        }
+        return null;
+    }
+    return decodeData(value);
+}
+function encodeData(value) {
+    return btoa(myUnescape(encodeURIComponent(JSON.stringify(value))));
+}
+function decodeData(value) {
+    try {
+        return JSON.parse(decodeURIComponent(myEscape(atob(value))));
+    } catch (error) {
+        return {};
+    }
+}
+function myEscape(value) {
+    let str = value.toString();
+    let result = "";
+    let index = 0;
+    let chr, code;
+    while(index < str.length){
+        chr = str.charAt(index++);
+        if (/[\w*+\-./@]/.exec(chr)) result += chr;
+        else {
+            code = chr.charCodeAt(0);
+            if (code < 256) result += "%" + hex(code, 2);
+            else result += "%u" + hex(code, 4).toUpperCase();
+        }
+    }
+    return result;
+}
+function hex(code, length) {
+    let result = code.toString(16);
+    while(result.length < length)result = "0" + result;
+    return result;
+}
+function myUnescape(value) {
+    let str = value.toString();
+    let result = "";
+    let index = 0;
+    let chr, part;
+    while(index < str.length){
+        chr = str.charAt(index++);
+        if (chr === "%") {
+            if (str.charAt(index) === "u") {
+                part = str.slice(index + 1, index + 5);
+                if (/^[\da-f]{4}$/i.exec(part)) {
+                    result += String.fromCharCode(parseInt(part, 16));
+                    index += 5;
+                    continue;
+                }
+            } else {
+                part = str.slice(index, index + 2);
+                if (/^[\da-f]{2}$/i.exec(part)) {
+                    result += String.fromCharCode(parseInt(part, 16));
+                    index += 2;
+                    continue;
+                }
+            }
+        }
+        result += chr;
+    }
+    return result;
+}
+function warnOnceAboutExpiresCookie(name, expires) {
+    (0, _chunkNISHYRIKMjs.warnOnce)(!expires, `The "${name}" cookie has an "expires" property set. This will cause the expires value to not be updated when the session is committed. Instead, you should set the expires value when serializing the cookie. You can use \`commitSession(session, { expires })\` if using a session storage object, or \`cookie.serialize("value", { expires })\` if you're using the cookie directly.`);
+}
+// lib/server-runtime/entry.ts
+function createEntryRouteModules(manifest) {
+    return Object.keys(manifest).reduce((memo, routeId)=>{
+        let route = manifest[routeId];
+        if (route) memo[routeId] = route.module;
+        return memo;
+    }, {});
+}
+// lib/server-runtime/mode.ts
+var ServerMode = /* @__PURE__ */ ((ServerMode2)=>{
+    ServerMode2["Development"] = "development";
+    ServerMode2["Production"] = "production";
+    ServerMode2["Test"] = "test";
+    return ServerMode2;
+})(ServerMode || {});
+function isServerMode(value) {
+    return value === "development" /* Development */  || value === "production" /* Production */  || value === "test" /* Test */ ;
+}
+// lib/server-runtime/errors.ts
+function sanitizeError(error, serverMode) {
+    if (error instanceof Error && serverMode !== "development" /* Development */ ) {
+        let sanitized = new Error("Unexpected Server Error");
+        sanitized.stack = void 0;
+        return sanitized;
+    }
+    return error;
+}
+function sanitizeErrors(errors, serverMode) {
+    return Object.entries(errors).reduce((acc, [routeId, error])=>{
+        return Object.assign(acc, {
+            [routeId]: sanitizeError(error, serverMode)
+        });
+    }, {});
+}
+function serializeError(error, serverMode) {
+    let sanitized = sanitizeError(error, serverMode);
+    return {
+        message: sanitized.message,
+        stack: sanitized.stack
+    };
+}
+function serializeErrors(errors, serverMode) {
+    if (!errors) return null;
+    let entries = Object.entries(errors);
+    let serialized = {};
+    for (let [key, val] of entries){
+        if ((0, _chunkNISHYRIKMjs.isRouteErrorResponse)(val)) serialized[key] = {
+            ...val,
+            __type: "RouteErrorResponse"
+        };
+        else if (val instanceof Error) {
+            let sanitized = sanitizeError(val, serverMode);
+            serialized[key] = {
+                message: sanitized.message,
+                stack: sanitized.stack,
+                __type: "Error",
+                // If this is a subclass (i.e., ReferenceError), send up the type so we
+                // can re-create the same type during hydration.  This will only apply
+                // in dev mode since all production errors are sanitized to normal
+                // Error instances
+                ...sanitized.name !== "Error" ? {
+                    __subType: sanitized.name
+                } : {}
+            };
+        } else serialized[key] = val;
+    }
+    return serialized;
+}
+// lib/server-runtime/routeMatching.ts
+function matchServerRoutes(routes, pathname, basename) {
+    let matches = (0, _chunkNISHYRIKMjs.matchRoutes)(routes, pathname, basename);
+    if (!matches) return null;
+    return matches.map((match)=>({
+            params: match.params,
+            pathname: match.pathname,
+            route: match.route
+        }));
+}
+// lib/server-runtime/data.ts
+async function callRouteHandler(handler, args) {
+    let result = await handler({
+        request: stripRoutesParam(stripIndexParam2(args.request)),
+        params: args.params,
+        context: args.context
+    });
+    if ((0, _chunkNISHYRIKMjs.isDataWithResponseInit)(result) && result.init && result.init.status && (0, _chunkNISHYRIKMjs.isRedirectStatusCode)(result.init.status)) throw new Response(null, result.init);
+    return result;
+}
+function stripIndexParam2(request) {
+    let url = new URL(request.url);
+    let indexValues = url.searchParams.getAll("index");
+    url.searchParams.delete("index");
+    let indexValuesToKeep = [];
+    for (let indexValue of indexValues)if (indexValue) indexValuesToKeep.push(indexValue);
+    for (let toKeep of indexValuesToKeep)url.searchParams.append("index", toKeep);
+    let init = {
+        method: request.method,
+        body: request.body,
+        headers: request.headers,
+        signal: request.signal
+    };
+    if (init.body) init.duplex = "half";
+    return new Request(url.href, init);
+}
+function stripRoutesParam(request) {
+    let url = new URL(request.url);
+    url.searchParams.delete("_routes");
+    let init = {
+        method: request.method,
+        body: request.body,
+        headers: request.headers,
+        signal: request.signal
+    };
+    if (init.body) init.duplex = "half";
+    return new Request(url.href, init);
+}
+// lib/server-runtime/invariant.ts
+function invariant2(value, message) {
+    if (value === false || value === null || typeof value === "undefined") {
+        console.error("The following error is a bug in React Router; please open an issue! https://github.com/remix-run/react-router/issues/new/choose");
+        throw new Error(message);
+    }
+}
+// lib/server-runtime/dev.ts
+var globalDevServerHooksKey = "__reactRouterDevServerHooks";
+function setDevServerHooks(devServerHooks) {
+    globalThis[globalDevServerHooksKey] = devServerHooks;
+}
+function getDevServerHooks() {
+    return globalThis[globalDevServerHooksKey];
+}
+function getBuildTimeHeader(request, headerName) {
+    var e;
+    return null;
+}
+// lib/server-runtime/routes.ts
+function groupRoutesByParentId(manifest) {
+    let routes = {};
+    Object.values(manifest).forEach((route)=>{
+        if (route) {
+            let parentId = route.parentId || "";
+            if (!routes[parentId]) routes[parentId] = [];
+            routes[parentId].push(route);
+        }
+    });
+    return routes;
+}
+function createRoutes(manifest, parentId = "", routesByParentId = groupRoutesByParentId(manifest)) {
+    return (routesByParentId[parentId] || []).map((route)=>({
+            ...route,
+            children: createRoutes(manifest, route.id, routesByParentId)
+        }));
+}
+function createStaticHandlerDataRoutes(manifest, future, parentId = "", routesByParentId = groupRoutesByParentId(manifest)) {
+    return (routesByParentId[parentId] || []).map((route)=>{
+        let commonRoute = {
+            // Always include root due to default boundaries
+            hasErrorBoundary: route.id === "root" || route.module.ErrorBoundary != null,
+            id: route.id,
+            path: route.path,
+            middleware: route.module.middleware,
+            // Need to use RR's version in the param typed here to permit the optional
+            // context even though we know it'll always be provided in remix
+            loader: route.module.loader ? async (args)=>{
+                let preRenderedData = getBuildTimeHeader(args.request, "X-React-Router-Prerender-Data");
+                if (preRenderedData != null) {
+                    let encoded = preRenderedData ? decodeURI(preRenderedData) : preRenderedData;
+                    invariant2(encoded, "Missing prerendered data for route");
+                    let uint8array = new TextEncoder().encode(encoded);
+                    let stream = new ReadableStream({
+                        start (controller) {
+                            controller.enqueue(uint8array);
+                            controller.close();
+                        }
+                    });
+                    let decoded = await (0, _chunkNISHYRIKMjs.decodeViaTurboStream)(stream, global);
+                    let data2 = decoded.value;
+                    if (data2 && (0, _chunkNISHYRIKMjs.SingleFetchRedirectSymbol) in data2) {
+                        let result = data2[0, _chunkNISHYRIKMjs.SingleFetchRedirectSymbol];
+                        let init = {
+                            status: result.status
+                        };
+                        if (result.reload) throw (0, _chunkNISHYRIKMjs.redirectDocument)(result.redirect, init);
+                        else if (result.replace) throw (0, _chunkNISHYRIKMjs.replace)(result.redirect, init);
+                        else throw (0, _chunkNISHYRIKMjs.redirect)(result.redirect, init);
+                    } else {
+                        invariant2(data2 && route.id in data2, "Unable to decode prerendered data");
+                        let result = data2[route.id];
+                        invariant2("data" in result, "Unable to process prerendered data");
+                        return result.data;
+                    }
+                }
+                let val = await callRouteHandler(route.module.loader, args);
+                return val;
+            } : void 0,
+            action: route.module.action ? (args)=>callRouteHandler(route.module.action, args) : void 0,
+            handle: route.module.handle
+        };
+        return route.index ? {
+            index: true,
+            ...commonRoute
+        } : {
+            caseSensitive: route.caseSensitive,
+            children: createStaticHandlerDataRoutes(manifest, future, route.id, routesByParentId),
+            ...commonRoute
+        };
+    });
+}
+// lib/server-runtime/serverHandoff.ts
+function createServerHandoffString(serverHandoff) {
+    return (0, _chunkNISHYRIKMjs.escapeHtml)(JSON.stringify(serverHandoff));
+}
+function getDocumentHeaders(context, build) {
+    return getDocumentHeadersImpl(context, (m)=>{
+        let route = build.routes[m.route.id];
+        invariant2(route, `Route with id "${m.route.id}" not found in build`);
+        return route.module.headers;
+    });
+}
+function getDocumentHeadersImpl(context, getRouteHeadersFn, _defaultHeaders) {
+    let boundaryIdx = context.errors ? context.matches.findIndex((m)=>context.errors[m.route.id]) : -1;
+    let matches = boundaryIdx >= 0 ? context.matches.slice(0, boundaryIdx + 1) : context.matches;
+    let errorHeaders;
+    if (boundaryIdx >= 0) {
+        let { actionHeaders, actionData, loaderHeaders, loaderData } = context;
+        context.matches.slice(boundaryIdx).some((match)=>{
+            let id = match.route.id;
+            if (actionHeaders[id] && (!actionData || !actionData.hasOwnProperty(id))) errorHeaders = actionHeaders[id];
+            else if (loaderHeaders[id] && !loaderData.hasOwnProperty(id)) errorHeaders = loaderHeaders[id];
+            return errorHeaders != null;
+        });
+    }
+    const defaultHeaders = new Headers(_defaultHeaders);
+    return matches.reduce((parentHeaders, match, idx)=>{
+        let { id } = match.route;
+        let loaderHeaders = context.loaderHeaders[id] || new Headers();
+        let actionHeaders = context.actionHeaders[id] || new Headers();
+        let includeErrorHeaders = errorHeaders != null && idx === matches.length - 1;
+        let includeErrorCookies = includeErrorHeaders && errorHeaders !== loaderHeaders && errorHeaders !== actionHeaders;
+        let headersFn = getRouteHeadersFn(match);
+        if (headersFn == null) {
+            let headers2 = new Headers(parentHeaders);
+            if (includeErrorCookies) prependCookies(errorHeaders, headers2);
+            prependCookies(actionHeaders, headers2);
+            prependCookies(loaderHeaders, headers2);
+            return headers2;
+        }
+        let headers = new Headers(typeof headersFn === "function" ? headersFn({
+            loaderHeaders,
+            parentHeaders,
+            actionHeaders,
+            errorHeaders: includeErrorHeaders ? errorHeaders : void 0
+        }) : headersFn);
+        if (includeErrorCookies) prependCookies(errorHeaders, headers);
+        prependCookies(actionHeaders, headers);
+        prependCookies(loaderHeaders, headers);
+        prependCookies(parentHeaders, headers);
+        return headers;
+    }, new Headers(defaultHeaders));
+}
+function prependCookies(parentHeaders, childHeaders) {
+    let parentSetCookieString = parentHeaders.get("Set-Cookie");
+    if (parentSetCookieString) {
+        let cookies = (0, _setCookieParser.splitCookiesString)(parentSetCookieString);
+        let childCookies = new Set(childHeaders.getSetCookie());
+        cookies.forEach((cookie)=>{
+            if (!childCookies.has(cookie)) childHeaders.append("Set-Cookie", cookie);
+        });
+    }
+}
+// lib/server-runtime/single-fetch.ts
+var SERVER_NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([
+    ...(0, _chunkNISHYRIKMjs.NO_BODY_STATUS_CODES),
+    304
+]);
+async function singleFetchAction(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) {
+    try {
+        let handlerRequest = new Request(handlerUrl, {
+            method: request.method,
+            body: request.body,
+            headers: request.headers,
+            signal: request.signal,
+            ...request.body ? {
+                duplex: "half"
+            } : void 0
+        });
+        let result = await staticHandler.query(handlerRequest, {
+            requestContext: loadContext,
+            skipLoaderErrorBubbling: true,
+            skipRevalidation: true,
+            generateMiddlewareResponse: build.future.v8_middleware ? async (query)=>{
+                try {
+                    let innerResult = await query(handlerRequest);
+                    return handleQueryResult(innerResult);
+                } catch (error) {
+                    return handleQueryError(error);
+                }
+            } : void 0
+        });
+        return handleQueryResult(result);
+    } catch (error) {
+        return handleQueryError(error);
+    }
+    function handleQueryResult(result) {
+        return (0, _chunkNISHYRIKMjs.isResponse)(result) ? result : staticContextToResponse(result);
+    }
+    function handleQueryError(error) {
+        handleError(error);
+        return generateSingleFetchResponse(request, build, serverMode, {
+            result: {
+                error
+            },
+            headers: new Headers(),
+            status: 500
+        });
+    }
+    function staticContextToResponse(context) {
+        let headers = getDocumentHeaders(context, build);
+        if ((0, _chunkNISHYRIKMjs.isRedirectStatusCode)(context.statusCode) && headers.has("Location")) return new Response(null, {
+            status: context.statusCode,
+            headers
+        });
+        if (context.errors) {
+            Object.values(context.errors).forEach((err)=>{
+                if (!(0, _chunkNISHYRIKMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
+            });
+            context.errors = sanitizeErrors(context.errors, serverMode);
+        }
+        let singleFetchResult;
+        if (context.errors) singleFetchResult = {
+            error: Object.values(context.errors)[0]
+        };
+        else singleFetchResult = {
+            data: Object.values(context.actionData || {})[0]
+        };
+        return generateSingleFetchResponse(request, build, serverMode, {
+            result: singleFetchResult,
+            headers,
+            status: context.statusCode
+        });
+    }
+}
+async function singleFetchLoaders(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) {
+    let routesParam = new URL(request.url).searchParams.get("_routes");
+    let loadRouteIds = routesParam ? new Set(routesParam.split(",")) : null;
+    try {
+        let handlerRequest = new Request(handlerUrl, {
+            headers: request.headers,
+            signal: request.signal
+        });
+        let result = await staticHandler.query(handlerRequest, {
+            requestContext: loadContext,
+            filterMatchesToLoad: (m)=>!loadRouteIds || loadRouteIds.has(m.route.id),
+            skipLoaderErrorBubbling: true,
+            generateMiddlewareResponse: build.future.v8_middleware ? async (query)=>{
+                try {
+                    let innerResult = await query(handlerRequest);
+                    return handleQueryResult(innerResult);
+                } catch (error) {
+                    return handleQueryError(error);
+                }
+            } : void 0
+        });
+        return handleQueryResult(result);
+    } catch (error) {
+        return handleQueryError(error);
+    }
+    function handleQueryResult(result) {
+        return (0, _chunkNISHYRIKMjs.isResponse)(result) ? result : staticContextToResponse(result);
+    }
+    function handleQueryError(error) {
+        handleError(error);
+        return generateSingleFetchResponse(request, build, serverMode, {
+            result: {
+                error
+            },
+            headers: new Headers(),
+            status: 500
+        });
+    }
+    function staticContextToResponse(context) {
+        let headers = getDocumentHeaders(context, build);
+        if ((0, _chunkNISHYRIKMjs.isRedirectStatusCode)(context.statusCode) && headers.has("Location")) return new Response(null, {
+            status: context.statusCode,
+            headers
+        });
+        if (context.errors) {
+            Object.values(context.errors).forEach((err)=>{
+                if (!(0, _chunkNISHYRIKMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
+            });
+            context.errors = sanitizeErrors(context.errors, serverMode);
+        }
+        let results = {};
+        let loadedMatches = new Set(context.matches.filter((m)=>loadRouteIds ? loadRouteIds.has(m.route.id) : m.route.loader != null).map((m)=>m.route.id));
+        if (context.errors) for (let [id, error] of Object.entries(context.errors))results[id] = {
+            error
+        };
+        for (let [id, data2] of Object.entries(context.loaderData))if (!(id in results) && loadedMatches.has(id)) results[id] = {
+            data: data2
+        };
+        return generateSingleFetchResponse(request, build, serverMode, {
+            result: results,
+            headers,
+            status: context.statusCode
+        });
+    }
+}
+function generateSingleFetchResponse(request, build, serverMode, { result, headers, status }) {
+    let resultHeaders = new Headers(headers);
+    resultHeaders.set("X-Remix-Response", "yes");
+    if (SERVER_NO_BODY_STATUS_CODES.has(status)) return new Response(null, {
+        status,
+        headers: resultHeaders
+    });
+    resultHeaders.set("Content-Type", "text/x-script");
+    resultHeaders.delete("Content-Length");
+    return new Response(encodeViaTurboStream(result, request.signal, build.entry.module.streamTimeout, serverMode), {
+        status: status || 200,
+        headers: resultHeaders
+    });
+}
+function generateSingleFetchRedirectResponse(redirectResponse, request, build, serverMode) {
+    let redirect2 = getSingleFetchRedirect(redirectResponse.status, redirectResponse.headers, build.basename);
+    let headers = new Headers(redirectResponse.headers);
+    headers.delete("Location");
+    headers.set("Content-Type", "text/x-script");
+    return generateSingleFetchResponse(request, build, serverMode, {
+        result: request.method === "GET" ? {
+            [(0, _chunkNISHYRIKMjs.SingleFetchRedirectSymbol)]: redirect2
+        } : redirect2,
+        headers,
+        status: (0, _chunkNISHYRIKMjs.SINGLE_FETCH_REDIRECT_STATUS)
+    });
+}
+function getSingleFetchRedirect(status, headers, basename) {
+    let redirect2 = headers.get("Location");
+    if (basename) redirect2 = (0, _chunkNISHYRIKMjs.stripBasename)(redirect2, basename) || redirect2;
+    return {
+        redirect: redirect2,
+        status,
+        revalidate: // Technically X-Remix-Revalidate isn't needed here - that was an implementation
+        // detail of ?_data requests as our way to tell the front end to revalidate when
+        // we didn't have a response body to include that information in.
+        // With single fetch, we tell the front end via this revalidate boolean field.
+        // However, we're respecting it for now because it may be something folks have
+        // used in their own responses
+        // TODO(v3): Consider removing or making this official public API
+        headers.has("X-Remix-Revalidate") || headers.has("Set-Cookie"),
+        reload: headers.has("X-Remix-Reload-Document"),
+        replace: headers.has("X-Remix-Replace")
+    };
+}
+function encodeViaTurboStream(data2, requestSignal, streamTimeout, serverMode) {
+    let controller = new AbortController();
+    let timeoutId = setTimeout(()=>controller.abort(new Error("Server Timeout")), typeof streamTimeout === "number" ? streamTimeout : 4950);
+    requestSignal.addEventListener("abort", ()=>clearTimeout(timeoutId));
+    return (0, _chunkNISHYRIKMjs.encode)(data2, {
+        signal: controller.signal,
+        plugins: [
+            (value)=>{
+                if (value instanceof Error) {
+                    let { name, message, stack } = serverMode === "production" /* Production */  ? sanitizeError(value, serverMode) : value;
+                    return [
+                        "SanitizedError",
+                        name,
+                        message,
+                        stack
+                    ];
+                }
+                if (value instanceof (0, _chunkNISHYRIKMjs.ErrorResponseImpl)) {
+                    let { data: data3, status, statusText } = value;
+                    return [
+                        "ErrorResponse",
+                        data3,
+                        status,
+                        statusText
+                    ];
+                }
+                if (value && typeof value === "object" && (0, _chunkNISHYRIKMjs.SingleFetchRedirectSymbol) in value) return [
+                    "SingleFetchRedirect",
+                    value[0, _chunkNISHYRIKMjs.SingleFetchRedirectSymbol]
+                ];
+            }
+        ],
+        postPlugins: [
+            (value)=>{
+                if (!value) return;
+                if (typeof value !== "object") return;
+                return [
+                    "SingleFetchClassInstance",
+                    Object.fromEntries(Object.entries(value))
+                ];
+            },
+            ()=>[
+                    "SingleFetchFallback"
+                ]
+        ]
+    });
+}
+// lib/server-runtime/server.ts
+function derive(build, mode) {
+    let routes = createRoutes(build.routes);
+    let dataRoutes = createStaticHandlerDataRoutes(build.routes, build.future);
+    let serverMode = isServerMode(mode) ? mode : "production" /* Production */ ;
+    let staticHandler = (0, _chunkNISHYRIKMjs.createStaticHandler)(dataRoutes, {
+        basename: build.basename
+    });
+    let errorHandler = build.entry.module.handleError || ((error, { request })=>{
+        if (serverMode !== "test" /* Test */  && !request.signal.aborted) console.error(// @ts-expect-error This is "private" from users but intended for internal use
+        (0, _chunkNISHYRIKMjs.isRouteErrorResponse)(error) && error.error ? error.error : error);
+    });
+    return {
+        routes,
+        dataRoutes,
+        serverMode,
+        staticHandler,
+        errorHandler
+    };
+}
+var createRequestHandler = (build, mode)=>{
+    let _build;
+    let routes;
+    let serverMode;
+    let staticHandler;
+    let errorHandler;
+    return async function requestHandler(request, initialContext) {
+        _build = typeof build === "function" ? await build() : build;
+        if (typeof build === "function") {
+            let derived = derive(_build, mode);
+            routes = derived.routes;
+            serverMode = derived.serverMode;
+            staticHandler = derived.staticHandler;
+            errorHandler = derived.errorHandler;
+        } else if (!routes || !serverMode || !staticHandler || !errorHandler) {
+            let derived = derive(_build, mode);
+            routes = derived.routes;
+            serverMode = derived.serverMode;
+            staticHandler = derived.staticHandler;
+            errorHandler = derived.errorHandler;
+        }
+        let params = {};
+        let loadContext;
+        let handleError = (error)=>{
+            if (mode === "development" /* Development */ ) getDevServerHooks()?.processRequestError?.(error);
+            errorHandler(error, {
+                context: loadContext,
+                params,
+                request
+            });
+        };
+        if (_build.future.v8_middleware) {
+            if (initialContext && !(initialContext instanceof (0, _chunkNISHYRIKMjs.RouterContextProvider))) {
+                let error = new Error("Invalid `context` value provided to `handleRequest`. When middleware is enabled you must return an instance of `RouterContextProvider` from your `getLoadContext` function.");
+                handleError(error);
+                return returnLastResortErrorResponse(error, serverMode);
+            }
+            loadContext = initialContext || new (0, _chunkNISHYRIKMjs.RouterContextProvider)();
+        } else loadContext = initialContext || {};
+        let url = new URL(request.url);
+        let normalizedBasename = _build.basename || "/";
+        let normalizedPath = url.pathname;
+        if ((0, _chunkNISHYRIKMjs.stripBasename)(normalizedPath, normalizedBasename) === "/_root.data") normalizedPath = normalizedBasename;
+        else if (normalizedPath.endsWith(".data")) normalizedPath = normalizedPath.replace(/\.data$/, "");
+        if ((0, _chunkNISHYRIKMjs.stripBasename)(normalizedPath, normalizedBasename) !== "/" && normalizedPath.endsWith("/")) normalizedPath = normalizedPath.slice(0, -1);
+        let isSpaMode = getBuildTimeHeader(request, "X-React-Router-SPA-Mode") === "yes";
+        if (!_build.ssr) {
+            let decodedPath = decodeURI(normalizedPath);
+            if (normalizedBasename !== "/") {
+                let strippedPath = (0, _chunkNISHYRIKMjs.stripBasename)(decodedPath, normalizedBasename);
+                if (strippedPath == null) {
+                    errorHandler(new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(404, "Not Found", `Refusing to prerender the \`${decodedPath}\` path because it does not start with the basename \`${normalizedBasename}\``), {
+                        context: loadContext,
+                        params,
+                        request
+                    });
+                    return new Response("Not Found", {
+                        status: 404,
+                        statusText: "Not Found"
+                    });
+                }
+                decodedPath = strippedPath;
+            }
+            if (_build.prerender.length === 0) isSpaMode = true;
+            else if (!_build.prerender.includes(decodedPath) && !_build.prerender.includes(decodedPath + "/")) {
+                if (url.pathname.endsWith(".data")) {
+                    errorHandler(new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(404, "Not Found", `Refusing to SSR the path \`${decodedPath}\` because \`ssr:false\` is set and the path is not included in the \`prerender\` config, so in production the path will be a 404.`), {
+                        context: loadContext,
+                        params,
+                        request
+                    });
+                    return new Response("Not Found", {
+                        status: 404,
+                        statusText: "Not Found"
+                    });
+                } else isSpaMode = true;
+            }
+        }
+        let manifestUrl = (0, _chunkNISHYRIKMjs.getManifestPath)(_build.routeDiscovery.manifestPath, normalizedBasename);
+        if (url.pathname === manifestUrl) try {
+            let res = await handleManifestRequest(_build, routes, url);
+            return res;
+        } catch (e) {
+            handleError(e);
+            return new Response("Unknown Server Error", {
+                status: 500
+            });
+        }
+        let matches = matchServerRoutes(routes, normalizedPath, _build.basename);
+        if (matches && matches.length > 0) Object.assign(params, matches[0].params);
+        let response;
+        if (url.pathname.endsWith(".data")) {
+            let handlerUrl = new URL(request.url);
+            handlerUrl.pathname = normalizedPath;
+            let singleFetchMatches = matchServerRoutes(routes, handlerUrl.pathname, _build.basename);
+            response = await handleSingleFetchRequest(serverMode, _build, staticHandler, request, handlerUrl, loadContext, handleError);
+            if ((0, _chunkNISHYRIKMjs.isRedirectResponse)(response)) response = generateSingleFetchRedirectResponse(response, request, _build, serverMode);
+            if (_build.entry.module.handleDataRequest) {
+                response = await _build.entry.module.handleDataRequest(response, {
+                    context: loadContext,
+                    params: singleFetchMatches ? singleFetchMatches[0].params : {},
+                    request
+                });
+                if ((0, _chunkNISHYRIKMjs.isRedirectResponse)(response)) response = generateSingleFetchRedirectResponse(response, request, _build, serverMode);
+            }
+        } else if (!isSpaMode && matches && matches[matches.length - 1].route.module.default == null && matches[matches.length - 1].route.module.ErrorBoundary == null) response = await handleResourceRequest(serverMode, _build, staticHandler, matches.slice(-1)[0].route.id, request, loadContext, handleError);
+        else {
+            let { pathname } = url;
+            let criticalCss = void 0;
+            if (_build.unstable_getCriticalCss) criticalCss = await _build.unstable_getCriticalCss({
+                pathname
+            });
+            else if (mode === "development" /* Development */  && getDevServerHooks()?.getCriticalCss) criticalCss = await getDevServerHooks()?.getCriticalCss?.(pathname);
+            response = await handleDocumentRequest(serverMode, _build, staticHandler, request, loadContext, handleError, isSpaMode, criticalCss);
+        }
+        if (request.method === "HEAD") return new Response(null, {
+            headers: response.headers,
+            status: response.status,
+            statusText: response.statusText
+        });
+        return response;
+    };
+};
+async function handleManifestRequest(build, routes, url) {
+    if (build.assets.version !== url.searchParams.get("version")) return new Response(null, {
+        status: 204,
+        headers: {
+            "X-Remix-Reload-Document": "true"
+        }
+    });
+    let patches = {};
+    if (url.searchParams.has("paths")) {
+        let paths = /* @__PURE__ */ new Set();
+        let pathParam = url.searchParams.get("paths") || "";
+        let requestedPaths = pathParam.split(",").filter(Boolean);
+        requestedPaths.forEach((path)=>{
+            if (!path.startsWith("/")) path = `/${path}`;
+            let segments = path.split("/").slice(1);
+            segments.forEach((_, i)=>{
+                let partialPath = segments.slice(0, i + 1).join("/");
+                paths.add(`/${partialPath}`);
+            });
+        });
+        for (let path of paths){
+            let matches = matchServerRoutes(routes, path, build.basename);
+            if (matches) for (let match of matches){
+                let routeId = match.route.id;
+                let route = build.assets.routes[routeId];
+                if (route) patches[routeId] = route;
+            }
+        }
+        return Response.json(patches, {
+            headers: {
+                "Cache-Control": "public, max-age=31536000, immutable"
+            }
+        });
+    }
+    return new Response("Invalid Request", {
+        status: 400
+    });
+}
+async function handleSingleFetchRequest(serverMode, build, staticHandler, request, handlerUrl, loadContext, handleError) {
+    let response = request.method !== "GET" ? await singleFetchAction(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) : await singleFetchLoaders(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError);
+    return response;
+}
+async function handleDocumentRequest(serverMode, build, staticHandler, request, loadContext, handleError, isSpaMode, criticalCss) {
+    try {
+        let result = await staticHandler.query(request, {
+            requestContext: loadContext,
+            generateMiddlewareResponse: build.future.v8_middleware ? async (query)=>{
+                try {
+                    let innerResult = await query(request);
+                    if (!(0, _chunkNISHYRIKMjs.isResponse)(innerResult)) innerResult = await renderHtml(innerResult, isSpaMode);
+                    return innerResult;
+                } catch (error) {
+                    handleError(error);
+                    return new Response(null, {
+                        status: 500
+                    });
+                }
+            } : void 0
+        });
+        if (!(0, _chunkNISHYRIKMjs.isResponse)(result)) result = await renderHtml(result, isSpaMode);
+        return result;
+    } catch (error) {
+        handleError(error);
+        return new Response(null, {
+            status: 500
+        });
+    }
+    async function renderHtml(context, isSpaMode2) {
+        let headers = getDocumentHeaders(context, build);
+        if (SERVER_NO_BODY_STATUS_CODES.has(context.statusCode)) return new Response(null, {
+            status: context.statusCode,
+            headers
+        });
+        if (context.errors) {
+            Object.values(context.errors).forEach((err)=>{
+                if (!(0, _chunkNISHYRIKMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
+            });
+            context.errors = sanitizeErrors(context.errors, serverMode);
+        }
+        let state = {
+            loaderData: context.loaderData,
+            actionData: context.actionData,
+            errors: serializeErrors(context.errors, serverMode)
+        };
+        let baseServerHandoff = {
+            basename: build.basename,
+            future: build.future,
+            routeDiscovery: build.routeDiscovery,
+            ssr: build.ssr,
+            isSpaMode: isSpaMode2
+        };
+        let entryContext = {
+            manifest: build.assets,
+            routeModules: createEntryRouteModules(build.routes),
+            staticHandlerContext: context,
+            criticalCss,
+            serverHandoffString: createServerHandoffString({
+                ...baseServerHandoff,
+                criticalCss
+            }),
+            serverHandoffStream: encodeViaTurboStream(state, request.signal, build.entry.module.streamTimeout, serverMode),
+            renderMeta: {},
+            future: build.future,
+            ssr: build.ssr,
+            routeDiscovery: build.routeDiscovery,
+            isSpaMode: isSpaMode2,
+            serializeError: (err)=>serializeError(err, serverMode)
+        };
+        let handleDocumentRequestFunction = build.entry.module.default;
+        try {
+            return await handleDocumentRequestFunction(request, context.statusCode, headers, entryContext, loadContext);
+        } catch (error) {
+            handleError(error);
+            let errorForSecondRender = error;
+            if ((0, _chunkNISHYRIKMjs.isResponse)(error)) try {
+                let data2 = await unwrapResponse(error);
+                errorForSecondRender = new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(error.status, error.statusText, data2);
+            } catch (e) {}
+            context = (0, _chunkNISHYRIKMjs.getStaticContextFromError)(staticHandler.dataRoutes, context, errorForSecondRender);
+            if (context.errors) context.errors = sanitizeErrors(context.errors, serverMode);
+            let state2 = {
+                loaderData: context.loaderData,
+                actionData: context.actionData,
+                errors: serializeErrors(context.errors, serverMode)
+            };
+            entryContext = {
+                ...entryContext,
+                staticHandlerContext: context,
+                serverHandoffString: createServerHandoffString(baseServerHandoff),
+                serverHandoffStream: encodeViaTurboStream(state2, request.signal, build.entry.module.streamTimeout, serverMode),
+                renderMeta: {}
+            };
+            try {
+                return await handleDocumentRequestFunction(request, context.statusCode, headers, entryContext, loadContext);
+            } catch (error2) {
+                handleError(error2);
+                return returnLastResortErrorResponse(error2, serverMode);
+            }
+        }
+    }
+}
+async function handleResourceRequest(serverMode, build, staticHandler, routeId, request, loadContext, handleError) {
+    try {
+        let result = await staticHandler.queryRoute(request, {
+            routeId,
+            requestContext: loadContext,
+            generateMiddlewareResponse: build.future.v8_middleware ? async (queryRoute)=>{
+                try {
+                    let innerResult = await queryRoute(request);
+                    return handleQueryRouteResult(innerResult);
+                } catch (error) {
+                    return handleQueryRouteError(error);
+                }
+            } : void 0
+        });
+        return handleQueryRouteResult(result);
+    } catch (error) {
+        return handleQueryRouteError(error);
+    }
+    function handleQueryRouteResult(result) {
+        if ((0, _chunkNISHYRIKMjs.isResponse)(result)) return result;
+        if (typeof result === "string") return new Response(result);
+        return Response.json(result);
+    }
+    function handleQueryRouteError(error) {
+        if ((0, _chunkNISHYRIKMjs.isResponse)(error)) return error;
+        if ((0, _chunkNISHYRIKMjs.isRouteErrorResponse)(error)) {
+            handleError(error);
+            return errorResponseToJson(error, serverMode);
+        }
+        if (error instanceof Error && error.message === "Expected a response from queryRoute") {
+            let newError = new Error("Expected a Response to be returned from resource route handler");
+            handleError(newError);
+            return returnLastResortErrorResponse(newError, serverMode);
+        }
+        handleError(error);
+        return returnLastResortErrorResponse(error, serverMode);
+    }
+}
+function errorResponseToJson(errorResponse, serverMode) {
+    return Response.json(serializeError(// @ts-expect-error This is "private" from users but intended for internal use
+    errorResponse.error || new Error("Unexpected Server Error"), serverMode), {
+        status: errorResponse.status,
+        statusText: errorResponse.statusText
+    });
+}
+function returnLastResortErrorResponse(error, serverMode) {
+    let message = "Unexpected Server Error";
+    if (serverMode !== "production" /* Production */ ) message += `
+
+${String(error)}`;
+    return new Response(message, {
+        status: 500,
+        headers: {
+            "Content-Type": "text/plain"
+        }
+    });
+}
+function unwrapResponse(response) {
+    let contentType = response.headers.get("Content-Type");
+    return contentType && /\bapplication\/json\b/.test(contentType) ? response.body == null ? null : response.json() : response.text();
+}
+// lib/server-runtime/sessions.ts
+function flash(name) {
+    return `__flash_${name}__`;
+}
+var createSession = (initialData = {}, id = "")=>{
+    let map = new Map(Object.entries(initialData));
+    return {
+        get id () {
+            return id;
+        },
+        get data () {
+            return Object.fromEntries(map);
+        },
+        has (name) {
+            return map.has(name) || map.has(flash(name));
+        },
+        get (name) {
+            if (map.has(name)) return map.get(name);
+            let flashName = flash(name);
+            if (map.has(flashName)) {
+                let value = map.get(flashName);
+                map.delete(flashName);
+                return value;
+            }
+            return void 0;
+        },
+        set (name, value) {
+            map.set(name, value);
+        },
+        flash (name, value) {
+            map.set(flash(name), value);
+        },
+        unset (name) {
+            map.delete(name);
+        }
+    };
+};
+var isSession = (object)=>{
+    return object != null && typeof object.id === "string" && typeof object.data !== "undefined" && typeof object.has === "function" && typeof object.get === "function" && typeof object.set === "function" && typeof object.flash === "function" && typeof object.unset === "function";
+};
+function createSessionStorage({ cookie: cookieArg, createData, readData, updateData, deleteData }) {
+    let cookie = isCookie(cookieArg) ? cookieArg : createCookie(cookieArg?.name || "__session", cookieArg);
+    warnOnceAboutSigningSessionCookie(cookie);
+    return {
+        async getSession (cookieHeader, options) {
+            let id = cookieHeader && await cookie.parse(cookieHeader, options);
+            let data2 = id && await readData(id);
+            return createSession(data2 || {}, id || "");
+        },
+        async commitSession (session, options) {
+            let { id, data: data2 } = session;
+            let expires = options?.maxAge != null ? new Date(Date.now() + options.maxAge * 1e3) : options?.expires != null ? options.expires : cookie.expires;
+            if (id) await updateData(id, data2, expires);
+            else id = await createData(data2, expires);
+            return cookie.serialize(id, options);
+        },
+        async destroySession (session, options) {
+            await deleteData(session.id);
+            return cookie.serialize("", {
+                ...options,
+                maxAge: void 0,
+                expires: /* @__PURE__ */ new Date(0)
+            });
+        }
+    };
+}
+function warnOnceAboutSigningSessionCookie(cookie) {
+    (0, _chunkNISHYRIKMjs.warnOnce)(cookie.isSigned, `The "${cookie.name}" cookie is not signed, but session cookies should be signed to prevent tampering on the client before they are sent back to the server. See https://reactrouter.com/explanation/sessions-and-cookies#signing-cookies for more information.`);
+}
+// lib/server-runtime/sessions/cookieStorage.ts
+function createCookieSessionStorage({ cookie: cookieArg } = {}) {
+    let cookie = isCookie(cookieArg) ? cookieArg : createCookie(cookieArg?.name || "__session", cookieArg);
+    warnOnceAboutSigningSessionCookie(cookie);
+    return {
+        async getSession (cookieHeader, options) {
+            return createSession(cookieHeader && await cookie.parse(cookieHeader, options) || {});
+        },
+        async commitSession (session, options) {
+            let serializedCookie = await cookie.serialize(session.data, options);
+            if (serializedCookie.length > 4096) throw new Error("Cookie length will exceed browser maximum. Length: " + serializedCookie.length);
+            return serializedCookie;
+        },
+        async destroySession (_session, options) {
+            return cookie.serialize("", {
+                ...options,
+                maxAge: void 0,
+                expires: /* @__PURE__ */ new Date(0)
+            });
+        }
+    };
+}
+// lib/server-runtime/sessions/memoryStorage.ts
+function createMemorySessionStorage({ cookie } = {}) {
+    let map = /* @__PURE__ */ new Map();
+    return createSessionStorage({
+        cookie,
+        async createData (data2, expires) {
+            let id = Math.random().toString(36).substring(2, 10);
+            map.set(id, {
+                data: data2,
+                expires
+            });
+            return id;
+        },
+        async readData (id) {
+            if (map.has(id)) {
+                let { data: data2, expires } = map.get(id);
+                if (!expires || expires > /* @__PURE__ */ new Date()) return data2;
+                if (expires) map.delete(id);
+            }
+            return null;
+        },
+        async updateData (id, data2, expires) {
+            map.set(id, {
+                data: data2,
+                expires
+            });
+        },
+        async deleteData (id) {
+            map.delete(id);
+        }
+    });
+}
+// lib/href.ts
+function href(path, ...args) {
+    let params = args[0];
+    let result = path.replace(/\/*\*?$/, "").replace(/\/:([\w-]+)(\?)?/g, // same regex as in .\router\utils.ts: compilePath().
+    (_, param, questionMark)=>{
+        const isRequired = questionMark === void 0;
+        const value = params ? params[param] : void 0;
+        if (isRequired && value === void 0) throw new Error(`Path '${path}' requires param '${param}' but it was not provided`);
+        return value === void 0 ? "" : "/" + value;
+    });
+    if (path.endsWith("*")) {
+        const value = params ? params["*"] : void 0;
+        if (value !== void 0) result += "/" + value;
+    }
+    return result || "/";
+}
+// lib/dom/ssr/hydration.tsx
+function getHydrationData({ state, routes, getRouteInfo, location: location2, basename, isSpaMode }) {
+    let hydrationData = {
+        ...state,
+        loaderData: {
+            ...state.loaderData
+        }
+    };
+    let initialMatches = (0, _chunkNISHYRIKMjs.matchRoutes)(routes, location2, basename);
+    if (initialMatches) for (let match of initialMatches){
+        let routeId = match.route.id;
+        let routeInfo = getRouteInfo(routeId);
+        if ((0, _chunkNISHYRIKMjs.shouldHydrateRouteLoader)(routeId, routeInfo.clientLoader, routeInfo.hasLoader, isSpaMode) && (routeInfo.hasHydrateFallback || !routeInfo.hasLoader)) delete hydrationData.loaderData[routeId];
+        else if (!routeInfo.hasLoader) hydrationData.loaderData[routeId] = null;
+    }
+    return hydrationData;
+}
+var RSCRouterGlobalErrorBoundary = class extends (0, _reactDefault.default).Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            error: null,
+            location: props.location
+        };
+    }
+    static getDerivedStateFromError(error) {
+        return {
+            error
+        };
+    }
+    static getDerivedStateFromProps(props, state) {
+        if (state.location !== props.location) return {
+            error: null,
+            location: props.location
+        };
+        return {
+            error: state.error,
+            location: state.location
+        };
+    }
+    render() {
+        if (this.state.error) return /* @__PURE__ */ (0, _reactDefault.default).createElement(RSCDefaultRootErrorBoundaryImpl, {
+            error: this.state.error,
+            renderAppShell: true
+        });
+        else return this.props.children;
+    }
+};
+function ErrorWrapper({ renderAppShell, title, children }) {
+    if (!renderAppShell) return children;
+    return /* @__PURE__ */ (0, _reactDefault.default).createElement("html", {
+        lang: "en"
+    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("head", null, /* @__PURE__ */ (0, _reactDefault.default).createElement("meta", {
+        charSet: "utf-8"
+    }), /* @__PURE__ */ (0, _reactDefault.default).createElement("meta", {
+        name: "viewport",
+        content: "width=device-width,initial-scale=1,viewport-fit=cover"
+    }), /* @__PURE__ */ (0, _reactDefault.default).createElement("title", null, title)), /* @__PURE__ */ (0, _reactDefault.default).createElement("body", null, /* @__PURE__ */ (0, _reactDefault.default).createElement("main", {
+        style: {
+            fontFamily: "system-ui, sans-serif",
+            padding: "2rem"
+        }
+    }, children)));
+}
+function RSCDefaultRootErrorBoundaryImpl({ error, renderAppShell }) {
+    console.error(error);
+    let heyDeveloper = /* @__PURE__ */ (0, _reactDefault.default).createElement("script", {
+        dangerouslySetInnerHTML: {
+            __html: `
+        console.log(
+          "\u{1F4BF} Hey developer \u{1F44B}. You can provide a way better UX than this when your app throws errors. Check out https://reactrouter.com/how-to/error-boundary for more information."
+        );
+      `
+        }
+    });
+    if ((0, _chunkNISHYRIKMjs.isRouteErrorResponse)(error)) return /* @__PURE__ */ (0, _reactDefault.default).createElement(ErrorWrapper, {
+        renderAppShell,
+        title: "Unhandled Thrown Response!"
+    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("h1", {
+        style: {
+            fontSize: "24px"
+        }
+    }, error.status, " ", error.statusText), (0, _chunkNISHYRIKMjs.ENABLE_DEV_WARNINGS) ? heyDeveloper : null);
+    let errorInstance;
+    if (error instanceof Error) errorInstance = error;
+    else {
+        let errorString = error == null ? "Unknown Error" : typeof error === "object" && "toString" in error ? error.toString() : JSON.stringify(error);
+        errorInstance = new Error(errorString);
+    }
+    return /* @__PURE__ */ (0, _reactDefault.default).createElement(ErrorWrapper, {
+        renderAppShell,
+        title: "Application Error!"
+    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("h1", {
+        style: {
+            fontSize: "24px"
+        }
+    }, "Application Error"), /* @__PURE__ */ (0, _reactDefault.default).createElement("pre", {
+        style: {
+            padding: "2rem",
+            background: "hsla(10, 50%, 50%, 0.1)",
+            color: "red",
+            overflow: "auto"
+        }
+    }, errorInstance.stack), heyDeveloper);
+}
+function RSCDefaultRootErrorBoundary({ hasRootLayout }) {
+    let error = (0, _chunkNISHYRIKMjs.useRouteError)();
+    if (hasRootLayout === void 0) throw new Error("Missing 'hasRootLayout' prop");
+    return /* @__PURE__ */ (0, _reactDefault.default).createElement(RSCDefaultRootErrorBoundaryImpl, {
+        renderAppShell: !hasRootLayout,
+        error
+    });
+}
+// lib/rsc/route-modules.ts
+function createRSCRouteModules(payload) {
+    const routeModules = {};
+    for (const match of payload.matches)populateRSCRouteModules(routeModules, match);
+    return routeModules;
+}
+function populateRSCRouteModules(routeModules, matches) {
+    matches = Array.isArray(matches) ? matches : [
+        matches
+    ];
+    for (const match of matches)routeModules[match.id] = {
+        links: match.links,
+        meta: match.meta,
+        default: noopComponent
+    };
+}
+var noopComponent = ()=>null;
+// lib/rsc/browser.tsx
+function createCallServer({ createFromReadableStream, createTemporaryReferenceSet, encodeReply, fetch: fetchImplementation = fetch }) {
+    const globalVar = window;
+    let landedActionId = 0;
+    return async (id, args)=>{
+        let actionId = globalVar.__routerActionID = (globalVar.__routerActionID ?? (globalVar.__routerActionID = 0)) + 1;
+        const temporaryReferences = createTemporaryReferenceSet();
+        const payloadPromise = fetchImplementation(new Request(location.href, {
+            body: await encodeReply(args, {
+                temporaryReferences
+            }),
+            method: "POST",
+            headers: {
+                Accept: "text/x-component",
+                "rsc-action-id": id
+            }
+        })).then((response)=>{
+            if (!response.body) throw new Error("No response body");
+            return createFromReadableStream(response.body, {
+                temporaryReferences
+            });
+        });
+        globalVar.__reactRouterDataRouter.__setPendingRerender(Promise.resolve(payloadPromise).then(async (payload)=>{
+            if (payload.type === "redirect") {
+                if (payload.reload) {
+                    window.location.href = payload.location;
+                    return ()=>{};
+                }
+                return ()=>{
+                    globalVar.__reactRouterDataRouter.navigate(payload.location, {
+                        replace: payload.replace
+                    });
+                };
+            }
+            if (payload.type !== "action") throw new Error("Unexpected payload type");
+            const rerender = await payload.rerender;
+            if (rerender && landedActionId < actionId && globalVar.__routerActionID <= actionId) {
+                if (rerender.type === "redirect") {
+                    if (rerender.reload) {
+                        window.location.href = rerender.location;
+                        return;
+                    }
+                    return ()=>{
+                        globalVar.__reactRouterDataRouter.navigate(rerender.location, {
+                            replace: rerender.replace
+                        });
+                    };
+                }
+                return ()=>{
+                    let lastMatch;
+                    for (const match of rerender.matches){
+                        globalVar.__reactRouterDataRouter.patchRoutes(lastMatch?.id ?? null, [
+                            createRouteFromServerManifest(match)
+                        ], true);
+                        lastMatch = match;
+                    }
+                    window.__reactRouterDataRouter._internalSetStateDoNotUseOrYouWillBreakYourApp({
+                        loaderData: Object.assign({}, globalVar.__reactRouterDataRouter.state.loaderData, rerender.loaderData),
+                        errors: rerender.errors ? Object.assign({}, globalVar.__reactRouterDataRouter.state.errors, rerender.errors) : null
+                    });
+                };
+            }
+            return ()=>{};
+        }).catch(()=>{}));
+        return payloadPromise.then((payload)=>{
+            if (payload.type !== "action" && payload.type !== "redirect") throw new Error("Unexpected payload type");
+            return payload.actionResult;
+        });
+    };
+}
+function createRouterFromPayload({ fetchImplementation, createFromReadableStream, getContext, payload }) {
+    const globalVar = window;
+    if (globalVar.__reactRouterDataRouter && globalVar.__reactRouterRouteModules) return {
+        router: globalVar.__reactRouterDataRouter,
+        routeModules: globalVar.__reactRouterRouteModules
+    };
+    if (payload.type !== "render") throw new Error("Invalid payload type");
+    globalVar.__reactRouterRouteModules = globalVar.__reactRouterRouteModules ?? {};
+    populateRSCRouteModules(globalVar.__reactRouterRouteModules, payload.matches);
+    let patches = /* @__PURE__ */ new Map();
+    payload.patches?.forEach((patch)=>{
+        (0, _chunkNISHYRIKMjs.invariant)(patch.parentId, "Invalid patch parentId");
+        if (!patches.has(patch.parentId)) patches.set(patch.parentId, []);
+        patches.get(patch.parentId)?.push(patch);
+    });
+    let routes = payload.matches.reduceRight((previous, match)=>{
+        const route = createRouteFromServerManifest(match, payload);
+        if (previous.length > 0) {
+            route.children = previous;
+            let childrenToPatch = patches.get(match.id);
+            if (childrenToPatch) route.children.push(...childrenToPatch.map((r)=>createRouteFromServerManifest(r)));
+        }
+        return [
+            route
+        ];
+    }, []);
+    globalVar.__reactRouterDataRouter = (0, _chunkNISHYRIKMjs.createRouter)({
+        routes,
+        getContext,
+        basename: payload.basename,
+        history: (0, _chunkNISHYRIKMjs.createBrowserHistory)(),
+        hydrationData: getHydrationData({
+            state: {
+                loaderData: payload.loaderData,
+                actionData: payload.actionData,
+                errors: payload.errors
+            },
+            routes,
+            getRouteInfo: (routeId)=>{
+                let match = payload.matches.find((m)=>m.id === routeId);
+                (0, _chunkNISHYRIKMjs.invariant)(match, "Route not found in payload");
+                return {
+                    clientLoader: match.clientLoader,
+                    hasLoader: match.hasLoader,
+                    hasHydrateFallback: match.hydrateFallbackElement != null
+                };
+            },
+            location: payload.location,
+            basename: payload.basename,
+            isSpaMode: false
+        }),
+        async patchRoutesOnNavigation ({ path, signal }) {
+            if (discoveredPaths.has(path)) return;
+            await fetchAndApplyManifestPatches([
+                path
+            ], createFromReadableStream, fetchImplementation, signal);
+        },
+        // FIXME: Pass `build.ssr` into this function
+        dataStrategy: getRSCSingleFetchDataStrategy(()=>globalVar.__reactRouterDataRouter, true, payload.basename, createFromReadableStream, fetchImplementation)
+    });
+    if (globalVar.__reactRouterDataRouter.state.initialized) {
+        globalVar.__routerInitialized = true;
+        globalVar.__reactRouterDataRouter.initialize();
+    } else globalVar.__routerInitialized = false;
+    let lastLoaderData = void 0;
+    globalVar.__reactRouterDataRouter.subscribe(({ loaderData, actionData })=>{
+        if (lastLoaderData !== loaderData) globalVar.__routerActionID = (globalVar.__routerActionID ?? (globalVar.__routerActionID = 0)) + 1;
+    });
+    globalVar.__reactRouterDataRouter._updateRoutesForHMR = (routeUpdateByRouteId)=>{
+        const oldRoutes = window.__reactRouterDataRouter.routes;
+        const newRoutes = [];
+        function walkRoutes(routes2, parentId) {
+            return routes2.map((route)=>{
+                const routeUpdate = routeUpdateByRouteId.get(route.id);
+                if (routeUpdate) {
+                    const { routeModule, hasAction, hasComponent, hasErrorBoundary, hasLoader } = routeUpdate;
+                    const newRoute = createRouteFromServerManifest({
+                        clientAction: routeModule.clientAction,
+                        clientLoader: routeModule.clientLoader,
+                        element: route.element,
+                        errorElement: route.errorElement,
+                        handle: route.handle,
+                        hasAction,
+                        hasComponent,
+                        hasErrorBoundary,
+                        hasLoader,
+                        hydrateFallbackElement: route.hydrateFallbackElement,
+                        id: route.id,
+                        index: route.index,
+                        links: routeModule.links,
+                        meta: routeModule.meta,
+                        parentId,
+                        path: route.path,
+                        shouldRevalidate: routeModule.shouldRevalidate
+                    });
+                    if (route.children) newRoute.children = walkRoutes(route.children, route.id);
+                    return newRoute;
+                }
+                const updatedRoute = {
+                    ...route
+                };
+                if (route.children) updatedRoute.children = walkRoutes(route.children, route.id);
+                return updatedRoute;
+            });
+        }
+        newRoutes.push(...walkRoutes(oldRoutes, void 0));
+        window.__reactRouterDataRouter._internalSetRoutes(newRoutes);
+    };
+    return {
+        router: globalVar.__reactRouterDataRouter,
+        routeModules: globalVar.__reactRouterRouteModules
+    };
+}
+var renderedRoutesContext = (0, _chunkNISHYRIKMjs.createContext)();
+function getRSCSingleFetchDataStrategy(getRouter, ssr, basename, createFromReadableStream, fetchImplementation) {
+    let dataStrategy = (0, _chunkNISHYRIKMjs.getSingleFetchDataStrategyImpl)(getRouter, (match)=>{
+        let M = match;
+        return {
+            hasLoader: M.route.hasLoader,
+            hasClientLoader: M.route.hasClientLoader,
+            hasComponent: M.route.hasComponent,
+            hasAction: M.route.hasAction,
+            hasClientAction: M.route.hasClientAction,
+            hasShouldRevalidate: M.route.hasShouldRevalidate
+        };
+    }, // pass map into fetchAndDecode so it can add payloads
+    getFetchAndDecodeViaRSC(createFromReadableStream, fetchImplementation), ssr, basename, // If the route has a component but we don't have an element, we need to hit
+    // the server loader flow regardless of whether the client loader calls
+    // `serverLoader` or not, otherwise we'll have nothing to render.
+    (match)=>{
+        let M = match;
+        return M.route.hasComponent && !M.route.element;
+    });
+    return async (args)=>args.runClientMiddleware(async ()=>{
+            let context = args.context;
+            context.set(renderedRoutesContext, []);
+            let results = await dataStrategy(args);
+            const renderedRoutesById = /* @__PURE__ */ new Map();
+            for (const route of context.get(renderedRoutesContext)){
+                if (!renderedRoutesById.has(route.id)) renderedRoutesById.set(route.id, []);
+                renderedRoutesById.get(route.id).push(route);
+            }
+            for (const match of args.matches){
+                const renderedRoutes = renderedRoutesById.get(match.route.id);
+                if (renderedRoutes) for (const rendered of renderedRoutes)window.__reactRouterDataRouter.patchRoutes(rendered.parentId ?? null, [
+                    createRouteFromServerManifest(rendered)
+                ], true);
+            }
+            return results;
+        });
+}
+function getFetchAndDecodeViaRSC(createFromReadableStream, fetchImplementation) {
+    return async (args, basename, targetRoutes)=>{
+        let { request, context } = args;
+        let url = (0, _chunkNISHYRIKMjs.singleFetchUrl)(request.url, basename, "rsc");
+        if (request.method === "GET") {
+            url = (0, _chunkNISHYRIKMjs.stripIndexParam)(url);
+            if (targetRoutes) url.searchParams.set("_routes", targetRoutes.join(","));
+        }
+        let res = await fetchImplementation(new Request(url, await (0, _chunkNISHYRIKMjs.createRequestInit)(request)));
+        if (res.status >= 400 && !res.headers.has("X-Remix-Response")) throw new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(res.status, res.statusText, await res.text());
+        (0, _chunkNISHYRIKMjs.invariant)(res.body, "No response body to decode");
+        try {
+            const payload = await createFromReadableStream(res.body, {
+                temporaryReferences: void 0
+            });
+            if (payload.type === "redirect") return {
+                status: res.status,
+                data: {
+                    redirect: {
+                        redirect: payload.location,
+                        reload: payload.reload,
+                        replace: payload.replace,
+                        revalidate: false,
+                        status: payload.status
+                    }
+                }
+            };
+            if (payload.type !== "render") throw new Error("Unexpected payload type");
+            context.get(renderedRoutesContext).push(...payload.matches);
+            let results = {
+                routes: {}
+            };
+            const dataKey = (0, _chunkNISHYRIKMjs.isMutationMethod)(request.method) ? "actionData" : "loaderData";
+            for (let [routeId, data2] of Object.entries(payload[dataKey] || {}))results.routes[routeId] = {
+                data: data2
+            };
+            if (payload.errors) for (let [routeId, error] of Object.entries(payload.errors))results.routes[routeId] = {
+                error
+            };
+            return {
+                status: res.status,
+                data: results
+            };
+        } catch (e) {
+            throw new Error("Unable to decode RSC response");
+        }
+    };
+}
+function RSCHydratedRouter({ createFromReadableStream, fetch: fetchImplementation = fetch, payload, routeDiscovery = "eager", getContext }) {
+    if (payload.type !== "render") throw new Error("Invalid payload type");
+    let { router, routeModules } = _react.useMemo(()=>createRouterFromPayload({
+            payload,
+            fetchImplementation,
+            getContext,
+            createFromReadableStream
+        }), [
+        createFromReadableStream,
+        payload,
+        fetchImplementation,
+        getContext
+    ]);
+    _react.useEffect(()=>{
+        (0, _chunkNISHYRIKMjs.setIsHydrated)();
+    }, []);
+    _react.useLayoutEffect(()=>{
+        const globalVar = window;
+        if (!globalVar.__routerInitialized) {
+            globalVar.__routerInitialized = true;
+            globalVar.__reactRouterDataRouter.initialize();
+        }
+    }, []);
+    let [location2, setLocation] = _react.useState(router.state.location);
+    _react.useLayoutEffect(()=>router.subscribe((newState)=>{
+            if (newState.location !== location2) setLocation(newState.location);
+        }), [
+        router,
+        location2
+    ]);
+    _react.useEffect(()=>{
+        if (routeDiscovery === "lazy" || // @ts-expect-error - TS doesn't know about this yet
+        window.navigator?.connection?.saveData === true) return;
+        function registerElement(el) {
+            let path = el.tagName === "FORM" ? el.getAttribute("action") : el.getAttribute("href");
+            if (!path) return;
+            let pathname = el.tagName === "A" ? el.pathname : new URL(path, window.location.origin).pathname;
+            if (!discoveredPaths.has(pathname)) nextPaths.add(pathname);
+        }
+        async function fetchPatches() {
+            document.querySelectorAll("a[data-discover], form[data-discover]").forEach(registerElement);
+            let paths = Array.from(nextPaths.keys()).filter((path)=>{
+                if (discoveredPaths.has(path)) {
+                    nextPaths.delete(path);
+                    return false;
+                }
+                return true;
+            });
+            if (paths.length === 0) return;
+            try {
+                await fetchAndApplyManifestPatches(paths, createFromReadableStream, fetchImplementation);
+            } catch (e) {
+                console.error("Failed to fetch manifest patches", e);
+            }
+        }
+        let debouncedFetchPatches = debounce(fetchPatches, 100);
+        fetchPatches();
+        let observer = new MutationObserver(()=>debouncedFetchPatches());
+        observer.observe(document.documentElement, {
+            subtree: true,
+            childList: true,
+            attributes: true,
+            attributeFilter: [
+                "data-discover",
+                "href",
+                "action"
+            ]
+        });
+    }, [
+        routeDiscovery,
+        createFromReadableStream,
+        fetchImplementation
+    ]);
+    const frameworkContext = {
+        future: {
+            // These flags have no runtime impact so can always be false.  If we add
+            // flags that drive runtime behavior they'll need to be proxied through.
+            v8_middleware: false,
+            unstable_subResourceIntegrity: false
+        },
+        isSpaMode: false,
+        ssr: true,
+        criticalCss: "",
+        manifest: {
+            routes: {},
+            version: "1",
+            url: "",
+            entry: {
+                module: "",
+                imports: []
+            }
+        },
+        routeDiscovery: {
+            mode: "lazy",
+            manifestPath: "/__manifest"
+        },
+        routeModules
+    };
+    return /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.RSCRouterContext).Provider, {
+        value: true
+    }, /* @__PURE__ */ _react.createElement(RSCRouterGlobalErrorBoundary, {
+        location: location2
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.FrameworkContext).Provider, {
+        value: frameworkContext
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.UNSTABLE_TransitionEnabledRouterProvider), {
+        router,
+        flushSync: _reactDom.flushSync
+    }))));
+}
+function createRouteFromServerManifest(match, payload) {
+    let hasInitialData = payload && match.id in payload.loaderData;
+    let initialData = payload?.loaderData[match.id];
+    let hasInitialError = payload?.errors && match.id in payload.errors;
+    let initialError = payload?.errors?.[match.id];
+    let isHydrationRequest = match.clientLoader?.hydrate === true || !match.hasLoader || // If the route has a component but we don't have an element, we need to hit
+    // the server loader flow regardless of whether the client loader calls
+    // `serverLoader` or not, otherwise we'll have nothing to render.
+    match.hasComponent && !match.element;
+    (0, _chunkNISHYRIKMjs.invariant)(window.__reactRouterRouteModules);
+    populateRSCRouteModules(window.__reactRouterRouteModules, match);
+    let dataRoute = {
+        id: match.id,
+        element: match.element,
+        errorElement: match.errorElement,
+        handle: match.handle,
+        hasErrorBoundary: match.hasErrorBoundary,
+        hydrateFallbackElement: match.hydrateFallbackElement,
+        index: match.index,
+        loader: match.clientLoader ? async (args, singleFetch)=>{
+            try {
+                let result = await match.clientLoader({
+                    ...args,
+                    serverLoader: ()=>{
+                        preventInvalidServerHandlerCall("loader", match.id, match.hasLoader);
+                        if (isHydrationRequest) {
+                            if (hasInitialData) return initialData;
+                            if (hasInitialError) throw initialError;
+                        }
+                        return callSingleFetch(singleFetch);
+                    }
+                });
+                return result;
+            } finally{
+                isHydrationRequest = false;
+            }
+        } : // We always make the call in this RSC world since even if we don't
+        // have a `loader` we may need to get the `element` implementation
+        (_, singleFetch)=>callSingleFetch(singleFetch),
+        action: match.clientAction ? (args, singleFetch)=>match.clientAction({
+                ...args,
+                serverAction: async ()=>{
+                    preventInvalidServerHandlerCall("action", match.id, match.hasLoader);
+                    return await callSingleFetch(singleFetch);
+                }
+            }) : match.hasAction ? (_, singleFetch)=>callSingleFetch(singleFetch) : ()=>{
+            throw (0, _chunkNISHYRIKMjs.noActionDefinedError)("action", match.id);
+        },
+        path: match.path,
+        shouldRevalidate: match.shouldRevalidate,
+        // We always have a "loader" in this RSC world since even if we don't
+        // have a `loader` we may need to get the `element` implementation
+        hasLoader: true,
+        hasClientLoader: match.clientLoader != null,
+        hasAction: match.hasAction,
+        hasClientAction: match.clientAction != null,
+        hasShouldRevalidate: match.shouldRevalidate != null
+    };
+    if (typeof dataRoute.loader === "function") dataRoute.loader.hydrate = (0, _chunkNISHYRIKMjs.shouldHydrateRouteLoader)(match.id, match.clientLoader, match.hasLoader, false);
+    return dataRoute;
+}
+function callSingleFetch(singleFetch) {
+    (0, _chunkNISHYRIKMjs.invariant)(typeof singleFetch === "function", "Invalid singleFetch parameter");
+    return singleFetch();
+}
+function preventInvalidServerHandlerCall(type, routeId, hasHandler) {
+    if (!hasHandler) {
+        let fn = type === "action" ? "serverAction()" : "serverLoader()";
+        let msg = `You are trying to call ${fn} on a route that does not have a server ${type} (routeId: "${routeId}")`;
+        console.error(msg);
+        throw new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(400, "Bad Request", new Error(msg), true);
+    }
+}
+var nextPaths = /* @__PURE__ */ new Set();
+var discoveredPathsMaxSize = 1e3;
+var discoveredPaths = /* @__PURE__ */ new Set();
+var URL_LIMIT = 7680;
+function getManifestUrl(paths) {
+    if (paths.length === 0) return null;
+    if (paths.length === 1) return new URL(`${paths[0]}.manifest`, window.location.origin);
+    const globalVar = window;
+    let basename = (globalVar.__reactRouterDataRouter.basename ?? "").replace(/^\/|\/$/g, "");
+    let url = new URL(`${basename}/.manifest`, window.location.origin);
+    url.searchParams.set("paths", paths.sort().join(","));
+    return url;
+}
+async function fetchAndApplyManifestPatches(paths, createFromReadableStream, fetchImplementation, signal) {
+    let url = getManifestUrl(paths);
+    if (url == null) return;
+    if (url.toString().length > URL_LIMIT) {
+        nextPaths.clear();
+        return;
+    }
+    let response = await fetchImplementation(new Request(url, {
+        signal
+    }));
+    if (!response.body || response.status < 200 || response.status >= 300) throw new Error("Unable to fetch new route matches from the server");
+    let payload = await createFromReadableStream(response.body, {
+        temporaryReferences: void 0
+    });
+    if (payload.type !== "manifest") throw new Error("Failed to patch routes");
+    paths.forEach((p)=>addToFifoQueue(p, discoveredPaths));
+    payload.patches.forEach((p)=>{
+        window.__reactRouterDataRouter.patchRoutes(p.parentId ?? null, [
+            createRouteFromServerManifest(p)
+        ]);
+    });
+}
+function addToFifoQueue(path, queue) {
+    if (queue.size >= discoveredPathsMaxSize) {
+        let first = queue.values().next().value;
+        queue.delete(first);
+    }
+    queue.add(path);
+}
+function debounce(callback, wait) {
+    let timeoutId;
+    return (...args)=>{
+        window.clearTimeout(timeoutId);
+        timeoutId = window.setTimeout(()=>callback(...args), wait);
+    };
+}
+// lib/rsc/html-stream/server.ts
+var encoder2 = new TextEncoder();
+var trailer = "</body></html>";
+function injectRSCPayload(rscStream) {
+    let decoder = new TextDecoder();
+    let resolveFlightDataPromise;
+    let flightDataPromise = new Promise((resolve)=>resolveFlightDataPromise = resolve);
+    let startedRSC = false;
+    let buffered = [];
+    let timeout = null;
+    function flushBufferedChunks(controller) {
+        for (let chunk of buffered){
+            let buf = decoder.decode(chunk, {
+                stream: true
+            });
+            if (buf.endsWith(trailer)) buf = buf.slice(0, -trailer.length);
+            controller.enqueue(encoder2.encode(buf));
+        }
+        buffered.length = 0;
+        timeout = null;
+    }
+    return new TransformStream({
+        transform (chunk, controller) {
+            buffered.push(chunk);
+            if (timeout) return;
+            timeout = setTimeout(async ()=>{
+                flushBufferedChunks(controller);
+                if (!startedRSC) {
+                    startedRSC = true;
+                    writeRSCStream(rscStream, controller).catch((err)=>controller.error(err)).then(resolveFlightDataPromise);
+                }
+            }, 0);
+        },
+        async flush (controller) {
+            await flightDataPromise;
+            if (timeout) {
+                clearTimeout(timeout);
+                flushBufferedChunks(controller);
+            }
+            controller.enqueue(encoder2.encode("</body></html>"));
+        }
+    });
+}
+async function writeRSCStream(rscStream, controller) {
+    let decoder = new TextDecoder("utf-8", {
+        fatal: true
+    });
+    const reader = rscStream.getReader();
+    try {
+        let read;
+        while((read = await reader.read()) && !read.done){
+            const chunk = read.value;
+            try {
+                writeChunk(JSON.stringify(decoder.decode(chunk, {
+                    stream: true
+                })), controller);
+            } catch (err) {
+                let base64 = JSON.stringify(btoa(String.fromCodePoint(...chunk)));
+                writeChunk(`Uint8Array.from(atob(${base64}), m => m.codePointAt(0))`, controller);
+            }
+        }
+    } finally{
+        reader.releaseLock();
+    }
+    let remaining = decoder.decode();
+    if (remaining.length) writeChunk(JSON.stringify(remaining), controller);
+}
+function writeChunk(chunk, controller) {
+    controller.enqueue(encoder2.encode(`<script>${escapeScript(`(self.__FLIGHT_DATA||=[]).push(${chunk})`)}</script>`));
+}
+function escapeScript(script) {
+    return script.replace(/<!--/g, "<\\!--").replace(/<\/(script)/gi, "</\\$1");
+}
+// lib/rsc/server.ssr.tsx
+var REACT_USE = "use";
+var useImpl = _react[REACT_USE];
+function useSafe(promise) {
+    if (useImpl) return useImpl(promise);
+    throw new Error("React Router v7 requires React 19+ for RSC features.");
+}
+async function routeRSCServerRequest({ request, fetchServer, createFromReadableStream, renderHTML, hydrate = true }) {
+    const url = new URL(request.url);
+    const isDataRequest = isReactServerRequest(url);
+    const respondWithRSCPayload = isDataRequest || isManifestRequest(url) || request.headers.has("rsc-action-id");
+    const serverResponse = await fetchServer(request);
+    if (respondWithRSCPayload || serverResponse.headers.get("React-Router-Resource") === "true") return serverResponse;
+    if (!serverResponse.body) throw new Error("Missing body in server response");
+    const detectRedirectResponse = serverResponse.clone();
+    let serverResponseB = null;
+    if (hydrate) serverResponseB = serverResponse.clone();
+    const body = serverResponse.body;
+    let buffer;
+    let streamControllers = [];
+    const createStream = ()=>{
+        if (!buffer) {
+            buffer = [];
+            return body.pipeThrough(new TransformStream({
+                transform (chunk, controller) {
+                    buffer.push(chunk);
+                    controller.enqueue(chunk);
+                    streamControllers.forEach((c)=>c.enqueue(chunk));
+                },
+                flush () {
+                    streamControllers.forEach((c)=>c.close());
+                    streamControllers = [];
+                }
+            }));
+        }
+        return new ReadableStream({
+            start (controller) {
+                buffer.forEach((chunk)=>controller.enqueue(chunk));
+                streamControllers.push(controller);
+            }
+        });
+    };
+    let deepestRenderedBoundaryId = null;
+    const getPayload = ()=>{
+        const payloadPromise = Promise.resolve(createFromReadableStream(createStream()));
+        return Object.defineProperties(payloadPromise, {
+            _deepestRenderedBoundaryId: {
+                get () {
+                    return deepestRenderedBoundaryId;
+                },
+                set (boundaryId1) {
+                    deepestRenderedBoundaryId = boundaryId1;
+                }
+            },
+            formState: {
+                get () {
+                    return payloadPromise.then((payload)=>payload.type === "render" ? payload.formState : void 0);
+                }
+            }
+        });
+    };
+    try {
+        if (!detectRedirectResponse.body) throw new Error("Failed to clone server response");
+        const payload = await createFromReadableStream(detectRedirectResponse.body);
+        if (serverResponse.status === (0, _chunkNISHYRIKMjs.SINGLE_FETCH_REDIRECT_STATUS) && payload.type === "redirect") {
+            const headers2 = new Headers(serverResponse.headers);
+            headers2.delete("Content-Encoding");
+            headers2.delete("Content-Length");
+            headers2.delete("Content-Type");
+            headers2.delete("X-Remix-Response");
+            headers2.set("Location", payload.location);
+            return new Response(serverResponseB?.body || "", {
+                headers: headers2,
+                status: payload.status,
+                statusText: serverResponse.statusText
+            });
+        }
+        const html = await renderHTML(getPayload);
+        const headers = new Headers(serverResponse.headers);
+        headers.set("Content-Type", "text/html; charset=utf-8");
+        if (!hydrate) return new Response(html, {
+            status: serverResponse.status,
+            headers
+        });
+        if (!serverResponseB?.body) throw new Error("Failed to clone server response");
+        const body2 = html.pipeThrough(injectRSCPayload(serverResponseB.body));
+        return new Response(body2, {
+            status: serverResponse.status,
+            headers
+        });
+    } catch (reason) {
+        if (reason instanceof Response) return reason;
+        try {
+            const status = (0, _chunkNISHYRIKMjs.isRouteErrorResponse)(reason) ? reason.status : 500;
+            const html = await renderHTML(()=>{
+                const decoded = Promise.resolve(createFromReadableStream(createStream()));
+                const payloadPromise = decoded.then((payload)=>Object.assign(payload, {
+                        status,
+                        errors: deepestRenderedBoundaryId ? {
+                            [deepestRenderedBoundaryId]: reason
+                        } : {}
+                    }));
+                return Object.defineProperties(payloadPromise, {
+                    _deepestRenderedBoundaryId: {
+                        get () {
+                            return deepestRenderedBoundaryId;
+                        },
+                        set (boundaryId1) {
+                            deepestRenderedBoundaryId = boundaryId1;
+                        }
+                    },
+                    formState: {
+                        get () {
+                            return payloadPromise.then((payload)=>payload.type === "render" ? payload.formState : void 0);
+                        }
+                    }
+                });
+            });
+            const headers = new Headers(serverResponse.headers);
+            headers.set("Content-Type", "text/html");
+            if (!hydrate) return new Response(html, {
+                status,
+                headers
+            });
+            if (!serverResponseB?.body) throw new Error("Failed to clone server response");
+            const body2 = html.pipeThrough(injectRSCPayload(serverResponseB.body));
+            return new Response(body2, {
+                status,
+                headers
+            });
+        } catch  {}
+        throw reason;
+    }
+}
+function RSCStaticRouter({ getPayload }) {
+    const decoded = getPayload();
+    const payload = useSafe(decoded);
+    if (payload.type === "redirect") throw new Response(null, {
+        status: payload.status,
+        headers: {
+            Location: payload.location
+        }
+    });
+    if (payload.type !== "render") return null;
+    let patchedLoaderData = {
+        ...payload.loaderData
+    };
+    for (const match of payload.matches)if ((0, _chunkNISHYRIKMjs.shouldHydrateRouteLoader)(match.id, match.clientLoader, match.hasLoader, false) && (match.hydrateFallbackElement || !match.hasLoader)) delete patchedLoaderData[match.id];
+    const context = {
+        get _deepestRenderedBoundaryId () {
+            return decoded._deepestRenderedBoundaryId ?? null;
+        },
+        set _deepestRenderedBoundaryId (boundaryId){
+            decoded._deepestRenderedBoundaryId = boundaryId;
+        },
+        actionData: payload.actionData,
+        actionHeaders: {},
+        basename: payload.basename,
+        errors: payload.errors,
+        loaderData: patchedLoaderData,
+        loaderHeaders: {},
+        location: payload.location,
+        statusCode: 200,
+        matches: payload.matches.map((match)=>({
+                params: match.params,
+                pathname: match.pathname,
+                pathnameBase: match.pathnameBase,
+                route: {
+                    id: match.id,
+                    action: match.hasAction || !!match.clientAction,
+                    handle: match.handle,
+                    hasErrorBoundary: match.hasErrorBoundary,
+                    loader: match.hasLoader || !!match.clientLoader,
+                    index: match.index,
+                    path: match.path,
+                    shouldRevalidate: match.shouldRevalidate
+                }
+            }))
+    };
+    const router = (0, _chunkNISHYRIKMjs.createStaticRouter)(payload.matches.reduceRight((previous, match)=>{
+        const route = {
+            id: match.id,
+            action: match.hasAction || !!match.clientAction,
+            element: match.element,
+            errorElement: match.errorElement,
+            handle: match.handle,
+            hasErrorBoundary: !!match.errorElement,
+            hydrateFallbackElement: match.hydrateFallbackElement,
+            index: match.index,
+            loader: match.hasLoader || !!match.clientLoader,
+            path: match.path,
+            shouldRevalidate: match.shouldRevalidate
+        };
+        if (previous.length > 0) route.children = previous;
+        return [
+            route
+        ];
+    }, []), context);
+    const frameworkContext = {
+        future: {
+            // These flags have no runtime impact so can always be false.  If we add
+            // flags that drive runtime behavior they'll need to be proxied through.
+            v8_middleware: false,
+            unstable_subResourceIntegrity: false
+        },
+        isSpaMode: false,
+        ssr: true,
+        criticalCss: "",
+        manifest: {
+            routes: {},
+            version: "1",
+            url: "",
+            entry: {
+                module: "",
+                imports: []
+            }
+        },
+        routeDiscovery: {
+            mode: "lazy",
+            manifestPath: "/__manifest"
+        },
+        routeModules: createRSCRouteModules(payload)
+    };
+    return /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.RSCRouterContext).Provider, {
+        value: true
+    }, /* @__PURE__ */ _react.createElement(RSCRouterGlobalErrorBoundary, {
+        location: payload.location
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.FrameworkContext).Provider, {
+        value: frameworkContext
+    }, /* @__PURE__ */ _react.createElement((0, _chunkNISHYRIKMjs.StaticRouterProvider), {
+        context,
+        router,
+        hydrate: false,
+        nonce: payload.nonce
+    }))));
+}
+function isReactServerRequest(url) {
+    return url.pathname.endsWith(".rsc");
+}
+function isManifestRequest(url) {
+    return url.pathname.endsWith(".manifest");
+}
+// lib/rsc/html-stream/browser.ts
+function getRSCStream() {
+    let encoder3 = new TextEncoder();
+    let streamController = null;
+    let rscStream = new ReadableStream({
+        start (controller) {
+            if (typeof window === "undefined") return;
+            let handleChunk = (chunk)=>{
+                if (typeof chunk === "string") controller.enqueue(encoder3.encode(chunk));
+                else controller.enqueue(chunk);
+            };
+            window.__FLIGHT_DATA || (window.__FLIGHT_DATA = []);
+            window.__FLIGHT_DATA.forEach(handleChunk);
+            window.__FLIGHT_DATA.push = (chunk)=>{
+                handleChunk(chunk);
+                return 0;
+            };
+            streamController = controller;
+        }
+    });
+    if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", ()=>{
+        streamController?.close();
+    });
+    else streamController?.close();
+    return rscStream;
+}
+// lib/dom/ssr/errors.ts
+function deserializeErrors(errors) {
+    if (!errors) return null;
+    let entries = Object.entries(errors);
+    let serialized = {};
+    for (let [key, val] of entries){
+        if (val && val.__type === "RouteErrorResponse") serialized[key] = new (0, _chunkNISHYRIKMjs.ErrorResponseImpl)(val.status, val.statusText, val.data, val.internal === true);
+        else if (val && val.__type === "Error") {
+            if (val.__subType) {
+                let ErrorConstructor = window[val.__subType];
+                if (typeof ErrorConstructor === "function") try {
+                    let error = new ErrorConstructor(val.message);
+                    error.stack = val.stack;
+                    serialized[key] = error;
+                } catch (e) {}
+            }
+            if (serialized[key] == null) {
+                let error = new Error(val.message);
+                error.stack = val.stack;
+                serialized[key] = error;
+            }
+        } else serialized[key] = val;
+    }
+    return serialized;
+}
+
+},{"./chunk-NISHYRIK.mjs":"iGZik","react":"jMk1U","cookie":"8Pe3w","set-cookie-parser":"8AeuC","react-dom":"i4X7T","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"iGZik":[function(require,module,exports,__globalThis) {
 /**
  * react-router v7.9.3
  *
@@ -30781,7 +33131,557 @@ function htmlEscape(str) {
     return str.replace(ESCAPE_REGEX2, (match)=>ESCAPE_LOOKUP2[match]);
 }
 
-},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"hbNxT":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8Pe3w":[function(require,module,exports,__globalThis) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.parse = parse;
+exports.serialize = serialize;
+/**
+ * RegExp to match cookie-name in RFC 6265 sec 4.1.1
+ * This refers out to the obsoleted definition of token in RFC 2616 sec 2.2
+ * which has been replaced by the token definition in RFC 7230 appendix B.
+ *
+ * cookie-name       = token
+ * token             = 1*tchar
+ * tchar             = "!" / "#" / "$" / "%" / "&" / "'" /
+ *                     "*" / "+" / "-" / "." / "^" / "_" /
+ *                     "`" / "|" / "~" / DIGIT / ALPHA
+ *
+ * Note: Allowing more characters - https://github.com/jshttp/cookie/issues/191
+ * Allow same range as cookie value, except `=`, which delimits end of name.
+ */ const cookieNameRegExp = /^[\u0021-\u003A\u003C\u003E-\u007E]+$/;
+/**
+ * RegExp to match cookie-value in RFC 6265 sec 4.1.1
+ *
+ * cookie-value      = *cookie-octet / ( DQUOTE *cookie-octet DQUOTE )
+ * cookie-octet      = %x21 / %x23-2B / %x2D-3A / %x3C-5B / %x5D-7E
+ *                     ; US-ASCII characters excluding CTLs,
+ *                     ; whitespace DQUOTE, comma, semicolon,
+ *                     ; and backslash
+ *
+ * Allowing more characters: https://github.com/jshttp/cookie/issues/191
+ * Comma, backslash, and DQUOTE are not part of the parsing algorithm.
+ */ const cookieValueRegExp = /^[\u0021-\u003A\u003C-\u007E]*$/;
+/**
+ * RegExp to match domain-value in RFC 6265 sec 4.1.1
+ *
+ * domain-value      = <subdomain>
+ *                     ; defined in [RFC1034], Section 3.5, as
+ *                     ; enhanced by [RFC1123], Section 2.1
+ * <subdomain>       = <label> | <subdomain> "." <label>
+ * <label>           = <let-dig> [ [ <ldh-str> ] <let-dig> ]
+ *                     Labels must be 63 characters or less.
+ *                     'let-dig' not 'letter' in the first char, per RFC1123
+ * <ldh-str>         = <let-dig-hyp> | <let-dig-hyp> <ldh-str>
+ * <let-dig-hyp>     = <let-dig> | "-"
+ * <let-dig>         = <letter> | <digit>
+ * <letter>          = any one of the 52 alphabetic characters A through Z in
+ *                     upper case and a through z in lower case
+ * <digit>           = any one of the ten digits 0 through 9
+ *
+ * Keep support for leading dot: https://github.com/jshttp/cookie/issues/173
+ *
+ * > (Note that a leading %x2E ("."), if present, is ignored even though that
+ * character is not permitted, but a trailing %x2E ("."), if present, will
+ * cause the user agent to ignore the attribute.)
+ */ const domainValueRegExp = /^([.]?[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)([.][a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$/i;
+/**
+ * RegExp to match path-value in RFC 6265 sec 4.1.1
+ *
+ * path-value        = <any CHAR except CTLs or ";">
+ * CHAR              = %x01-7F
+ *                     ; defined in RFC 5234 appendix B.1
+ */ const pathValueRegExp = /^[\u0020-\u003A\u003D-\u007E]*$/;
+const __toString = Object.prototype.toString;
+const NullObject = /* @__PURE__ */ (()=>{
+    const C = function() {};
+    C.prototype = Object.create(null);
+    return C;
+})();
+/**
+ * Parse a cookie header.
+ *
+ * Parse the given cookie header string into an object
+ * The object has the various cookies as keys(names) => values
+ */ function parse(str, options) {
+    const obj = new NullObject();
+    const len = str.length;
+    // RFC 6265 sec 4.1.1, RFC 2616 2.2 defines a cookie name consists of one char minimum, plus '='.
+    if (len < 2) return obj;
+    const dec = options?.decode || decode;
+    let index = 0;
+    do {
+        const eqIdx = str.indexOf("=", index);
+        if (eqIdx === -1) break; // No more cookie pairs.
+        const colonIdx = str.indexOf(";", index);
+        const endIdx = colonIdx === -1 ? len : colonIdx;
+        if (eqIdx > endIdx) {
+            // backtrack on prior semicolon
+            index = str.lastIndexOf(";", eqIdx - 1) + 1;
+            continue;
+        }
+        const keyStartIdx = startIndex(str, index, eqIdx);
+        const keyEndIdx = endIndex(str, eqIdx, keyStartIdx);
+        const key = str.slice(keyStartIdx, keyEndIdx);
+        // only assign once
+        if (obj[key] === undefined) {
+            let valStartIdx = startIndex(str, eqIdx + 1, endIdx);
+            let valEndIdx = endIndex(str, endIdx, valStartIdx);
+            const value = dec(str.slice(valStartIdx, valEndIdx));
+            obj[key] = value;
+        }
+        index = endIdx + 1;
+    }while (index < len);
+    return obj;
+}
+function startIndex(str, index, max) {
+    do {
+        const code = str.charCodeAt(index);
+        if (code !== 0x20 /*   */  && code !== 0x09 /* \t */ ) return index;
+    }while (++index < max);
+    return max;
+}
+function endIndex(str, index, min) {
+    while(index > min){
+        const code = str.charCodeAt(--index);
+        if (code !== 0x20 /*   */  && code !== 0x09 /* \t */ ) return index + 1;
+    }
+    return min;
+}
+/**
+ * Serialize data into a cookie header.
+ *
+ * Serialize a name value pair into a cookie string suitable for
+ * http headers. An optional options object specifies cookie parameters.
+ *
+ * serialize('foo', 'bar', { httpOnly: true })
+ *   => "foo=bar; httpOnly"
+ */ function serialize(name, val, options) {
+    const enc = options?.encode || encodeURIComponent;
+    if (!cookieNameRegExp.test(name)) throw new TypeError(`argument name is invalid: ${name}`);
+    const value = enc(val);
+    if (!cookieValueRegExp.test(value)) throw new TypeError(`argument val is invalid: ${val}`);
+    let str = name + "=" + value;
+    if (!options) return str;
+    if (options.maxAge !== undefined) {
+        if (!Number.isInteger(options.maxAge)) throw new TypeError(`option maxAge is invalid: ${options.maxAge}`);
+        str += "; Max-Age=" + options.maxAge;
+    }
+    if (options.domain) {
+        if (!domainValueRegExp.test(options.domain)) throw new TypeError(`option domain is invalid: ${options.domain}`);
+        str += "; Domain=" + options.domain;
+    }
+    if (options.path) {
+        if (!pathValueRegExp.test(options.path)) throw new TypeError(`option path is invalid: ${options.path}`);
+        str += "; Path=" + options.path;
+    }
+    if (options.expires) {
+        if (!isDate(options.expires) || !Number.isFinite(options.expires.valueOf())) throw new TypeError(`option expires is invalid: ${options.expires}`);
+        str += "; Expires=" + options.expires.toUTCString();
+    }
+    if (options.httpOnly) str += "; HttpOnly";
+    if (options.secure) str += "; Secure";
+    if (options.partitioned) str += "; Partitioned";
+    if (options.priority) {
+        const priority = typeof options.priority === "string" ? options.priority.toLowerCase() : undefined;
+        switch(priority){
+            case "low":
+                str += "; Priority=Low";
+                break;
+            case "medium":
+                str += "; Priority=Medium";
+                break;
+            case "high":
+                str += "; Priority=High";
+                break;
+            default:
+                throw new TypeError(`option priority is invalid: ${options.priority}`);
+        }
+    }
+    if (options.sameSite) {
+        const sameSite = typeof options.sameSite === "string" ? options.sameSite.toLowerCase() : options.sameSite;
+        switch(sameSite){
+            case true:
+            case "strict":
+                str += "; SameSite=Strict";
+                break;
+            case "lax":
+                str += "; SameSite=Lax";
+                break;
+            case "none":
+                str += "; SameSite=None";
+                break;
+            default:
+                throw new TypeError(`option sameSite is invalid: ${options.sameSite}`);
+        }
+    }
+    return str;
+}
+/**
+ * URL-decode string value. Optimized to skip native call when no %.
+ */ function decode(str) {
+    if (str.indexOf("%") === -1) return str;
+    try {
+        return decodeURIComponent(str);
+    } catch (e) {
+        return str;
+    }
+}
+/**
+ * Determine if value is a Date.
+ */ function isDate(val) {
+    return __toString.call(val) === "[object Date]";
+}
+
+},{}],"8AeuC":[function(require,module,exports,__globalThis) {
+"use strict";
+var defaultParseOptions = {
+    decodeValues: true,
+    map: false,
+    silent: false
+};
+function isNonEmptyString(str) {
+    return typeof str === "string" && !!str.trim();
+}
+function parseString(setCookieValue, options) {
+    var parts = setCookieValue.split(";").filter(isNonEmptyString);
+    var nameValuePairStr = parts.shift();
+    var parsed = parseNameValuePair(nameValuePairStr);
+    var name = parsed.name;
+    var value = parsed.value;
+    options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
+    try {
+        value = options.decodeValues ? decodeURIComponent(value) : value; // decode cookie value
+    } catch (e) {
+        console.error("set-cookie-parser encountered an error while decoding a cookie with value '" + value + "'. Set options.decodeValues to false to disable this feature.", e);
+    }
+    var cookie = {
+        name: name,
+        value: value
+    };
+    parts.forEach(function(part) {
+        var sides = part.split("=");
+        var key = sides.shift().trimLeft().toLowerCase();
+        var value = sides.join("=");
+        if (key === "expires") cookie.expires = new Date(value);
+        else if (key === "max-age") cookie.maxAge = parseInt(value, 10);
+        else if (key === "secure") cookie.secure = true;
+        else if (key === "httponly") cookie.httpOnly = true;
+        else if (key === "samesite") cookie.sameSite = value;
+        else if (key === "partitioned") cookie.partitioned = true;
+        else cookie[key] = value;
+    });
+    return cookie;
+}
+function parseNameValuePair(nameValuePairStr) {
+    // Parses name-value-pair according to rfc6265bis draft
+    var name = "";
+    var value = "";
+    var nameValueArr = nameValuePairStr.split("=");
+    if (nameValueArr.length > 1) {
+        name = nameValueArr.shift();
+        value = nameValueArr.join("="); // everything after the first =, joined by a "=" if there was more than one part
+    } else value = nameValuePairStr;
+    return {
+        name: name,
+        value: value
+    };
+}
+function parse(input, options) {
+    options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
+    if (!input) {
+        if (!options.map) return [];
+        else return {};
+    }
+    if (input.headers) {
+        if (typeof input.headers.getSetCookie === "function") // for fetch responses - they combine headers of the same type in the headers array,
+        // but getSetCookie returns an uncombined array
+        input = input.headers.getSetCookie();
+        else if (input.headers["set-cookie"]) // fast-path for node.js (which automatically normalizes header names to lower-case
+        input = input.headers["set-cookie"];
+        else {
+            // slow-path for other environments - see #25
+            var sch = input.headers[Object.keys(input.headers).find(function(key) {
+                return key.toLowerCase() === "set-cookie";
+            })];
+            // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
+            if (!sch && input.headers.cookie && !options.silent) console.warn("Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning.");
+            input = sch;
+        }
+    }
+    if (!Array.isArray(input)) input = [
+        input
+    ];
+    if (!options.map) return input.filter(isNonEmptyString).map(function(str) {
+        return parseString(str, options);
+    });
+    else {
+        var cookies = {};
+        return input.filter(isNonEmptyString).reduce(function(cookies, str) {
+            var cookie = parseString(str, options);
+            cookies[cookie.name] = cookie;
+            return cookies;
+        }, cookies);
+    }
+}
+/*
+  Set-Cookie header field-values are sometimes comma joined in one string. This splits them without choking on commas
+  that are within a single set-cookie field-value, such as in the Expires portion.
+
+  This is uncommon, but explicitly allowed - see https://tools.ietf.org/html/rfc2616#section-4.2
+  Node.js does this for every header *except* set-cookie - see https://github.com/nodejs/node/blob/d5e363b77ebaf1caf67cd7528224b651c86815c1/lib/_http_incoming.js#L128
+  React Native's fetch does this for *every* header, including set-cookie.
+
+  Based on: https://github.com/google/j2objc/commit/16820fdbc8f76ca0c33472810ce0cb03d20efe25
+  Credits to: https://github.com/tomball for original and https://github.com/chrusart for JavaScript implementation
+*/ function splitCookiesString(cookiesString) {
+    if (Array.isArray(cookiesString)) return cookiesString;
+    if (typeof cookiesString !== "string") return [];
+    var cookiesStrings = [];
+    var pos = 0;
+    var start;
+    var ch;
+    var lastComma;
+    var nextStart;
+    var cookiesSeparatorFound;
+    function skipWhitespace() {
+        while(pos < cookiesString.length && /\s/.test(cookiesString.charAt(pos)))pos += 1;
+        return pos < cookiesString.length;
+    }
+    function notSpecialChar() {
+        ch = cookiesString.charAt(pos);
+        return ch !== "=" && ch !== ";" && ch !== ",";
+    }
+    while(pos < cookiesString.length){
+        start = pos;
+        cookiesSeparatorFound = false;
+        while(skipWhitespace()){
+            ch = cookiesString.charAt(pos);
+            if (ch === ",") {
+                // ',' is a cookie separator if we have later first '=', not ';' or ','
+                lastComma = pos;
+                pos += 1;
+                skipWhitespace();
+                nextStart = pos;
+                while(pos < cookiesString.length && notSpecialChar())pos += 1;
+                // currently special character
+                if (pos < cookiesString.length && cookiesString.charAt(pos) === "=") {
+                    // we found cookies separator
+                    cookiesSeparatorFound = true;
+                    // pos is inside the next cookie, so back up and return it.
+                    pos = nextStart;
+                    cookiesStrings.push(cookiesString.substring(start, lastComma));
+                    start = pos;
+                } else // in param ',' or param separator ';',
+                // we continue from that comma
+                pos = lastComma + 1;
+            } else pos += 1;
+        }
+        if (!cookiesSeparatorFound || pos >= cookiesString.length) cookiesStrings.push(cookiesString.substring(start, cookiesString.length));
+    }
+    return cookiesStrings;
+}
+module.exports = parse;
+module.exports.parse = parse;
+module.exports.parseString = parseString;
+module.exports.splitCookiesString = splitCookiesString;
+
+},{}],"i4X7T":[function(require,module,exports,__globalThis) {
+'use strict';
+function checkDCE() {
+    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
+    var err;
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+}
+module.exports = require("b0f0e6b9e8349dac");
+
+},{"b0f0e6b9e8349dac":"cLd8p"}],"cLd8p":[function(require,module,exports,__globalThis) {
+/**
+ * @license React
+ * react-dom.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+(function() {
+    function noop() {}
+    function testStringCoercion(value) {
+        return "" + value;
+    }
+    function createPortal$1(children, containerInfo, implementation) {
+        var key = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : null;
+        try {
+            testStringCoercion(key);
+            var JSCompiler_inline_result = !1;
+        } catch (e) {
+            JSCompiler_inline_result = !0;
+        }
+        JSCompiler_inline_result && (console.error("The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", "function" === typeof Symbol && Symbol.toStringTag && key[Symbol.toStringTag] || key.constructor.name || "Object"), testStringCoercion(key));
+        return {
+            $$typeof: REACT_PORTAL_TYPE,
+            key: null == key ? null : "" + key,
+            children: children,
+            containerInfo: containerInfo,
+            implementation: implementation
+        };
+    }
+    function getCrossOriginStringAs(as, input) {
+        if ("font" === as) return "";
+        if ("string" === typeof input) return "use-credentials" === input ? input : "";
+    }
+    function getValueDescriptorExpectingObjectForWarning(thing) {
+        return null === thing ? "`null`" : void 0 === thing ? "`undefined`" : "" === thing ? "an empty string" : 'something with type "' + typeof thing + '"';
+    }
+    function getValueDescriptorExpectingEnumForWarning(thing) {
+        return null === thing ? "`null`" : void 0 === thing ? "`undefined`" : "" === thing ? "an empty string" : "string" === typeof thing ? JSON.stringify(thing) : "number" === typeof thing ? "`" + thing + "`" : 'something with type "' + typeof thing + '"';
+    }
+    function resolveDispatcher() {
+        var dispatcher = ReactSharedInternals.H;
+        null === dispatcher && console.error("Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.");
+        return dispatcher;
+    }
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+    var React = require("6f0162e9ab224cd4"), Internals = {
+        d: {
+            f: noop,
+            r: function() {
+                throw Error("Invalid form element. requestFormReset must be passed a form that was rendered by React.");
+            },
+            D: noop,
+            C: noop,
+            L: noop,
+            m: noop,
+            X: noop,
+            S: noop,
+            M: noop
+        },
+        p: 0,
+        findDOMNode: null
+    }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
+    exports.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = Internals;
+    exports.createPortal = function(children, container) {
+        var key = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : null;
+        if (!container || 1 !== container.nodeType && 9 !== container.nodeType && 11 !== container.nodeType) throw Error("Target container is not a DOM element.");
+        return createPortal$1(children, container, null, key);
+    };
+    exports.flushSync = function(fn) {
+        var previousTransition = ReactSharedInternals.T, previousUpdatePriority = Internals.p;
+        try {
+            if (ReactSharedInternals.T = null, Internals.p = 2, fn) return fn();
+        } finally{
+            ReactSharedInternals.T = previousTransition, Internals.p = previousUpdatePriority, Internals.d.f() && console.error("flushSync was called from inside a lifecycle method. React cannot flush when React is already rendering. Consider moving this call to a scheduler task or micro task.");
+        }
+    };
+    exports.preconnect = function(href, options) {
+        "string" === typeof href && href ? null != options && "object" !== typeof options ? console.error("ReactDOM.preconnect(): Expected the `options` argument (second) to be an object but encountered %s instead. The only supported option at this time is `crossOrigin` which accepts a string.", getValueDescriptorExpectingEnumForWarning(options)) : null != options && "string" !== typeof options.crossOrigin && console.error("ReactDOM.preconnect(): Expected the `crossOrigin` option (second argument) to be a string but encountered %s instead. Try removing this option or passing a string value instead.", getValueDescriptorExpectingObjectForWarning(options.crossOrigin)) : console.error("ReactDOM.preconnect(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
+        "string" === typeof href && (options ? (options = options.crossOrigin, options = "string" === typeof options ? "use-credentials" === options ? options : "" : void 0) : options = null, Internals.d.C(href, options));
+    };
+    exports.prefetchDNS = function(href) {
+        if ("string" !== typeof href || !href) console.error("ReactDOM.prefetchDNS(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
+        else if (1 < arguments.length) {
+            var options = arguments[1];
+            "object" === typeof options && options.hasOwnProperty("crossOrigin") ? console.error("ReactDOM.prefetchDNS(): Expected only one argument, `href`, but encountered %s as a second argument instead. This argument is reserved for future options and is currently disallowed. It looks like the you are attempting to set a crossOrigin property for this DNS lookup hint. Browsers do not perform DNS queries using CORS and setting this attribute on the resource hint has no effect. Try calling ReactDOM.prefetchDNS() with just a single string argument, `href`.", getValueDescriptorExpectingEnumForWarning(options)) : console.error("ReactDOM.prefetchDNS(): Expected only one argument, `href`, but encountered %s as a second argument instead. This argument is reserved for future options and is currently disallowed. Try calling ReactDOM.prefetchDNS() with just a single string argument, `href`.", getValueDescriptorExpectingEnumForWarning(options));
+        }
+        "string" === typeof href && Internals.d.D(href);
+    };
+    exports.preinit = function(href, options) {
+        "string" === typeof href && href ? null == options || "object" !== typeof options ? console.error("ReactDOM.preinit(): Expected the `options` argument (second) to be an object with an `as` property describing the type of resource to be preinitialized but encountered %s instead.", getValueDescriptorExpectingEnumForWarning(options)) : "style" !== options.as && "script" !== options.as && console.error('ReactDOM.preinit(): Expected the `as` property in the `options` argument (second) to contain a valid value describing the type of resource to be preinitialized but encountered %s instead. Valid values for `as` are "style" and "script".', getValueDescriptorExpectingEnumForWarning(options.as)) : console.error("ReactDOM.preinit(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
+        if ("string" === typeof href && options && "string" === typeof options.as) {
+            var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin), integrity = "string" === typeof options.integrity ? options.integrity : void 0, fetchPriority = "string" === typeof options.fetchPriority ? options.fetchPriority : void 0;
+            "style" === as ? Internals.d.S(href, "string" === typeof options.precedence ? options.precedence : void 0, {
+                crossOrigin: crossOrigin,
+                integrity: integrity,
+                fetchPriority: fetchPriority
+            }) : "script" === as && Internals.d.X(href, {
+                crossOrigin: crossOrigin,
+                integrity: integrity,
+                fetchPriority: fetchPriority,
+                nonce: "string" === typeof options.nonce ? options.nonce : void 0
+            });
+        }
+    };
+    exports.preinitModule = function(href, options) {
+        var encountered = "";
+        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
+        void 0 !== options && "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : options && "as" in options && "script" !== options.as && (encountered += " The `as` option encountered was " + getValueDescriptorExpectingEnumForWarning(options.as) + ".");
+        if (encountered) console.error("ReactDOM.preinitModule(): Expected up to two arguments, a non-empty `href` string and, optionally, an `options` object with a valid `as` property.%s", encountered);
+        else switch(encountered = options && "string" === typeof options.as ? options.as : "script", encountered){
+            case "script":
+                break;
+            default:
+                encountered = getValueDescriptorExpectingEnumForWarning(encountered), console.error('ReactDOM.preinitModule(): Currently the only supported "as" type for this function is "script" but received "%s" instead. This warning was generated for `href` "%s". In the future other module types will be supported, aligning with the import-attributes proposal. Learn more here: (https://github.com/tc39/proposal-import-attributes)', encountered, href);
+        }
+        if ("string" === typeof href) {
+            if ("object" === typeof options && null !== options) {
+                if (null == options.as || "script" === options.as) encountered = getCrossOriginStringAs(options.as, options.crossOrigin), Internals.d.M(href, {
+                    crossOrigin: encountered,
+                    integrity: "string" === typeof options.integrity ? options.integrity : void 0,
+                    nonce: "string" === typeof options.nonce ? options.nonce : void 0
+                });
+            } else null == options && Internals.d.M(href);
+        }
+    };
+    exports.preload = function(href, options) {
+        var encountered = "";
+        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
+        null == options || "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : "string" === typeof options.as && options.as || (encountered += " The `as` option encountered was " + getValueDescriptorExpectingObjectForWarning(options.as) + ".");
+        encountered && console.error('ReactDOM.preload(): Expected two arguments, a non-empty `href` string and an `options` object with an `as` property valid for a `<link rel="preload" as="..." />` tag.%s', encountered);
+        if ("string" === typeof href && "object" === typeof options && null !== options && "string" === typeof options.as) {
+            encountered = options.as;
+            var crossOrigin = getCrossOriginStringAs(encountered, options.crossOrigin);
+            Internals.d.L(href, encountered, {
+                crossOrigin: crossOrigin,
+                integrity: "string" === typeof options.integrity ? options.integrity : void 0,
+                nonce: "string" === typeof options.nonce ? options.nonce : void 0,
+                type: "string" === typeof options.type ? options.type : void 0,
+                fetchPriority: "string" === typeof options.fetchPriority ? options.fetchPriority : void 0,
+                referrerPolicy: "string" === typeof options.referrerPolicy ? options.referrerPolicy : void 0,
+                imageSrcSet: "string" === typeof options.imageSrcSet ? options.imageSrcSet : void 0,
+                imageSizes: "string" === typeof options.imageSizes ? options.imageSizes : void 0,
+                media: "string" === typeof options.media ? options.media : void 0
+            });
+        }
+    };
+    exports.preloadModule = function(href, options) {
+        var encountered = "";
+        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
+        void 0 !== options && "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : options && "as" in options && "string" !== typeof options.as && (encountered += " The `as` option encountered was " + getValueDescriptorExpectingObjectForWarning(options.as) + ".");
+        encountered && console.error('ReactDOM.preloadModule(): Expected two arguments, a non-empty `href` string and, optionally, an `options` object with an `as` property valid for a `<link rel="modulepreload" as="..." />` tag.%s', encountered);
+        "string" === typeof href && (options ? (encountered = getCrossOriginStringAs(options.as, options.crossOrigin), Internals.d.m(href, {
+            as: "string" === typeof options.as && "script" !== options.as ? options.as : void 0,
+            crossOrigin: encountered,
+            integrity: "string" === typeof options.integrity ? options.integrity : void 0
+        })) : Internals.d.m(href));
+    };
+    exports.requestFormReset = function(form) {
+        Internals.d.r(form);
+    };
+    exports.unstable_batchedUpdates = function(fn, a) {
+        return fn(a);
+    };
+    exports.useFormState = function(action, initialState, permalink) {
+        return resolveDispatcher().useFormState(action, initialState, permalink);
+    };
+    exports.useFormStatus = function() {
+        return resolveDispatcher().useHostTransitionStatus();
+    };
+    exports.version = "19.2.0";
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+})();
+
+},{"6f0162e9ab224cd4":"jMk1U"}],"hbNxT":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Provider", ()=>Provider_default);
@@ -31784,7 +34684,10 @@ module.exports = require("374a059340689e89");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{"8b38fc6c74f16e20":"jMk1U"}],"7h6Pi":[function(require,module,exports,__globalThis) {
+},{"8b38fc6c74f16e20":"jMk1U"}],"jc6wC":[function(require,module,exports,__globalThis) {
+module.exports = module.bundle.resolve("logo.c9d72c7b.svg") + "?" + Date.now();
+
+},{}],"7h6Pi":[function(require,module,exports,__globalThis) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -34116,7 +37019,6 @@ var _appSlice = require("../utils/appSlice");
 var _s = $RefreshSig$();
 const SignUp = ({ view, setView })=>{
     _s();
-    const navigate = (0, _reactRouter.useNavigate)();
     const dispatch = (0, _reactRedux.useDispatch)();
     const [SignUpInfo, setSignUpInfo] = (0, _react.useState)({
         name: "",
@@ -34161,51 +37063,73 @@ const SignUp = ({ view, setView })=>{
         className: "min-h-screen relative",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "absolute inset-0 bg-black/65 backdrop-blur-sm"
+                className: "absolute inset-0"
             }, void 0, false, {
                 fileName: "src/components/SignUp.js",
-                lineNumber: 71,
+                lineNumber: 70,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "relative z-10 flex flex-col min-h-screen",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
-                        fileName: "src/components/SignUp.js",
-                        lineNumber: 74,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                        className: "flex-1 flex items-center justify-center px-6 py-12",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            className: "w-full max-w-md",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "bg-black/60 rounded-lg p-8 shadow-xl",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                        className: "text-4xl font-extrabold text-white mb-6",
-                                        children: "Sign Up"
-                                    }, void 0, false, {
-                                        fileName: "src/components/SignUp.js",
-                                        lineNumber: 79,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                                        className: "space-y-4",
-                                        onSubmit: handleSignUp,
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                className: "block",
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    className: "flex-1 flex items-center justify-center px-6 py-12",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                        className: "w-full max-w-md",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "bg-black/60 rounded-lg p-8 shadow-xl",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                    className: "text-4xl font-extrabold text-white mb-6",
+                                    children: "Sign Up"
+                                }, void 0, false, {
+                                    fileName: "src/components/SignUp.js",
+                                    lineNumber: 76,
+                                    columnNumber: 17
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                                    className: "space-y-4",
+                                    onSubmit: handleSignUp,
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            className: "block",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                type: "text",
+                                                id: "name",
+                                                placeholder: "Full Name",
+                                                value: SignUpInfo.name,
+                                                onChange: (e)=>{
+                                                    //   SignUpInfo.email = e.target.value
+                                                    setSignUpInfo({
+                                                        ...SignUpInfo,
+                                                        name: e.target.value
+                                                    });
+                                                // setSignUpInfo(SignUpInfo);
+                                                // console.log(SignUpInfo);
+                                                },
+                                                className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            }, void 0, false, {
+                                                fileName: "src/components/SignUp.js",
+                                                lineNumber: 82,
+                                                columnNumber: 21
+                                            }, undefined)
+                                        }, void 0, false, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 81,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            className: "block",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                     type: "text",
-                                                    id: "name",
-                                                    placeholder: "Full Name",
-                                                    value: SignUpInfo.name,
+                                                    id: "email",
+                                                    placeholder: "Email or mobile number",
+                                                    value: SignUpInfo.email,
                                                     onChange: (e)=>{
                                                         //   SignUpInfo.email = e.target.value
                                                         setSignUpInfo({
                                                             ...SignUpInfo,
-                                                            name: e.target.value
+                                                            email: e.target.value
                                                         });
                                                     // setSignUpInfo(SignUpInfo);
                                                     // console.log(SignUpInfo);
@@ -34213,195 +37137,165 @@ const SignUp = ({ view, setView })=>{
                                                     className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                 }, void 0, false, {
                                                     fileName: "src/components/SignUp.js",
-                                                    lineNumber: 85,
+                                                    lineNumber: 97,
                                                     columnNumber: 21
-                                                }, undefined)
-                                            }, void 0, false, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 84,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                className: "block",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        type: "text",
-                                                        id: "email",
-                                                        placeholder: "Email or mobile number",
-                                                        value: SignUpInfo.email,
-                                                        onChange: (e)=>{
-                                                            //   SignUpInfo.email = e.target.value
-                                                            setSignUpInfo({
-                                                                ...SignUpInfo,
-                                                                email: e.target.value
-                                                            });
-                                                        // setSignUpInfo(SignUpInfo);
-                                                        // console.log(SignUpInfo);
-                                                        },
-                                                        className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/SignUp.js",
-                                                        lineNumber: 100,
-                                                        columnNumber: 21
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "font-bold text-red-600",
-                                                        children: error?.email
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/SignUp.js",
-                                                        lineNumber: 113,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 99,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                className: "block",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        type: "password",
-                                                        id: "password",
-                                                        placeholder: "Password",
-                                                        value: SignUpInfo.password,
-                                                        onChange: (e)=>{
-                                                            setSignUpInfo({
-                                                                ...SignUpInfo,
-                                                                password: e.target.value
-                                                            });
-                                                        },
-                                                        className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/SignUp.js",
-                                                        lineNumber: 119,
-                                                        columnNumber: 21
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "font-bold text-red-600",
-                                                        children: error?.password
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/SignUp.js",
-                                                        lineNumber: 132,
-                                                        columnNumber: 21
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 118,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                type: "submit",
-                                                className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md mt-2",
-                                                children: "Sign Up"
-                                            }, void 0, false, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 137,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "mt-4 flex items-center justify-between text-sm text-gray-300",
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    className: "flex items-center gap-2",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                            id: "remember",
-                                                            type: "checkbox",
-                                                            className: "w-4 h-4 accent-blue-600"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/SignUp.js",
-                                                            lineNumber: 145,
-                                                            columnNumber: 23
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                            htmlFor: "remember",
-                                                            children: "Remember me"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/SignUp.js",
-                                                            lineNumber: 150,
-                                                            columnNumber: 23
-                                                        }, undefined)
-                                                    ]
-                                                }, void 0, true, {
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-bold text-red-600",
+                                                    children: error?.email
+                                                }, void 0, false, {
                                                     fileName: "src/components/SignUp.js",
-                                                    lineNumber: 144,
+                                                    lineNumber: 110,
                                                     columnNumber: 21
                                                 }, undefined)
-                                            }, void 0, false, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 143,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "mt-6 text-sm text-gray-300",
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 96,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            className: "block",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "password",
+                                                    id: "password",
+                                                    placeholder: "Password",
+                                                    value: SignUpInfo.password,
+                                                    onChange: (e)=>{
+                                                        setSignUpInfo({
+                                                            ...SignUpInfo,
+                                                            password: e.target.value
+                                                        });
+                                                    },
+                                                    className: "w-full rounded-md bg-[#222] border border-gray-700 text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/SignUp.js",
+                                                    lineNumber: 116,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-bold text-red-600",
+                                                    children: error?.password
+                                                }, void 0, false, {
+                                                    fileName: "src/components/SignUp.js",
+                                                    lineNumber: 129,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 115,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            type: "submit",
+                                            className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md mt-2",
+                                            children: "Sign Up"
+                                        }, void 0, false, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 134,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "mt-4 flex items-center justify-between text-sm text-gray-300",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "flex items-center gap-2",
                                                 children: [
-                                                    "Already Registered?",
-                                                    " ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        onClick: ()=>{
-                                                            setView(!view);
-                                                        },
-                                                        className: "underline text-white",
-                                                        children: "Sign In."
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                        id: "remember",
+                                                        type: "checkbox",
+                                                        className: "w-4 h-4 accent-blue-600"
                                                     }, void 0, false, {
                                                         fileName: "src/components/SignUp.js",
-                                                        lineNumber: 156,
-                                                        columnNumber: 21
+                                                        lineNumber: 142,
+                                                        columnNumber: 23
+                                                    }, undefined),
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                        htmlFor: "remember",
+                                                        children: "Remember me"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/SignUp.js",
+                                                        lineNumber: 147,
+                                                        columnNumber: 23
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/SignUp.js",
-                                                lineNumber: 154,
-                                                columnNumber: 19
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "mt-4 text-xs text-gray-400",
-                                                children: "This page is protected by Google reCAPTCHA to ensure you're not a bot."
-                                            }, void 0, false, {
-                                                fileName: "src/components/SignUp.js",
-                                                lineNumber: 166,
-                                                columnNumber: 19
+                                                lineNumber: 141,
+                                                columnNumber: 21
                                             }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/SignUp.js",
-                                        lineNumber: 83,
-                                        columnNumber: 17
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/SignUp.js",
-                                lineNumber: 78,
-                                columnNumber: 15
-                            }, undefined)
-                        }, void 0, false, {
+                                        }, void 0, false, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 140,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mt-6 text-sm text-gray-300",
+                                            children: [
+                                                "Already Registered?",
+                                                " ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    onClick: ()=>{
+                                                        setView(!view);
+                                                    },
+                                                    className: "underline text-white",
+                                                    children: "Sign In."
+                                                }, void 0, false, {
+                                                    fileName: "src/components/SignUp.js",
+                                                    lineNumber: 153,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 151,
+                                            columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mt-4 text-xs text-gray-400",
+                                            children: "This page is protected by Google reCAPTCHA to ensure you're not a bot."
+                                        }, void 0, false, {
+                                            fileName: "src/components/SignUp.js",
+                                            lineNumber: 163,
+                                            columnNumber: 19
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/SignUp.js",
+                                    lineNumber: 80,
+                                    columnNumber: 17
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/SignUp.js",
-                            lineNumber: 77,
-                            columnNumber: 13
+                            lineNumber: 75,
+                            columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/SignUp.js",
-                        lineNumber: 76,
-                        columnNumber: 11
+                        lineNumber: 74,
+                        columnNumber: 13
                     }, undefined)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "src/components/SignUp.js",
+                    lineNumber: 73,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/SignUp.js",
-                lineNumber: 73,
+                lineNumber: 72,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/SignUp.js",
-        lineNumber: 70,
+        lineNumber: 69,
         columnNumber: 7
     }, undefined);
 };
-_s(SignUp, "KZ7Ym9UBdl9xs4fYRAK4gFT66pc=", false, function() {
+_s(SignUp, "vVdjtkTVjJdoQlVumF6M7hNMvYk=", false, function() {
     return [
-        (0, _reactRouter.useNavigate),
         (0, _reactRedux.useDispatch)
     ];
 });
@@ -34445,6 +37339,8 @@ var _secondaryContainerDefault = parcelHelpers.interopDefault(_secondaryContaine
 var _gptSearch = require("./GptSearch");
 var _gptSearchDefault = parcelHelpers.interopDefault(_gptSearch);
 var _reactRedux = require("react-redux");
+var _bgJpg = require("url:../assests/bg.jpg");
+var _bgJpgDefault = parcelHelpers.interopDefault(_bgJpg);
 var _s = $RefreshSig$();
 function Browse() {
     _s();
@@ -34454,35 +37350,53 @@ function Browse() {
     (0, _useTopRatedPlayingMoviesDefault.default)();
     (0, _useUpComingPlayingMoviesDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "min-h-screen bg-black",
+        className: "relative min-h-screen bg-black border-amber-50",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: (0, _bgJpgDefault.default),
+                alt: "Background image",
+                className: "absolute inset-0 h-full w-full object-cover -z-10"
+            }, void 0, false, {
                 fileName: "src/components/Browse.js",
-                lineNumber: 21,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
-            gptSearch ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchDefault.default), {}, void 0, false, {
-                fileName: "src/components/Browse.js",
-                lineNumber: 23,
-                columnNumber: 9
-            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "relative z-10",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainContainerDefault.default), {}, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                         fileName: "src/components/Browse.js",
-                        lineNumber: 26,
-                        columnNumber: 11
+                        lineNumber: 29,
+                        columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryContainerDefault.default), {}, void 0, false, {
+                    gptSearch ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchDefault.default), {}, void 0, false, {
                         fileName: "src/components/Browse.js",
-                        lineNumber: 27,
+                        lineNumber: 31,
                         columnNumber: 11
-                    }, this)
+                    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainContainerDefault.default), {}, void 0, false, {
+                                fileName: "src/components/Browse.js",
+                                lineNumber: 34,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryContainerDefault.default), {}, void 0, false, {
+                                fileName: "src/components/Browse.js",
+                                lineNumber: 35,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true)
                 ]
-            }, void 0, true)
+            }, void 0, true, {
+                fileName: "src/components/Browse.js",
+                lineNumber: 28,
+                columnNumber: 7
+            }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Browse.js",
-        lineNumber: 20,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
@@ -34505,7 +37419,7 @@ $RefreshReg$(_c, "Browse");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","../hooks/useNowPlayingMovies":"jyVj4","../hooks/useTopRatedPlayingMovies":"c14f4","../hooks/useUpComingPlayingMovies":"i8OXe","../hooks/usePopularPlayingMovies":"4BGzI","./MainContainer":"6iHZJ","./SecondaryContainer":"1hvux","./GptSearch":"4gRzF","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jyVj4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Header":"3PJ6N","../hooks/useNowPlayingMovies":"jyVj4","../hooks/useTopRatedPlayingMovies":"c14f4","../hooks/useUpComingPlayingMovies":"i8OXe","../hooks/usePopularPlayingMovies":"4BGzI","./MainContainer":"6iHZJ","./SecondaryContainer":"1hvux","./GptSearch":"4gRzF","react-redux":"hbNxT","url:../assests/bg.jpg":"aReLX","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jyVj4":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$ce17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$ce17.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -34787,33 +37701,35 @@ var _s = $RefreshSig$();
 function VideoContainer({ id, original_title, overview }) {
     _s();
     const key = (0, _reactRedux.useSelector)((store)=>store.MovieReducer?.Maintrailer);
+    localStorage.setItem('key', key);
+    const video_key = localStorage.getItem('key');
     (0, _useGetTrailerInfoDefault.default)(id);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "relative w-full aspect-video overflow-hidden",
         children: [
-            key && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
+            video_key && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
                 className: "absolute inset-0 w-full h-full object-cover pointer-events-none",
-                src: `https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${key}`,
+                src: `https://www.youtube.com/embed/${video_key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${key}`,
                 title: "YouTube video player",
                 allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
                 referrerPolicy: "strict-origin-when-cross-origin"
-            }, key, false, {
+            }, video_key, false, {
                 fileName: "src/components/VideoContainer.js",
-                lineNumber: 12,
+                lineNumber: 14,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent pointer-events-none"
             }, void 0, false, {
                 fileName: "src/components/VideoContainer.js",
-                lineNumber: 22,
+                lineNumber: 24,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"
             }, void 0, false, {
                 fileName: "src/components/VideoContainer.js",
-                lineNumber: 23,
+                lineNumber: 25,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34823,18 +37739,18 @@ function VideoContainer({ id, original_title, overview }) {
                     overview: overview
                 }, void 0, false, {
                     fileName: "src/components/VideoContainer.js",
-                    lineNumber: 27,
+                    lineNumber: 29,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/VideoContainer.js",
-                lineNumber: 26,
+                lineNumber: 28,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/VideoContainer.js",
-        lineNumber: 10,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
@@ -35213,26 +38129,25 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("./MovieCard");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 function MoviesList({ moviesList }) {
-    ////console.log("now->", moviesList);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "relative",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "flex gap-3 md:gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700/70 scrollbar-track-transparent px-4 md:px-6 snap-x snap-mandatory",
             children: moviesList?.map((res)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
-                    posterPath: res.poster_path
+                    movie: res
                 }, res.id, false, {
                     fileName: "src/components/MoviesList.js",
-                    lineNumber: 10,
+                    lineNumber: 9,
                     columnNumber: 11
                 }, this))
         }, void 0, false, {
             fileName: "src/components/MoviesList.js",
-            lineNumber: 8,
+            lineNumber: 7,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/MoviesList.js",
-        lineNumber: 7,
+        lineNumber: 6,
         columnNumber: 5
     }, this);
 }
@@ -35260,25 +38175,43 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _constants = require("../utils/constants");
-function MovieCard({ posterPath }) {
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _reactRouter = require("react-router");
+var _s = $RefreshSig$();
+function MovieCard({ movie }) {
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    const navigate = (0, _reactRouter.useNavigate)();
+    const handleClick = (movie)=>{
+        localStorage.setItem("MovieInfo", JSON.stringify(movie));
+        navigate("/movieInfo");
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>handleClick(movie),
         className: "flex-shrink-0 snap-start w-28 md:w-36 lg:w-44",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
             className: "w-full h-auto rounded-md shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform duration-200 ease-out",
-            src: (0, _constants.CDN_URL) + posterPath,
+            src: (0, _constants.CDN_URL) + movie?.poster_path,
             alt: "poster",
             loading: "lazy"
         }, void 0, false, {
             fileName: "src/components/MovieCard.js",
-            lineNumber: 7,
-            columnNumber: 9
+            lineNumber: 20,
+            columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/MovieCard.js",
-        lineNumber: 6,
+        lineNumber: 16,
         columnNumber: 5
     }, this);
 }
+_s(MovieCard, "R1L93MxeLXzQXESpmjjjQSuQgvM=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch),
+        (0, _reactRouter.useNavigate)
+    ];
+});
 _c = MovieCard;
 exports.default = MovieCard;
 var _c;
@@ -35289,7 +38222,7 @@ $RefreshReg$(_c, "MovieCard");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4gRzF":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/constants":"dIVBf","react-redux":"hbNxT","../utils/appSlice":"cVNx9","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4gRzF":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$1d40 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$1d40.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -35309,54 +38242,75 @@ var _movieCard = require("./MovieCard");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 var _useGetMovieInfo = require("../hooks/useGetMovieInfo");
 var _useGetMovieInfoDefault = parcelHelpers.interopDefault(_useGetMovieInfo);
+var _bgJpg = require("url:../assests/bg.jpg");
+var _bgJpgDefault = parcelHelpers.interopDefault(_bgJpg);
 var _s = $RefreshSig$();
 function GptSearch() {
     _s();
     const movies = (0, _reactRedux.useSelector)((store)=>store.GptReducer.recommendedMovie);
     const recommendedMovies = (0, _useGetMovieInfoDefault.default)(movies);
+    console.log('recommended Movies ->', recommendedMovies);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-[10vh] px-4 sm:px-6 lg:px-8",
+        className: "relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-[10vh] px-4 sm:px-6 lg:px-8",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mx-auto w-full max-w-3xl",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchBarDefault.default), {}, void 0, false, {
-                    fileName: "src/components/GptSearch.js",
-                    lineNumber: 14,
-                    columnNumber: 9
-                }, this)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: (0, _bgJpgDefault.default),
+                alt: "Background image",
+                className: "absolute inset-0 h-full w-full object-cover -z-10"
             }, void 0, false, {
                 fileName: "src/components/GptSearch.js",
-                lineNumber: 13,
+                lineNumber: 16,
                 columnNumber: 7
             }, this),
-            recommendedMovies && recommendedMovies.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mx-auto w-full max-w-6xl mt-10",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 place-items-center",
-                    children: recommendedMovies.map((res)=>{
-                        const posterPath = res?.poster_path;
-                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
-                            posterPath: posterPath
-                        }, res?.id, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "relative z-10",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mx-auto w-full max-w-3xl",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _gptSearchBarDefault.default), {}, void 0, false, {
                             fileName: "src/components/GptSearch.js",
-                            lineNumber: 21,
-                            columnNumber: 22
-                        }, this);
-                    })
-                }, void 0, false, {
-                    fileName: "src/components/GptSearch.js",
-                    lineNumber: 18,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
+                            lineNumber: 23,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/components/GptSearch.js",
+                        lineNumber: 22,
+                        columnNumber: 9
+                    }, this),
+                    recommendedMovies && recommendedMovies.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mx-auto w-full max-w-6xl mt-10",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 place-items-center",
+                            children: recommendedMovies.map((res)=>{
+                                const posterPath = res?.poster_path;
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
+                                    movie: res
+                                }, res?.id, false, {
+                                    fileName: "src/components/GptSearch.js",
+                                    lineNumber: 30,
+                                    columnNumber: 24
+                                }, this);
+                            })
+                        }, void 0, false, {
+                            fileName: "src/components/GptSearch.js",
+                            lineNumber: 27,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/components/GptSearch.js",
+                        lineNumber: 26,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/GptSearch.js",
-                lineNumber: 17,
-                columnNumber: 9
+                lineNumber: 21,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/GptSearch.js",
-        lineNumber: 12,
+        lineNumber: 15,
         columnNumber: 5
     }, this);
 }
@@ -35376,7 +38330,7 @@ $RefreshReg$(_c, "GptSearch");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./GptSearchBar":"lQEta","react-redux":"hbNxT","./MovieCard":"bKtWx","../hooks/useGetMovieInfo":"ahIIC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lQEta":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./GptSearchBar":"lQEta","react-redux":"hbNxT","./MovieCard":"bKtWx","../hooks/useGetMovieInfo":"ahIIC","url:../assests/bg.jpg":"aReLX","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lQEta":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c590 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c590.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -35430,7 +38384,7 @@ function GptSearchBar() {
                             type: "text",
                             ref: searchText,
                             placeholder: "Search for movies, shows, or ask for recommendations...",
-                            className: "flex-1 px-6 py-4 text-lg bg-white bg-opacity-10 border border-gray-300 border-opacity-30 rounded-lg text-black placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
+                            className: "flex-1 px-6 py-4 text-lg bg-white border border-gray-300 border-opacity-30 rounded-lg text-black placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
                         }, void 0, false, {
                             fileName: "src/components/GptSearchBar.js",
                             lineNumber: 31,
@@ -51128,7 +54082,10 @@ exports.default = useGetMovieInfo;
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hrvwu":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","../utils/constants":"dIVBf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"aReLX":[function(require,module,exports,__globalThis) {
+module.exports = module.bundle.resolve("bg.e0be94e2.jpg") + "?" + Date.now();
+
+},{}],"hrvwu":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -66576,200 +69533,7 @@ module.exports = require("ef03b89c8fe2794e");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{}],"i4X7T":[function(require,module,exports,__globalThis) {
-'use strict';
-function checkDCE() {
-    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
-    var err;
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-}
-module.exports = require("b0f0e6b9e8349dac");
-
-},{"b0f0e6b9e8349dac":"cLd8p"}],"cLd8p":[function(require,module,exports,__globalThis) {
-/**
- * @license React
- * react-dom.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ "use strict";
-(function() {
-    function noop() {}
-    function testStringCoercion(value) {
-        return "" + value;
-    }
-    function createPortal$1(children, containerInfo, implementation) {
-        var key = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : null;
-        try {
-            testStringCoercion(key);
-            var JSCompiler_inline_result = !1;
-        } catch (e) {
-            JSCompiler_inline_result = !0;
-        }
-        JSCompiler_inline_result && (console.error("The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", "function" === typeof Symbol && Symbol.toStringTag && key[Symbol.toStringTag] || key.constructor.name || "Object"), testStringCoercion(key));
-        return {
-            $$typeof: REACT_PORTAL_TYPE,
-            key: null == key ? null : "" + key,
-            children: children,
-            containerInfo: containerInfo,
-            implementation: implementation
-        };
-    }
-    function getCrossOriginStringAs(as, input) {
-        if ("font" === as) return "";
-        if ("string" === typeof input) return "use-credentials" === input ? input : "";
-    }
-    function getValueDescriptorExpectingObjectForWarning(thing) {
-        return null === thing ? "`null`" : void 0 === thing ? "`undefined`" : "" === thing ? "an empty string" : 'something with type "' + typeof thing + '"';
-    }
-    function getValueDescriptorExpectingEnumForWarning(thing) {
-        return null === thing ? "`null`" : void 0 === thing ? "`undefined`" : "" === thing ? "an empty string" : "string" === typeof thing ? JSON.stringify(thing) : "number" === typeof thing ? "`" + thing + "`" : 'something with type "' + typeof thing + '"';
-    }
-    function resolveDispatcher() {
-        var dispatcher = ReactSharedInternals.H;
-        null === dispatcher && console.error("Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.");
-        return dispatcher;
-    }
-    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-    var React = require("6f0162e9ab224cd4"), Internals = {
-        d: {
-            f: noop,
-            r: function() {
-                throw Error("Invalid form element. requestFormReset must be passed a form that was rendered by React.");
-            },
-            D: noop,
-            C: noop,
-            L: noop,
-            m: noop,
-            X: noop,
-            S: noop,
-            M: noop
-        },
-        p: 0,
-        findDOMNode: null
-    }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
-    "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
-    exports.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = Internals;
-    exports.createPortal = function(children, container) {
-        var key = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : null;
-        if (!container || 1 !== container.nodeType && 9 !== container.nodeType && 11 !== container.nodeType) throw Error("Target container is not a DOM element.");
-        return createPortal$1(children, container, null, key);
-    };
-    exports.flushSync = function(fn) {
-        var previousTransition = ReactSharedInternals.T, previousUpdatePriority = Internals.p;
-        try {
-            if (ReactSharedInternals.T = null, Internals.p = 2, fn) return fn();
-        } finally{
-            ReactSharedInternals.T = previousTransition, Internals.p = previousUpdatePriority, Internals.d.f() && console.error("flushSync was called from inside a lifecycle method. React cannot flush when React is already rendering. Consider moving this call to a scheduler task or micro task.");
-        }
-    };
-    exports.preconnect = function(href, options) {
-        "string" === typeof href && href ? null != options && "object" !== typeof options ? console.error("ReactDOM.preconnect(): Expected the `options` argument (second) to be an object but encountered %s instead. The only supported option at this time is `crossOrigin` which accepts a string.", getValueDescriptorExpectingEnumForWarning(options)) : null != options && "string" !== typeof options.crossOrigin && console.error("ReactDOM.preconnect(): Expected the `crossOrigin` option (second argument) to be a string but encountered %s instead. Try removing this option or passing a string value instead.", getValueDescriptorExpectingObjectForWarning(options.crossOrigin)) : console.error("ReactDOM.preconnect(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
-        "string" === typeof href && (options ? (options = options.crossOrigin, options = "string" === typeof options ? "use-credentials" === options ? options : "" : void 0) : options = null, Internals.d.C(href, options));
-    };
-    exports.prefetchDNS = function(href) {
-        if ("string" !== typeof href || !href) console.error("ReactDOM.prefetchDNS(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
-        else if (1 < arguments.length) {
-            var options = arguments[1];
-            "object" === typeof options && options.hasOwnProperty("crossOrigin") ? console.error("ReactDOM.prefetchDNS(): Expected only one argument, `href`, but encountered %s as a second argument instead. This argument is reserved for future options and is currently disallowed. It looks like the you are attempting to set a crossOrigin property for this DNS lookup hint. Browsers do not perform DNS queries using CORS and setting this attribute on the resource hint has no effect. Try calling ReactDOM.prefetchDNS() with just a single string argument, `href`.", getValueDescriptorExpectingEnumForWarning(options)) : console.error("ReactDOM.prefetchDNS(): Expected only one argument, `href`, but encountered %s as a second argument instead. This argument is reserved for future options and is currently disallowed. Try calling ReactDOM.prefetchDNS() with just a single string argument, `href`.", getValueDescriptorExpectingEnumForWarning(options));
-        }
-        "string" === typeof href && Internals.d.D(href);
-    };
-    exports.preinit = function(href, options) {
-        "string" === typeof href && href ? null == options || "object" !== typeof options ? console.error("ReactDOM.preinit(): Expected the `options` argument (second) to be an object with an `as` property describing the type of resource to be preinitialized but encountered %s instead.", getValueDescriptorExpectingEnumForWarning(options)) : "style" !== options.as && "script" !== options.as && console.error('ReactDOM.preinit(): Expected the `as` property in the `options` argument (second) to contain a valid value describing the type of resource to be preinitialized but encountered %s instead. Valid values for `as` are "style" and "script".', getValueDescriptorExpectingEnumForWarning(options.as)) : console.error("ReactDOM.preinit(): Expected the `href` argument (first) to be a non-empty string but encountered %s instead.", getValueDescriptorExpectingObjectForWarning(href));
-        if ("string" === typeof href && options && "string" === typeof options.as) {
-            var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin), integrity = "string" === typeof options.integrity ? options.integrity : void 0, fetchPriority = "string" === typeof options.fetchPriority ? options.fetchPriority : void 0;
-            "style" === as ? Internals.d.S(href, "string" === typeof options.precedence ? options.precedence : void 0, {
-                crossOrigin: crossOrigin,
-                integrity: integrity,
-                fetchPriority: fetchPriority
-            }) : "script" === as && Internals.d.X(href, {
-                crossOrigin: crossOrigin,
-                integrity: integrity,
-                fetchPriority: fetchPriority,
-                nonce: "string" === typeof options.nonce ? options.nonce : void 0
-            });
-        }
-    };
-    exports.preinitModule = function(href, options) {
-        var encountered = "";
-        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
-        void 0 !== options && "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : options && "as" in options && "script" !== options.as && (encountered += " The `as` option encountered was " + getValueDescriptorExpectingEnumForWarning(options.as) + ".");
-        if (encountered) console.error("ReactDOM.preinitModule(): Expected up to two arguments, a non-empty `href` string and, optionally, an `options` object with a valid `as` property.%s", encountered);
-        else switch(encountered = options && "string" === typeof options.as ? options.as : "script", encountered){
-            case "script":
-                break;
-            default:
-                encountered = getValueDescriptorExpectingEnumForWarning(encountered), console.error('ReactDOM.preinitModule(): Currently the only supported "as" type for this function is "script" but received "%s" instead. This warning was generated for `href` "%s". In the future other module types will be supported, aligning with the import-attributes proposal. Learn more here: (https://github.com/tc39/proposal-import-attributes)', encountered, href);
-        }
-        if ("string" === typeof href) {
-            if ("object" === typeof options && null !== options) {
-                if (null == options.as || "script" === options.as) encountered = getCrossOriginStringAs(options.as, options.crossOrigin), Internals.d.M(href, {
-                    crossOrigin: encountered,
-                    integrity: "string" === typeof options.integrity ? options.integrity : void 0,
-                    nonce: "string" === typeof options.nonce ? options.nonce : void 0
-                });
-            } else null == options && Internals.d.M(href);
-        }
-    };
-    exports.preload = function(href, options) {
-        var encountered = "";
-        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
-        null == options || "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : "string" === typeof options.as && options.as || (encountered += " The `as` option encountered was " + getValueDescriptorExpectingObjectForWarning(options.as) + ".");
-        encountered && console.error('ReactDOM.preload(): Expected two arguments, a non-empty `href` string and an `options` object with an `as` property valid for a `<link rel="preload" as="..." />` tag.%s', encountered);
-        if ("string" === typeof href && "object" === typeof options && null !== options && "string" === typeof options.as) {
-            encountered = options.as;
-            var crossOrigin = getCrossOriginStringAs(encountered, options.crossOrigin);
-            Internals.d.L(href, encountered, {
-                crossOrigin: crossOrigin,
-                integrity: "string" === typeof options.integrity ? options.integrity : void 0,
-                nonce: "string" === typeof options.nonce ? options.nonce : void 0,
-                type: "string" === typeof options.type ? options.type : void 0,
-                fetchPriority: "string" === typeof options.fetchPriority ? options.fetchPriority : void 0,
-                referrerPolicy: "string" === typeof options.referrerPolicy ? options.referrerPolicy : void 0,
-                imageSrcSet: "string" === typeof options.imageSrcSet ? options.imageSrcSet : void 0,
-                imageSizes: "string" === typeof options.imageSizes ? options.imageSizes : void 0,
-                media: "string" === typeof options.media ? options.media : void 0
-            });
-        }
-    };
-    exports.preloadModule = function(href, options) {
-        var encountered = "";
-        "string" === typeof href && href || (encountered += " The `href` argument encountered was " + getValueDescriptorExpectingObjectForWarning(href) + ".");
-        void 0 !== options && "object" !== typeof options ? encountered += " The `options` argument encountered was " + getValueDescriptorExpectingObjectForWarning(options) + "." : options && "as" in options && "string" !== typeof options.as && (encountered += " The `as` option encountered was " + getValueDescriptorExpectingObjectForWarning(options.as) + ".");
-        encountered && console.error('ReactDOM.preloadModule(): Expected two arguments, a non-empty `href` string and, optionally, an `options` object with an `as` property valid for a `<link rel="modulepreload" as="..." />` tag.%s', encountered);
-        "string" === typeof href && (options ? (encountered = getCrossOriginStringAs(options.as, options.crossOrigin), Internals.d.m(href, {
-            as: "string" === typeof options.as && "script" !== options.as ? options.as : void 0,
-            crossOrigin: encountered,
-            integrity: "string" === typeof options.integrity ? options.integrity : void 0
-        })) : Internals.d.m(href));
-    };
-    exports.requestFormReset = function(form) {
-        Internals.d.r(form);
-    };
-    exports.unstable_batchedUpdates = function(fn, a) {
-        return fn(a);
-    };
-    exports.useFormState = function(action, initialState, permalink) {
-        return resolveDispatcher().useFormState(action, initialState, permalink);
-    };
-    exports.useFormStatus = function() {
-        return resolveDispatcher().useHostTransitionStatus();
-    };
-    exports.version = "19.2.0";
-    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-})();
-
-},{"6f0162e9ab224cd4":"jMk1U"}],"dpIkN":[function(require,module,exports,__globalThis) {
+},{}],"dpIkN":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _toolkit = require("@reduxjs/toolkit");
@@ -66783,6 +69547,157 @@ const AppStore = (0, _toolkit.configureStore)({
 });
 exports.default = AppStore;
 
-},{"@reduxjs/toolkit":"fKS5f","./appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"@reduxjs/toolkit":"fKS5f","./appSlice":"cVNx9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"iAZrS":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5bd0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5bd0.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5bd0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRedux = require("react-redux");
+var _appSlice = require("../utils/appSlice");
+var _useGetTrailerInfo = require("../hooks/useGetTrailerInfo");
+var _useGetTrailerInfoDefault = parcelHelpers.interopDefault(_useGetTrailerInfo);
+var _s = $RefreshSig$();
+function MovieInfo() {
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    (0, _react.useEffect)(()=>{
+        const movieInfo = localStorage.getItem("MovieInfo");
+        const MovieInfo = JSON.parse(movieInfo);
+        dispatch((0, _appSlice.addMovieInfo)(MovieInfo));
+    }, []);
+    const movie = (0, _reactRedux.useSelector)((store)=>store?.MovieReducer?.MovieInfo);
+    const key = (0, _reactRedux.useSelector)((store)=>store.MovieReducer?.Maintrailer);
+    (0, _useGetTrailerInfoDefault.default)(movie?.id);
+    console.log("key for card:::", key);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: key && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
+                    className: "absolute inset-0 w-full h-full object-cover pointer-events-none",
+                    src: `https://www.youtube.com/embed/${key}?autoplay=1&mute=1&modestbranding=1&rel=0&playlist=${key}`,
+                    title: "YouTube video player",
+                    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+                    referrerPolicy: "strict-origin-when-cross-origin"
+                }, key, false, {
+                    fileName: "src/components/MovieInfo.js",
+                    lineNumber: 23,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/MovieInfo.js",
+                lineNumber: 21,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            movie?.title,
+                            "(",
+                            movie?.original_title,
+                            ")"
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Original Language:",
+                            movie?.original_language
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie?.overview
+                    }, void 0, false, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 38,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Poplularity:",
+                            movie?.popularity
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 39,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Release Date",
+                            movie?.release_date
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 40,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Vote Average",
+                            movie?.vote_average
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 41,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Vote Count",
+                            movie?.vote_count
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/MovieInfo.js",
+                        lineNumber: 42,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/MovieInfo.js",
+                lineNumber: 33,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/MovieInfo.js",
+        lineNumber: 20,
+        columnNumber: 5
+    }, this);
+}
+_s(MovieInfo, "JpornWNn+R3txqp0+VnrKS5TLD0=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch),
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector),
+        (0, _useGetTrailerInfoDefault.default)
+    ];
+});
+_c = MovieInfo;
+exports.default = MovieInfo;
+var _c;
+$RefreshReg$(_c, "MovieInfo");
+
+  $parcel$ReactRefreshHelpers$5bd0.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-redux":"hbNxT","../utils/appSlice":"cVNx9","../hooks/useGetTrailerInfo":"3ntK3","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, "./", "/", "http://localhost:1234")
 
 //# sourceMappingURL=Frontend.0f77c784.js.map
